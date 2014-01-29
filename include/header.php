@@ -25,11 +25,14 @@
 			<div id="h_mid"></div>
 			<div id="h_right"></div>
 			<div id="bandeNoire">
-			<a href="<?=SHORT_RACINE?>index.php"><input type="button" value="Accueil" class="accueil" /></a>
-			<h1><?=$titre?></h1>
-
+				<div id="bande_gauche">
+					<a href="<?=SHORT_RACINE?>index.php"><input type="button" value="Accueil" class="accueil" /></a>
+				</div>
+				<div id="bande_milieu">
+					<h1><?=$titre?></h1>
+				</div>
 			<?php if(isset($_SESSION['id'])) { ?>
-				<div class="droite">
+				<div id="bande_droite" class="droite">
 					<h3><?=$_SESSION['nom']?></h3>
 					<a href="<?=SHORT_RACINE?>logout.php" title="Se déconnecter">Se deconnecter</a>
 				</div>
