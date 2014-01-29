@@ -8,23 +8,24 @@
 #forms_login{
 	margin:50px auto;
 	text-align:center;
-	float:none;
-	width:50%;
-	height:140px;
-	text-align:center;
+	width:60%;
+	height:170px;
 	border:solid black 2px;
 	border-radius:10px;
 	background-color:#CED5D4;
 }
 
-#login{
-	float:left;
-	border-right:dotted 2px black;
-	margin:10px;
-	padding-right:10px;
+
+#forms_login .bloc { 
+  margin:20px 30px; /* espacement horizontal des blocs */
+  display:inline-block;
+  vertical-align:middle;
 }
 
-
+#login{
+	border-right:dotted 2px black;
+	padding-right:40px;
+}
 #subscribe input{
 	font-size:20px;
 	padding:10px;
