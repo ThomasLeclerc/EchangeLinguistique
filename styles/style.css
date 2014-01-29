@@ -9,13 +9,21 @@
 	margin:50px auto;
 	text-align:center;
 	float:none;
-	width:60%;
+	width:50%;
+	height:140px;
 	text-align:center;
+	border:solid black 2px;
+	border-radius:10px;
+	background-color:#CED5D4;
 }
 
 #login{
 	float:left;
+	border-right:dotted 2px black;
+	margin:10px;
+	padding-right:10px;
 }
+
 
 #subscribe input{
 	font-size:20px;
