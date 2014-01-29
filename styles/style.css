@@ -6,5 +6,16 @@
 ***********	STYLE login.php ************
 ****************************************/
 #forms_login{
-	margin:auto;
+	margin:0,auto;
+	text-align:center;
+	float:none;
+	width:60%;
+}
+
+#login{
+	float:left;
+}
+
+#subsribe{
+
 }

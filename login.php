@@ -25,27 +25,31 @@ if(isset($_POST['login'],$_POST['password']))
 
 ?>
 <div id="forms_login">
-	<div id="login">
-		<form action="" method="POST">
-			<fieldset>
-				<legend>Connexion</legend>
+	<fieldset>
+		<div id="login">
+			<form action="" method="POST">
+
+					<legend>Connexion</legend>
 		
-				<table>
-					<tr>
-						<td><label for="login">Votre identifiant</label></td>
-						<td><input name="login" value="<?=defaultPost('login')?>"/></td>
-					</tr>
-					<tr>
-						<td><label for="password">Votre mot de passe</label></td>
-						<td><input type="password" name="password" value=""/></td>
-					</tr>
-				</table>
-				<input type="submit" name="submit" value="Valider" />
-			</fieldset>
-		</form>
-	</div><div id="subscribe">
-		<a href="formulaireInsciption.php">S'inscrire</a>
-	</div>
+					<table>
+						<tr>
+							<td><label for="login">Votre identifiant</label></td>
+							<td><input name="login" value="<?=defaultPost('login')?>"/></td>
+						</tr>
+						<tr>
+							<td><label for="password">Votre mot de passe</label></td>
+							<td><input type="password" name="password" value=""/></td>
+						</tr>
+					</table>
+					<input type="submit" name="submit" value="Valider" />
+			
+			</form>
+		</div><div id="subscribe">
+			<form action="./inscription.php">
+				<input type="submit" value="S'inscrire" />
+			</form>
+		</div>
+		</fieldset>
 </div>
 
 <?php 
