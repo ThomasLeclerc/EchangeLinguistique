@@ -25,24 +25,25 @@ if(isset($_POST['login'],$_POST['password']))
 
 ?>
 <div id="forms_login">
-	<div id="login">
+	<div id="login" class="bloc">
 		<form action="" method="POST">
-			<legend>Connexion</legend>	
+			<legend><b>Connexion</b></legend>	
 			<table>
 				<tr>
-					<td><label for="login">Votre identifiant</label></td>
+					<td><label for="login">Login</label></td>
 					<td><input name="login" value="<?=defaultPost('login')?>"/></td>
 				</tr>
 				<tr>
-					<td><label for="password">Votre mot de passe</label></td>
+					<td><label for="password">Mot de passe</label></td>
 					<td><input type="password" name="password" value=""/></td>
 				</tr>
 			</table>
 			<input type="submit" name="submit" value="Valider" class="validate"/>
 		</form>
-	</div><div id="subscribe">
+	</div><div id="subscribe" class="bloc">
 		<form action="./inscription.php">
-			<input type="submit" value="Inscription"/>
+			Vous ne possedez pas de profil ?<br/><br/>
+			<input type="submit" value="Inscrivez vous !"/>
 		</form>
 	</div>
 </div>
