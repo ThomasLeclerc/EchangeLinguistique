@@ -19,3 +19,71 @@
 #subsribe{
 
 }
+
+body{
+	margin:5px;
+	padding:0;
+}
+
+#header{
+	background-color:rgb(150,150,255);
+	padding:5px;
+	margin-left:auto;
+	margin-right:auto;
+	width:900px;
+	
+}
+
+#header h1, #header h6{
+	text-align:center;
+}
+
+#header a{
+	text-align:left;
+}
+
+.droite{
+	text-align:right;
+}
+
+#footer{
+	position:relative;
+	font-style:italic;
+}
+
+.validate, .cancel {
+	padding:10px;
+	margin:0px 5px;
+}
+.validate {
+	color:green;
+}
+.cancel {
+	color:red;
+}
+
+.msg_0 {
+	/* Message OK */
+	background-color:#C7F2C6;
+	background-image:url(ok.gif);
+}
+.msg_1 {
+	/* Message ERREUR */
+	background-color:#F2C6CA;
+	background-image:url(error.gif);
+}
+.msg_2 {
+	/* Message INFORMATION */
+	background-color:#C6C7F2;
+	background-image:url(info.gif);
+}
+.msg_0, .msg_1, .msg_2 {
+	background-repeat:no-repeat;
+	background-position:10px 50%;
+	padding:10px 10px 10px 50px;
+	margin:10px 0px;
+	vertical-align:middle;
+}
+.largeInput input {
+	width:100%;
+}
