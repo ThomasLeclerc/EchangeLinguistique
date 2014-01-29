@@ -41,12 +41,12 @@ if(isset($_POST['login'],$_POST['password']))
 							<td><input type="password" name="password" value=""/></td>
 						</tr>
 					</table>
-					<input type="submit" name="submit" value="Valider" />
+					<input type="submit" name="submit" value="Valider" class="validate"/>
 			
 			</form>
 		</div><div id="subscribe">
 			<form action="./inscription.php">
-				<input type="submit" value="S'inscrire" />
+				<input type="submit" value="Inscription"/>
 			</form>
 		</div>
 		</fieldset>
