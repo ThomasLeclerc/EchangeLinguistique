@@ -44,7 +44,6 @@ body{
 
 #header{
 	position:fixed;
-	background-color:black;
 	
 	top:0px;
 	left:0px;
@@ -121,4 +120,27 @@ body{
 .largeInput input {
 	width:100%;
 }
+#h_left {
+    display: inline-block;
+    height: 150px;
+    vertical-align: top;
+    width: 320px;
+}
+#hrefuniv {
+    height: 70px;
+    left: 227px;
+    position: absolute;
+    top: 60px;
+    width: 100px;
+    z-index: 200;
+}
+#bandeNoire{
+	height : 5px;
+	background-color:black;
+}
+#bandeVerte{
+	height : 2px;
+	background-color:green;
+}
+	
 
