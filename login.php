@@ -24,24 +24,29 @@ if(isset($_POST['login'],$_POST['password']))
 }
 
 ?>
-
-<form action="" method="POST">
-	<fieldset>
-		<legend>Connexion</legend>
+<div="forms">
+	<div id="login">
+		<form action="" method="POST">
+			<fieldset>
+				<legend>Connexion</legend>
 		
-		<table>
-			<tr>
-				<td><label for="login">Votre identifiant</label></td>
-				<td><input name="login" value="<?=defaultPost('login')?>"/></td>
-			</tr>
-			<tr>
-				<td><label for="password">Votre mot de passe</label></td>
-				<td><input type="password" name="password" value=""/></td>
-			</tr>
-		</table>
-		<input type="submit" name="submit" value="Valider" />
-	</fieldset>
-</form>
+				<table>
+					<tr>
+						<td><label for="login">Votre identifiant</label></td>
+						<td><input name="login" value="<?=defaultPost('login')?>"/></td>
+					</tr>
+					<tr>
+						<td><label for="password">Votre mot de passe</label></td>
+						<td><input type="password" name="password" value=""/></td>
+					</tr>
+				</table>
+				<input type="submit" name="submit" value="Valider" />
+			</fieldset>
+		</form>
+	</div><div id="subscribe">
+		<a href="formulaireInsciption.php">S'inscrire</a>
+	</div>
+</div>
 
 <?php 
 HTML_FOOTER();
