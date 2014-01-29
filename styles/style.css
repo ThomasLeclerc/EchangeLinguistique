@@ -6,10 +6,10 @@
 ***********	STYLE login.php ************
 ****************************************/
 #forms_login{
-	margin:50px auto;
+	margin:300px auto;
 	text-align:center;
-	width:60%;
-	height:170px;
+	width:65%;
+	height:180px;
 	border:solid black 2px;
 	border-radius:10px;
 	background-color:#CED5D4;
