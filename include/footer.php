@@ -1,3 +1,3 @@
-		<div id="footer"> Application de gestion d'emploi du temps de groupe</div>
+		<div id="footer"> Tandem linguistique - CeLab - Université de Franche-Comté</div>
 	</body>
 </html>
