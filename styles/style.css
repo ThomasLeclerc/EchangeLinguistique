@@ -145,7 +145,17 @@ body{
 }
 #bandeVerte{
 	height : 4px;
-	background-color:green;
+	background-color:#5F7513;
+}
+#bande_gauche{
+	display:inline;
+}
+#bande_milieu{
+	display:inline;
+	margin-left:20%;
+}
+#bande_droite{
+	display:inline;
 }
 	
 
