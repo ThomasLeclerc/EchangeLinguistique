@@ -21,6 +21,7 @@
 		<div id="header">
 			<a href="<?=SHORT_RACINE?>index.php"><input type="button" value="Accueil" class="accueil" /></a>
 			<h1><?=$titre?></h1>
+
 			<?php if(isset($_SESSION['id'])) { ?>
 				<div class="droite">
 					<h3><?=$_SESSION['nom']?></h3>

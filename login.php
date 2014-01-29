@@ -24,7 +24,7 @@ if(isset($_POST['login'],$_POST['password']))
 }
 
 ?>
-<div="forms">
+<div id="forms_login">
 	<div id="login">
 		<form action="" method="POST">
 			<fieldset>
