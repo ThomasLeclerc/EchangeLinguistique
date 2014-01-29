@@ -17,6 +17,14 @@
 	</head>
 	<body>
 		<div id="header">
+		
+			<div id="headerCLA">
+			<div id="h_mid"></div>
+			<div id="h_left">
+				<a href="http://cla.univ-fcomte.fr/index.php"><img src="styles/logo-cla.jpg" /></a>
+				<a id="hrefuniv" href="http://www.univ-fcomte.fr"></a></div>
+			<div id="h_right"></div>
+			</div>
 			<a href="<?=SHORT_RACINE?>index.php"><input type="button" value="Accueil" class="accueil" /></a>
 			<h1><?=$titre?></h1>
 
@@ -26,6 +34,8 @@
 					<a href="<?=SHORT_RACINE?>logout.php" title="Se déconnecter">Se deconnecter</a>
 				</div>
 			<?php } ?>
+			<div id="bandeNoire"></div>
+			<div id="bandeVerte"></div>
 		</div>
 		<?//MessagesService::afficher();?>
 		
