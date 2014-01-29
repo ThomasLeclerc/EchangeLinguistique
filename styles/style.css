@@ -6,9 +6,29 @@
 ***********	STYLE login.php ************
 ****************************************/
 #forms_login{
-	margin:auto;
+	margin:50px auto;
+	text-align:center;
+	float:none;
+	width:60%;
+	text-align:center;
 }
 
+#login{
+	float:left;
+}
+
+#subscribe input{
+	font-size:20px;
+	padding:10px;
+	margin:0px 5px;
+	color:green;
+}
+
+
+
+/***************************************
+***********	STYLES GENERAUX *************
+****************************************/
 body{
 	margin:5px;
 	padding:0;
@@ -93,7 +113,4 @@ body{
 .largeInput input {
 	width:100%;
 }
-
-
-
 
