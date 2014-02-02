@@ -24,7 +24,7 @@ CREATE TABLE FICHE(
 	numeroTelephone varchar(10),
 	mail varchar(100),
 	profession varchar(255),
-	niveauLanguePrefectionnement varchar(20),
+	niveauLanguePerfectionnement varchar(20),
 	niveauLangueSysteme varchar(2) default null,
 	complement varchar(500),
 	idUtilisateur int not null,
