@@ -7,8 +7,21 @@ if(!isset($_SESSION['id']))
 // Entete
 HTML_HEADER('Administration');
 ?>
-<!--liste des menus admin-->
-<div>
+<script>
+
+function showFiche(id){
+    xmlhttp=new XMLHttpRequest();
+    xmlhttp.onreadystatechange=function(){
+    	if (xmlhttp.readyState==4 && xmlhttp.status==200)
+        {
+            document.getElementById("hintFiche").innerHTML=xmlhttp.responseText;
+        }
+    }
+    xmlhttp.open("GET","showFiche.php?id="+id,true);
+    xmlhttp.send();
+}
+</script>
+
 
 <table id="FichesTable">
     <thead>
@@ -32,7 +45,7 @@ HTML_HEADER('Administration');
 			$queryLanguePerf=SQL("select * from LANGUE where idLangue=".$row->idLanguePerfectionnement);
 			$rowLanguePerf=$queryLanguePerf->fetch_object();
 			
-			echo '<tr style="background-color: lightgreen;">';
+			echo '<tr style="background-color: lightgreen;" onclick="showFiche('.$row->idFiche.')">';
 			if(!($rowLangueMat->imageDrapeau == null))
 				echo '<td>'.$rowLangueMat->libelleLangue.' <img class="flag" src="'.SHORT_RACINE.'styles/flags/'.$rowLangueMat->imageDrapeau.'" /></td>';
 			else
@@ -52,7 +65,8 @@ HTML_HEADER('Administration');
     ?></tbody>
 </table>
 
-</div>
+<div id="hintFiche"></div>
+
 <?php 
 HTML_FOOTER();
 ?>
