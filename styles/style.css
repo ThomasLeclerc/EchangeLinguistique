@@ -1,5 +1,25 @@
+/******************************************************
+***********	STYLE vérifiaction formulaires ************
+******************************************************/
+.invalidInput, .error{
+color:#8a1f11;
+background-color:#fbe3e4;
+}
+.error,.notice{
+padding:0.5em;
+margin:0.5em;
+}
 
-
+.error{
+	border:2px solid #8a1f11;
+	display:none;
+}
+.notice {
+	background-color:#FFF6BF;
+	color:#514721;
+	border:2px solid #FFD324;
+	display:none;
+}
 
 
 /***************************************
