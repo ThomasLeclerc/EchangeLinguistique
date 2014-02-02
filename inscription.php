@@ -5,13 +5,7 @@ HTML_HEADER('INSCRIPTION');
 	
 ?>
 <script>
-	$("#form_inscription").validate({
-	rules: {
-		languePerfectionnement: "required",
-		langueMaternelle : "required
-
-	}
-});
+	$("#form_inscription").validate();
 </script>
 <div id="content">
 	
@@ -104,7 +98,7 @@ HTML_HEADER('INSCRIPTION');
 					</td>
 				</tr><tr>
 					<td  >Si vous le connaissez indiquez votre niveau de langue dans le système européen : <br/>
-					<a href="Ressources/Descripteur.pdf">(description des niveaux de langue du Système européen)</a>
+					<a href="Ressources/Descripteur.pdf" target="_blank">(description des niveaux de langue du Système européen)</a>
 					</td>
 					<td>
 						<input type="radio" name="niveauLangueSysteme" id="a1" required/><label for="a1">A1</label>
