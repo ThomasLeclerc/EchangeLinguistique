@@ -15,6 +15,7 @@ CREATE TABLE UTILISATEUR(
 CREATE TABLE LANGUE(
 	idLangue int not null auto_increment,
 	libelleLangue varchar(30),
+	imageDrapeau varchar(255),
 	primary key(idLangue)
 )engine=InnoDB;
 
@@ -41,14 +42,14 @@ CREATE TABLE FICHE(
 INSERT INTO UTILISATEUR values(null, "Leclerc", "Thomas", "tleclerc", sha1("quenelle"));
 INSERT INTO UTILISATEUR values(null, "Petracca", "Charlélie", "cpetracc", sha1("quenelle"));
 
-INSERT INTO LANGUE values(null, "Francais");
-INSERT INTO LANGUE values(null, "Anglais");
-INSERT INTO LANGUE values(null, "Allemand");
-INSERT INTO LANGUE values(null, "Espagnol");
-INSERT INTO LANGUE values(null, "Russe");
-INSERT INTO LANGUE values(null, "Chinois");
-INSERT INTO LANGUE values(null, "Breton");
-INSERT INTO LANGUE values(null, "Italien");
+INSERT INTO LANGUE values(null, "Francais", "france.png");
+INSERT INTO LANGUE values(null, "Anglais", "royaume-uni.png");
+INSERT INTO LANGUE values(null, "Allemand", "allemagne.png");
+INSERT INTO LANGUE values(null, "Espagnol", "espagne.png");
+INSERT INTO LANGUE values(null, "Russe", null);
+INSERT INTO LANGUE values(null, "Chinois", null);
+INSERT INTO LANGUE values(null, "Breton", null);
+INSERT INTO LANGUE values(null, "Italien", "italie.png");
 
 
 INSERT INTO FICHE values(null, "Leclerc",	"Thomas",	1, 2, 22, "M", "14 rue de Beaupaquier",		"25240", "MOUTHE", 		"0600000000", "leclercthomas@yahoo.fr", "Etudiant", "avancé", null, "Je fais du gros son avec mes amis");
