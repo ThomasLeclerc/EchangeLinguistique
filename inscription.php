@@ -74,7 +74,17 @@ HTML_HEADER('INSCRIPTION');
 						<input type="radio" name="niveauLanguePerfectionnement" id="avance"/><label for="avance">avancé</label>
 					</td>
 				</tr><tr>
-					<td></td>
+					<td  >Comment évaluez-vous votre niveau dans la langue que vous souhaitez perfectionner : <br/>
+					<a href="">(description des niveaux de langue du Système européen)</a>
+					</td>
+					<td>
+						<input type="radio" name="niveauLanguePerfectionnement" id="a1"/><label for="a1">A1</label><br/>	
+						<input type="radio" name="niveauLanguePerfectionnement" id="a2"/><label for="a2">A2</label><br/>
+						<input type="radio" name="niveauLanguePerfectionnement" id="b1"/><label for="b1">B1</label><br/>
+						<input type="radio" name="niveauLanguePerfectionnement" id="b2"/><label for="b2">B2</label><br/>
+						<input type="radio" name="niveauLanguePerfectionnement" id="c1"/><label for="c1">C1</label><br/>
+						<input type="radio" name="niveauLanguePerfectionnement" id="c2"/><label for="c2">C2</label><br/>
+					</td>
 				</tr>
 				
 				
