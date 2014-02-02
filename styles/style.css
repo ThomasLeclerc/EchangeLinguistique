@@ -205,4 +205,9 @@ body{
 	display:inline;
 }
 	
-
+.flag{
+	height : 20px;
+}
+#logoUE{
+	height : 40px;
+}
