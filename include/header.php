@@ -40,4 +40,5 @@
 			<div id="bandeVerte"></div>
 		</div>
 		<?//MessagesService::afficher();?>
+		<div id="content">
 		
