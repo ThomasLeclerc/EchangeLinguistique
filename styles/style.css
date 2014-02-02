@@ -211,3 +211,6 @@ body{
 #logoUE{
 	height : 40px;
 }
+#FichesTable td {
+    border-style: outset;
+}
