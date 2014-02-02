@@ -187,3 +187,12 @@ body{
 #logoUE{
 	height : 40px;
 }
+
+.ligneFicheSelected{
+	border-style: inset;
+}
+.ligneF{
+    border-style: none;
+	cursor: pointer;
+}
+
