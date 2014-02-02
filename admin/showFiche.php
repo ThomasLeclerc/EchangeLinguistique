@@ -3,13 +3,13 @@
 
     $idFiche = $_GET["id"];
     
-    $query = SQL("Select * from Fiche where idFiche =".$idFiche);
+    $query = SQL("Select * from FICHE where idFiche =".$idFiche);
 	$row=$query->fetch_object();
 	
-	$queryLangueMat = SQL("Select * from Langue where idLangue=".$row->idLangueMaternelle);
+	$queryLangueMat = SQL("Select * from LANGUE where idLangue=".$row->idLangueMaternelle);
 	$rowLangueMat=$queryLangueMat->fetch_object();
 	
-	$queryLanguePerf = SQL("Select * from Langue where idLangue=".$row->idLanguePerfectionnement);
+	$queryLanguePerf = SQL("Select * from LANGUE where idLangue=".$row->idLanguePerfectionnement);
 	$rowLanguePerf=$queryLanguePerf->fetch_object();
 
 	echo '<fieldset>';
