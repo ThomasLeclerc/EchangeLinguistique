@@ -33,7 +33,25 @@
 	color:green;
 }
 
+/***************************************
+******** STYLES inscription.php ********
+****************************************/
+#form_inscription{
+	border:solid black 2px;
+	border-radius:15px;
+	padding : 20px;
+	width:70%;
+	margin:auto;
+	text-align:center;
+}
 
+#form_inscription table{
+	text-align:left;
+}
+
+#form_inscription table label{
+	margin-right:5px;
+}
 
 /***************************************
 ***********	STYLES GENERAUX *************
