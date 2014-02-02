@@ -19,7 +19,7 @@
 		
 			<div id="headerCLA">
 			<div id="h_left">
-				<a href="http://cla.univ-fcomte.fr/index.php"><img src="styles/logo-cla.jpg" /></a>
+				<a href="http://cla.univ-fcomte.fr/index.php"><img src="<?=SHORT_RACINE?>styles/logo-cla.jpg" /></a>
 				<a id="hrefuniv" href="http://www.univ-fcomte.fr"></a></div>			
 			</div>
 			<div id="h_mid"></div>
