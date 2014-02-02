@@ -20,11 +20,11 @@ HTML_HEADER('Administration');
             <td>Profession</td>
             <td>Langue de perfectionnement</td>
             <td>Niveau</td>
-            <td>Niveau (système européen)</td>
+            <td>Niveau (systeme europeen)</td>
         </tr>
     </thead>
     <tbody><?php
-        $query=SQL("select * from UTILISATEUR u, FICHE f order by idFiche desc");
+        $query=SQL("select * from UTILISATEUR u, FICHE f group by idFiche order by idFiche desc");
 		while($row=$query->fetch_object())
 		{
 			echo '<tr style="background-color: lightgreen;">';
