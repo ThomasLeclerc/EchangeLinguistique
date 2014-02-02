@@ -10,6 +10,30 @@ HTML_HEADER('Administration');
 <script>
 
 function showFiche(id){
+
+	var id2 = document.getElementById("lastLineClicked").innerHTML;
+	if(!(id2 == 0))
+	{
+		document.getElementById("ligneLangue"+id2).className="ligneF";
+		document.getElementById("ligne2Langue"+id2).className="ligneF";
+		document.getElementById("ligneNiveau"+id2).className="ligneF";
+		document.getElementById("ligne2Niveau"+id2).className="ligneF";
+		document.getElementById("ligneAge"+id2).className="ligneF";
+		document.getElementById("ligneSexe"+id2).className="ligneF";
+		document.getElementById("ligneVille"+id2).className="ligneF";
+		document.getElementById("ligneProf"+id2).className="ligneF";
+	}
+	document.getElementById("lastLineClicked").innerHTML=id;
+
+	document.getElementById("ligneLangue"+id).className="ligneFicheSelected";
+	document.getElementById("ligne2Langue"+id).className="ligneFicheSelected";
+	document.getElementById("ligneNiveau"+id).className="ligneFicheSelected";
+	document.getElementById("ligne2Niveau"+id).className="ligneFicheSelected";
+	document.getElementById("ligneAge"+id).className="ligneFicheSelected";
+	document.getElementById("ligneSexe"+id).className="ligneFicheSelected";
+	document.getElementById("ligneVille"+id).className="ligneFicheSelected";
+	document.getElementById("ligneProf"+id).className="ligneFicheSelected";
+
     xmlhttp=new XMLHttpRequest();
     xmlhttp.onreadystatechange=function(){
     	if (xmlhttp.readyState==4 && xmlhttp.status==200)
@@ -49,19 +73,19 @@ function showFiche(id){
 			
 			echo '<tr style="background-color: lightgreen;" onclick="showFiche('.$row->idFiche.')">';
 			if(!($rowLangueMat->imageDrapeau == null))
-				echo '<td>'.$rowLangueMat->libelleLangue.' <img class="flag" src="'.SHORT_RACINE.'styles/flags/'.$rowLangueMat->imageDrapeau.'" /></td>';
+				echo '<td id="ligneLangue'.$row->idFiche.'" class="ligneF">'.$rowLangueMat->libelleLangue.' <img class="flag" src="'.SHORT_RACINE.'styles/flags/'.$rowLangueMat->imageDrapeau.'" /></td>';
 			else
-				echo '<td>'.$rowLangueMat->libelleLangue.'</td>';
+				echo '<td id="ligneLangue'.$row->idFiche.'" class="ligneF">'.$rowLangueMat->libelleLangue.'</td>';
 			if(!($rowLanguePerf->imageDrapeau == null))
-				echo '<td>'.$rowLanguePerf->libelleLangue.' <img class="flag" src="'.SHORT_RACINE.'styles/flags/'.$rowLanguePerf->imageDrapeau.'" /></td>';
+				echo '<td id="ligne2Langue'.$row->idFiche.'" class="ligneF">'.$rowLanguePerf->libelleLangue.' <img class="flag" src="'.SHORT_RACINE.'styles/flags/'.$rowLanguePerf->imageDrapeau.'" /></td>';
 			else
-				echo '<td>'.$rowLanguePerf->libelleLangue.'</td>';
-			echo '<td>'.$row->niveauLanguePerfectionnement.'</td>';
-			echo '<td>'.$row->niveauLangueSysteme.'</td>';
-			echo '<td>'.$row->age.'</td>';
-			echo '<td>'.$row->sexe.'</td>';
-			echo '<td>'.$row->ville.'</td>';
-			echo '<td>'.$row->profession.'</td>';
+				echo '<td id="ligne2Langue'.$row->idFiche.'" class="ligneF">'.$rowLanguePerf->libelleLangue.'</td>';
+			echo '<td id="ligneNiveau'.$row->idFiche.'" class="ligneF">'.$row->niveauLanguePerfectionnement.'</td>';
+			echo '<td id="ligne2Niveau'.$row->idFiche.'" class="ligneF">'.$row->niveauLangueSysteme.'</td>';
+			echo '<td id="ligneAge'.$row->idFiche.'" class="ligneF">'.$row->age.'</td>';
+			echo '<td id="ligneSexe'.$row->idFiche.'" class="ligneF">'.$row->sexe.'</td>';
+			echo '<td id="ligneVille'.$row->idFiche.'" class="ligneF">'.$row->ville.'</td>';
+			echo '<td id="ligneProf'.$row->idFiche.'" class="ligneF">'.$row->profession.'</td>';
 			echo '</tr>';
 		}
     ?></tbody>
@@ -72,6 +96,7 @@ function showFiche(id){
 </td>
 </tr>
 </table>
+<div id="lastLineClicked" style="display:none">0</div>
 <?php 
 HTML_FOOTER();
 ?>

@@ -211,6 +211,10 @@ body{
 #logoUE{
 	height : 40px;
 }
-#FichesTable td {
-    border-style: outset;
+.ligneFicheSelected{
+	border-style: inset;
+}
+.ligneF{
+    border-style: none;
+	cursor: pointer;
 }
