@@ -17,7 +17,7 @@ CREATE TABLE FICHE(
 	langueMaternelle varchar(50),
 	languePerfectionnement varchar(50),
 	age int,
-	sexe char(1),
+	civilite char(4),
 	adresse char(200),
 	numeroTelephone varchar(10),
 	mail varchar(100),
@@ -33,7 +33,7 @@ CREATE TABLE FICHE(
 INSERT INTO UTILISATEUR values(null, "Leclerc", "Thomas", "tleclerc", sha1("quenelle"));
 INSERT INTO UTILISATEUR values(null, "Petracca", "Charlélie", "cpetracc", sha1("quenelle"));
 
-INSERT INTO FICHE values(null, "Francais", "Italien", 22, "M", "14 rue de Beaupaquier 25240 Mouthe", "0600000000", "leclercthomas@yahoo.fr", "Etudiant", "avancé", null, "je fais du gros son avec mes amis", 1);
-INSERT INTO FICHE values(null, "Francais", "Anglais", 25, "M", "In th street", "0600000000", "charlelie.petracca@gmail.com", "Etudiant", "avancé", null, "j\'aime la guitare, les jeux vidéos et Marc Dorcel", 2);
+INSERT INTO FICHE values(null, "Francais", "Italien", 22, "M.", "14 rue de Beaupaquier 25240 Mouthe", "0600000000", "leclercthomas@yahoo.fr", "Etudiant", "avancé", null, "je fais du gros son avec mes amis", 1);
+INSERT INTO FICHE values(null, "Francais", "Anglais", 25, "M.", "In th street", "0600000000", "charlelie.petracca@gmail.com", "Etudiant", "avancé", null, "j\'aime la guitare, les jeux vidéos et Marc Dorcel", 2);
 
 
