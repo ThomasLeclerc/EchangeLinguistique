@@ -4,6 +4,25 @@ require_once 'include/engine.php';
 HTML_HEADER('INSCRIPTION');
 	
 ?>
+<script>
+jQuery(document).ready(function() {
+   jQuery("#form_inscription").validate({
+      rules: {
+         "languePerfectionnement":{
+            "required": true
+         },
+         "langueMaternelle": {
+            "required": true
+         },
+         "montelephone": {
+            "required": true
+         }
+  })
+});
+    
+    
+</script>
+
 <div id="content">
 	<div id="form_inscription">
 		<h2>Demande pour un tandem linguistique</h2>
@@ -13,7 +32,7 @@ HTML_HEADER('INSCRIPTION');
 				<tr>
 					<td>Dans quelle langue souhaitez-vous vous perfectionner ?</td>
 					<td>
-						<select name="languePerfectionnement">
+						<select name="languePerfectionnement" required="true">
 							<option> - 
 							<option>Français
 							<option>Anglais
@@ -25,7 +44,7 @@ HTML_HEADER('INSCRIPTION');
 				</tr><tr>
 					<td>Quelle est votre langue maternelle ou la langue que vous parlez couramment ?</td>
 					<td>
-						<select name="languePerfectionnement">
+						<select name="langueMaternelle">
 							<option> - 
 							<option>Français
 							<option>Anglais
