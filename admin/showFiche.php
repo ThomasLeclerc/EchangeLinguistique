@@ -12,7 +12,7 @@
 	$queryLanguePerf = SQL("Select * from Langue where idLangue=".$row->idLanguePerfectionnement);
 	$rowLanguePerf=$queryLanguePerf->fetch_object();
 
-	
+	echo '<fieldset>';
 	if(!($rowLangueMat->imageDrapeau == null))
 		echo '<img class="flag" src="'.SHORT_RACINE.'styles/flags/'.$rowLangueMat->imageDrapeau.'" /> '.$rowLangueMat->libelleLangue.'<br />';
 	else
@@ -36,4 +36,5 @@
     echo 'Téléphone : '.$row->numeroTelephone.'<br />';
     echo 'Email : '.$row->mail.'<br />';
     echo 'Complément : '.$row->complement.'<br />';
+	echo '</fieldset>';
 ?>

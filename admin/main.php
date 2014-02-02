@@ -22,7 +22,9 @@ function showFiche(id){
 }
 </script>
 
-
+<table id="fiches">
+<tr>
+<td>
 <table id="FichesTable">
     <thead>
         <tr>
@@ -64,9 +66,12 @@ function showFiche(id){
 		}
     ?></tbody>
 </table>
-
+</td>
+<td>
 <div id="hintFiche"></div>
-
+</td>
+</tr>
+</table>
 <?php 
 HTML_FOOTER();
 ?>
