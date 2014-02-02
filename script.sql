@@ -8,7 +8,7 @@ CREATE TABLE UTILISATEUR(
 	nomUtilisateur varchar(30),
 	prenomUtilisateur varchar(30),
 	loginUtilisateur varchar(30),
-	password varchar(30),
+	password varchar(255),
 	PRIMARY KEY(idUtilisateur)
 )engine=InnoDB;
 
