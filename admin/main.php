@@ -16,7 +16,7 @@ HTML_HEADER('Administration');
             <td>Langue maternelle</td>
             <td>Langue de perfectionnement</td>
             <td>Niveau</td>
-            <td>Niveau (systeme europeen)</td>
+            <td><img id="logoUE" src="<?=SHORT_RACINE?>styles/flags/europe.png"/></td>
             <td>Age</td>
             <td>Sexe</td>
             <td>Ville</td>
@@ -33,8 +33,14 @@ HTML_HEADER('Administration');
 			$rowLanguePerf=$queryLanguePerf->fetch_object();
 			
 			echo '<tr style="background-color: lightgreen;">';
-			echo '<td>'.$rowLangueMat->libelleLangue.'</td>';
-			echo '<td>'.$rowLanguePerf->libelleLangue.'</td>';
+			if(!($rowLangueMat->imageDrapeau == null))
+				echo '<td>'.$rowLangueMat->libelleLangue.' <img class="flag" src="'.SHORT_RACINE.'styles/flags/'.$rowLangueMat->imageDrapeau.'" /></td>';
+			else
+				echo '<td>'.$rowLangueMat->libelleLangue.'</td>';
+			if(!($rowLanguePerf->imageDrapeau == null))
+				echo '<td>'.$rowLanguePerf->libelleLangue.' <img class="flag" src="'.SHORT_RACINE.'styles/flags/'.$rowLanguePerf->imageDrapeau.'" /></td>';
+			else
+				echo '<td>'.$rowLanguePerf->libelleLangue.'</td>';
 			echo '<td>'.$row->niveauLanguePerfectionnement.'</td>';
 			echo '<td>'.$row->niveauLangueSysteme.'</td>';
 			echo '<td>'.$row->age.'</td>';
