@@ -1,27 +1,3 @@
-/******************************************************
-***********	STYLE vérifiaction formulaires ************
-******************************************************/
-.invalidInput, .error{
-color:#8a1f11;
-background-color:#fbe3e4;
-}
-.error,.notice{
-padding:0.5em;
-margin:0.5em;
-}
-
-.error{
-	border:2px solid #8a1f11;
-	display:none;
-}
-.notice {
-	background-color:#FFF6BF;
-	color:#514721;
-	border:2px solid #FFD324;
-	display:none;
-}
-
-
 /***************************************
 ***********	STYLE login.php ************
 ****************************************/
@@ -56,7 +32,7 @@ margin:0.5em;
 /***************************************
 ******** STYLES inscription.php ********
 ****************************************/
-#form_inscription{
+#FormulaireInscr{
 	border:solid black 2px;
 	border-radius:15px;
 	padding : 20px;
@@ -66,15 +42,15 @@ margin:0.5em;
 	background-color:#CED5D4;
 }
 
-#form_inscription fieldset{
+#FormulaireInscr fieldset{
 	background-color:#E3E8F7;
 }
 
-#form_inscription table{
+#FormulaireInscr table{
 	text-align:left;
 }
 
-#form_inscription table label{
+#FormulaireInscr table label{
 	margin-right:5<px;
 }
 
