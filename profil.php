@@ -7,3 +7,9 @@ if(!isset($_SESSION['id']))
 HTML_HEADER('Mon Profil');
 	
 ?>
+<div id="content">
+
+</div>
+<?
+HTML_FOOTER();
+?>
