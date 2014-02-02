@@ -43,6 +43,11 @@
 	width:70%;
 	margin:auto;
 	text-align:center;
+	background-color:#CED5D4;
+}
+
+#form_inscription fieldset{
+	background-color:#E3E8F7;
 }
 
 #form_inscription table{
@@ -50,7 +55,7 @@
 }
 
 #form_inscription table label{
-	margin-right:5px;
+	margin-right:5<px;
 }
 
 /***************************************
@@ -59,6 +64,7 @@
 body{
 	margin:5px;
 	padding:0;
+	font-family:Verdana,Tahoma,"DejaVu Sans",sans-serif;
 }
 
 #content{
@@ -76,7 +82,6 @@ body{
 	padding-left:20px;
 	height:180px;
 	
-	font-family:Verdana,Tahoma,"DejaVu Sans",sans-serif;
 	color:#333333;
 	font-size:13px;
 	line-height:1.5em;

@@ -7,13 +7,14 @@ HTML_HEADER('INSCRIPTION');
 <div id="content">
 	<div id="form_inscription">
 		<h2>Demande pour un tandem linguistique</h2>
-		<form action="" method=post>
+		<form action="doInscription.php" method=post>
 		<fieldset>
 			<table>
 				<tr>
 					<td>Dans quelle langue souhaitez-vous vous perfectionner ?</td>
 					<td>
 						<select name="languePerfectionnement">
+							<option> - 
 							<option>Français
 							<option>Anglais
 							<option>Italien
@@ -25,6 +26,7 @@ HTML_HEADER('INSCRIPTION');
 					<td>Quelle est votre langue maternelle ou la langue que vous parlez couramment ?</td>
 					<td>
 						<select name="languePerfectionnement">
+							<option> - 
 							<option>Français
 							<option>Anglais
 							<option>Italien
