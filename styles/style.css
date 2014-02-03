@@ -4,7 +4,7 @@
 #forms_login{
 	margin:auto;
 	text-align:center;
-	width:65%;
+	width:70%;
 	height:180px;
 	border:solid black 2px;
 	border-radius:10px;
@@ -13,7 +13,7 @@
 
 
 #forms_login .bloc { 
-  margin:20px 30px; /* espacement horizontal des blocs */
+  margin:20px 2%; 
   display:inline-block;
   vertical-align:middle;
 }
@@ -64,7 +64,7 @@ body{
 }
 
 #content{
-	margin:40px;
+	margin:50px;
 }
 
 #header{

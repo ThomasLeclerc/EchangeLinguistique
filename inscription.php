@@ -29,10 +29,11 @@ if(isset($_POST["valide"])){
 <div id="FormulaireInscr">
 	<h2>Demande pour un tandem linguistique</h2>
 	<form action="" method=post id="form_inscription">
+	<small style="text-align:left">* champs obligatoires</small>
 	<fieldset>
 		<table>
 			<tr>
-				<td>Dans quelle langue souhaitez-vous vous perfectionner ?</td>
+				<td>Dans quelle langue souhaitez-vous vous perfectionner ? </td>
 				<td>
 					<select name="languePerfectionnement"  required>
 						<option value="0"> - 
@@ -44,7 +45,7 @@ if(isset($_POST["valide"])){
 						<option value="6">Chinois
 						<option value="7">Breton
 						<option value="8">Italien
-					</select>
+					</select>*
 				</td>
 			</tr><tr>
 				<td>Quelle est votre langue maternelle ou la langue que vous parlez couramment ?</td>
@@ -59,7 +60,7 @@ if(isset($_POST["valide"])){
 						<option value="6">Chinois
 						<option value="7">Breton
 						<option value="8">Italien
-					</select>
+					</select>*
 				</td>
 			</tr>
 		</table>
@@ -69,64 +70,64 @@ if(isset($_POST["valide"])){
 		<table>
 			<tr>
 				<td><label for="prenom">Prénom : </label></td>
-				<td><input type="text" name="prenom" id="prenom" required></td>
+				<td><input type="text" name="prenom" id="prenom" required>*</td>
 			</tr><tr>
 				<td><label for="nom">Nom : </label></td>
-				<td><input type="text" name="nom" id="nom" required/></td>
+				<td><input type="text" name="nom" id="nom" required/>*</td>
 			</tr><tr>
 				<td><label for="age">Votre âge : </label></td>
-				<td><input type="text" name="age" id="age" maxlength="3" size=1 required/></td>
+				<td><input type="text" name="age" id="age" maxlength="3" size=1 required/>*</td>
 			</tr><tr>
 				<td>Votre civilité : </td>
 				<td>
 					<input type="radio" name="sexe" id="M" value="M." required><label for="M">Homme</label>
-					<input type="radio" name="sexe" id="F" value="Mme" required><label for="Mme">Femme</label>
+					<input type="radio" name="sexe" id="F" value="Mme" required><label for="Mme">Femme</label> *
 				</td>
 			</tr><tr>
 				<td><label for="adresse">Votre adresse : </label></td>
 				<td>
-					<input type="text" name="adresse" id="adresse" required >
+					<input type="text" name="adresse" id="adresse" required >*
 				</td>
 			</tr><tr>
 				<td><label for="codePostal">Code postale : </label></td>
 				<td>
-					<input type="text" name="codePostal" id="codePostal" size=1 maxlength=5 required>
+					<input type="text" name="codePostal" id="codePostal" size=1 maxlength=5 required>*
 				</td>
 			</tr><tr>
 				<td><label for="ville">Ville : </label></td>
 				<td>
-					<input type="text" name="ville" id="ville" size=10 required>
+					<input type="text" name="ville" id="ville" size=10 required>*
 				</td>
 			</tr><tr>
 				<td><label for="tel">Votre numéro de téléphone : </label></td>
-				<td><input type="text" name="tel" id="tel" maxlength="10" size=4 required/></td>
+				<td><input type="text" name="tel" id="tel" maxlength="10" size=4 required/>*</td>
 			</tr><tr>
 				<td><label for="mail">Votre adresse mail (écrire lisiblement) : </label></td>
-				<td><input type="text" name="mail" id="mail"  size=30 required/></td>
+				<td><input type="text" name="mail" id="mail"  size=30 required/>*</td>
 			</tr>
 		</table>
 		</fieldset><fieldset>
 		<legend><h4>Parlez-nous de vous</h4></legend>
 		<table>
 			<tr>
-				<td><label for="profession">Quelles études poursuivez-vous / quelle est votre profession ? : </label></td>
-				<td><input type="text" name="profession" id="profession"  maxsize=250 size=40 required/></td>
+				<td><label for="profession">Quelles études poursuivez-vous / <br/>quelle est votre profession ? : </label></td>
+				<td><input type="text" name="profession" id="profession"  maxsize=250 size=30 required/> * </td>
 			</tr><tr>
-				<td  >Comment évaluez-vous votre niveau<br/> dans la langue que vous souhaitez perfectionner : </td>
+				<td  >Comment évaluez-vous votre niveau dans<br/> la langue que vous souhaitez perfectionner : </td>
 				<td>
 					<input type="radio" name="niveauLanguePerfectionnement" id="debutant" value="faible"required/><label for="debutant">débutant</label><br/>	
-					<input type="radio" name="niveauLanguePerfectionnement" id="inter" value="intermédiaire" required/><label for="inter">intermédiaire</label><br/>
+					<input type="radio" name="niveauLanguePerfectionnement" id="inter" value="intermédiaire" required/><label for="inter">intermédiaire</label>  * <br/>
 					<input type="radio" name="niveauLanguePerfectionnement" id="avance" value="avancé" required/><label for="avance">avancé</label>
 				</td>
 			</tr><tr>
-				<td  >Si vous le connaissez indiquez votre niveau de langue dans le système européen : <br/>
-				<a href="Ressources/Descripteur.pdf" target="_blank">(description des niveaux de langue du Système européen)</a>
+				<td  >Si vous le connaissez indiquez votre niveau<br/> de langue dans le système européen : <br/>
+				<a href="Ressources/Descripteur.pdf" target="_blank">(Système européen)</a>
 				</td>
 				<td>
 					<input type="radio" name="niveauLangueSysteme" id="a1" value="A1" /><label for="a1">A1</label>
 					<input type="radio" name="niveauLangueSysteme" id="b1" value="B1" /><label for="b1">B1</label>
 					<input type="radio" name="niveauLangueSysteme" id="c1" value="C1" /><label for="c1">C1</label>
-					<br/>	
+					  * <br/>	
 					<input type="radio" name="niveauLangueSysteme" id="a2" value="A2" /><label for="a2">A2</label>
 					<input type="radio" name="niveauLangueSysteme" id="b2" value="B2" /><label for="b2">B2</label>
 					<input type="radio" name="niveauLangueSysteme" id="c2" value="C3" /><label for="c2">C2</label><br/>
