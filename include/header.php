@@ -9,7 +9,6 @@
 		
 		<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 		<script src="http://code.jquery.com/jquery-migrate-1.1.0.js"></script>
-		<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
     	<script type="text/javascript" src="js/additional-methods.js"></script>
 		<script type="text/javascript" src="js/messages_fr.js"></script>
 	</head>
@@ -18,7 +17,7 @@
 		
 			<div id="headerCLA">
 			<div id="h_left">
-				<a href="http://cla.univ-fcomte.fr/index.php"><img src="<?=SHORT_RACINE?>styles/logo-cla.jpg" /></a>
+				<a href="http://cla.univ-fcomte.fr/index.php" target="_blank"><img src="<?=SHORT_RACINE?>styles/logo-cla.jpg" /></a>
 				<a id="hrefuniv" href="http://www.univ-fcomte.fr"></a></div>			
 			</div>
 			<div id="h_mid"></div>

@@ -11,13 +11,13 @@ if(isset($_POST["valide"])){
 	}
 		
 	$result = SQL('INSERT INTO FICHE values(
-				null, "'.$_POST["nom"].'",	"'.$_POST["prenom"].'",	'.$_POST["langueMaternelle"].', '.$_POST["languePerfectionnement"].', '.$_POST["age"].', "'.$_POST["sexe"].'", "'.$_POST["adresse"].'", "'.$_POST["codePostal"].'", "'.ucfirst($_POST["ville"]).'", 		"'.$_POST["tel"].'", "'.$_POST["mail"].'", "'.$_POST["profession"].'", "'.$_POST["niveauLanguePerfectionnement"].'", "'.$_POST["niveauLangueSysteme"].'", "'.$complement.'")');
+				null, "'.$_POST["nom"].'",	"'.$_POST["prenom"].'",	'.$_POST["langueMaternelle"].', '.$_POST["languePerfectionnement"].', '.$_POST["age"].', "'.$_POST["sexe"].'", "'.$_POST["adresse"].'", "'.$_POST["codePostal"].'", "'.strtoupper($_POST["ville"]).'", 		"'.$_POST["tel"].'", "'.$_POST["mail"].'", "'.$_POST["profession"].'", "'.$_POST["niveauLanguePerfectionnement"].'", "'.$_POST["niveauLangueSysteme"].'", "'.$complement.'")');
 				
 
 	if($result==true){
-		echo "<div class='msg_0'>Votre inscription au tandem linguistique a bien été prise en compte.</div>";
+		echo "<div class='msg_0'>Votre inscription au tandem linguistique a bien été prise en compte. Vous serez informés par email lorsqu'un partenariat sera disponible.</div>";
 	}else{
-		echo "<div class='msg_1'>Un problème est survenu lors de votre inscritpion.</div>";
+		echo "<div class='msg_1'>Un problème est survenu lors de votre inscritpion. veuillez réessayer.</div>";
 	}
 }else{	
 ?>
@@ -29,7 +29,7 @@ if(isset($_POST["valide"])){
 <div id="FormulaireInscr">
 	<h2>Demande pour un tandem linguistique</h2>
 	<form action="" method=post id="form_inscription">
-	<small style="text-align:left">* champs obligatoires</small>
+	<small>* champs obligatoires</small>
 	<fieldset>
 		<table>
 			<tr>
@@ -131,7 +131,7 @@ if(isset($_POST["valide"])){
 					<input type="radio" name="niveauLangueSysteme" id="a2" value="A2" /><label for="a2">A2</label>
 					<input type="radio" name="niveauLangueSysteme" id="b2" value="B2" /><label for="b2">B2</label>
 					<input type="radio" name="niveauLangueSysteme" id="c2" value="C3" /><label for="c2">C2</label><br/>
-					<input type="radio" name="niveauLangueSysteme" id="no" value="null" checked /><label for="no">je ne sais pas</label>
+					<input type="radio" name="niveauLangueSysteme" id="no" value="" checked /><label for="no">je ne sais pas</label>
 				</td>
 			</tr>	
 		</table>
