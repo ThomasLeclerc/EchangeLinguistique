@@ -1,9 +1,9 @@
 <?php
     require_once("../include/engine.php");
-
-    $idFiche = $_GET["id"];
-    
-    $query = SQL("Select * from FICHE where idFiche =".$idFiche);
+	if(!(isset($idFiche)))
+		$idFiche = $_GET["id"];
+		
+	$query = SQL("Select * from FICHE where idFiche =".$idFiche);
 	$row=$query->fetch_object();
 	
 	$queryLangueMat = SQL("Select * from LANGUE where idLangue=".$row->idLangueMaternelle);
@@ -18,8 +18,8 @@
 	else
 		echo $rowLangueMat->libelleLangue.'<br />';
 	echo 'Sexe : '.$row->sexe.'<br />';
-    echo 'Nom : '.$row->nomFiche.'<br />';
-    echo 'Prénom : '.$row->prenomFiche.'<br />';
+	echo 'Nom : '.$row->nomFiche.'<br />';
+	echo 'Prénom : '.$row->prenomFiche.'<br />';
 	echo 'Age : '.$row->age.'<br />';
 	echo 'Profession : '.$row->profession.'<br />';
 	echo 'Souhaite perfectionner : ';
@@ -30,11 +30,11 @@
 	echo 'Niveau : '.$row->niveauLanguePerfectionnement.'<br />';
 	if(!($row->niveauLangueSysteme==null))
 		echo 'Niveau européen : '.$row->niveauLangueSysteme.'<br />';
-    echo 'Adresse : '.$row->adresse.'<br />';
-    echo 'Code postal : '.$row->codePostal.'<br />';
-    echo 'Ville : '.$row->ville.'<br />';
-    echo 'Téléphone : '.$row->numeroTelephone.'<br />';
-    echo 'Email : '.$row->mail.'<br />';
-    echo 'Complément : '.$row->complement.'<br />';
-	echo '</fieldset>';
+	echo 'Adresse : '.$row->adresse.'<br />';
+	echo 'Code postal : '.$row->codePostal.'<br />';
+	echo 'Ville : '.$row->ville.'<br />';
+	echo 'Téléphone : '.$row->numeroTelephone.'<br />';
+	echo 'Email : '.$row->mail.'<br />';
+	echo 'Complément : '.$row->complement.'<br />';
+	echo '</fieldeset>';
 ?>
