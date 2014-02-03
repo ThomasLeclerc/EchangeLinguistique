@@ -8,9 +8,32 @@ if(!isset($_SESSION['id']))
 HTML_HEADER('Administration');
 ?>
 <script>
-
-function showFiche(id){
-
+function overLine(id)
+{
+	if(!(document.getElementById("ligneLangue"+id).className == "ligneFicheSelected"))
+	{
+		document.getElementById("ligneLangue"+id).className="ligneMouseOver";
+		document.getElementById("ligne2Langue"+id).className="ligneMouseOver";
+		document.getElementById("ligneNiveau"+id).className="ligneMouseOver";
+		document.getElementById("ligne2Niveau"+id).className="ligneMouseOver";
+		document.getElementById("ligneAge"+id).className="ligneMouseOver";
+		document.getElementById("ligneSexe"+id).className="ligneMouseOver";
+	}
+}
+function outLine(id)
+{
+	if(!(document.getElementById("ligneLangue"+id).className == "ligneFicheSelected"))
+	{
+		document.getElementById("ligneLangue"+id).className="ligneF";
+		document.getElementById("ligne2Langue"+id).className="ligneF";
+		document.getElementById("ligneNiveau"+id).className="ligneF";
+		document.getElementById("ligne2Niveau"+id).className="ligneF";
+		document.getElementById("ligneAge"+id).className="ligneF";
+		document.getElementById("ligneSexe"+id).className="ligneF";
+	}
+}
+function selectLine(id)
+{
 	var id2 = document.getElementById("lastLineClicked").innerHTML;
 	if(!(id2 == 0))
 	{
@@ -20,8 +43,7 @@ function showFiche(id){
 		document.getElementById("ligne2Niveau"+id2).className="ligneF";
 		document.getElementById("ligneAge"+id2).className="ligneF";
 		document.getElementById("ligneSexe"+id2).className="ligneF";
-		document.getElementById("ligneVille"+id2).className="ligneF";
-		document.getElementById("ligneProf"+id2).className="ligneF";
+
 	}
 	document.getElementById("lastLineClicked").innerHTML=id;
 
@@ -31,8 +53,11 @@ function showFiche(id){
 	document.getElementById("ligne2Niveau"+id).className="ligneFicheSelected";
 	document.getElementById("ligneAge"+id).className="ligneFicheSelected";
 	document.getElementById("ligneSexe"+id).className="ligneFicheSelected";
-	document.getElementById("ligneVille"+id).className="ligneFicheSelected";
-	document.getElementById("ligneProf"+id).className="ligneFicheSelected";
+
+}
+function showFiche(id){
+
+	selectLine(id);
 
     xmlhttp=new XMLHttpRequest();
     xmlhttp.onreadystatechange=function(){
@@ -43,6 +68,20 @@ function showFiche(id){
     }
     xmlhttp.open("GET","showFiche.php?id="+id,true);
     xmlhttp.send();
+
+	showMatch(id);
+}
+function showMatch(id){
+
+	xmlhttp2=new XMLHttpRequest();
+    xmlhttp2.onreadystatechange=function(){
+    	if (xmlhttp2.readyState==4 && xmlhttp2.status==200)
+        {
+            document.getElementById("hintMatch").innerHTML=xmlhttp2.responseText;
+        }
+    }
+    xmlhttp2.open("GET","showMatch.php?id="+id,true);
+    xmlhttp2.send();
 }
 </script>
 
@@ -58,8 +97,6 @@ function showFiche(id){
             <td><img id="logoUE" src="<?=SHORT_RACINE?>styles/flags/europe.png"/></td>
             <td>Age</td>
             <td>Sexe</td>
-            <td>Ville</td>
-            <td>Profession</td>
         </tr>
     </thead>
     <tbody><?php
@@ -71,7 +108,7 @@ function showFiche(id){
 			$queryLanguePerf=SQL("select * from LANGUE where idLangue=".$row->idLanguePerfectionnement);
 			$rowLanguePerf=$queryLanguePerf->fetch_object();
 			
-			echo '<tr style="background-color: lightgreen;" onclick="showFiche('.$row->idFiche.')">';
+			echo '<tr style="background-color: lightgreen;" onclick="showFiche('.$row->idFiche.')" onmouseover="overLine('.$row->idFiche.')" onmouseout="outLine('.$row->idFiche.')">';
 			if(!($rowLangueMat->imageDrapeau == null))
 				echo '<td id="ligneLangue'.$row->idFiche.'" class="ligneF">'.$rowLangueMat->libelleLangue.' <img class="flag" src="'.SHORT_RACINE.'styles/flags/'.$rowLangueMat->imageDrapeau.'" /></td>';
 			else
@@ -84,8 +121,6 @@ function showFiche(id){
 			echo '<td id="ligne2Niveau'.$row->idFiche.'" class="ligneF">'.$row->niveauLangueSysteme.'</td>';
 			echo '<td id="ligneAge'.$row->idFiche.'" class="ligneF">'.$row->age.'</td>';
 			echo '<td id="ligneSexe'.$row->idFiche.'" class="ligneF">'.$row->sexe.'</td>';
-			echo '<td id="ligneVille'.$row->idFiche.'" class="ligneF">'.$row->ville.'</td>';
-			echo '<td id="ligneProf'.$row->idFiche.'" class="ligneF">'.$row->profession.'</td>';
 			echo '</tr>';
 		}
     ?></tbody>
@@ -93,6 +128,9 @@ function showFiche(id){
 </td>
 <td>
 <div id="hintFiche"></div>
+</td>
+<td>
+<div id="hintMatch"></div>
 </td>
 </tr>
 </table>
