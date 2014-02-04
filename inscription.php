@@ -22,9 +22,26 @@ if(isset($_POST["valide"])){
 						"'.$_POST["mail"].'", 
 						"'.$_POST["profession"].'", 
 						"'.$complement.'")');
-	echo 'haha';
-	$langues = $_POST["langueMaternelle"];
-	var_dump($langues);
+					
+	$result_id_fiche=SQL('select idFiche from FICHE where nomFiche="'.$_POST["nom"].'" and prenomFiche="'.$_POST["prenom"].'" and mail="'.$_POST["mail"].'" ');	
+	$resultObjectIdFiche = $result_id_fiche->fetch_object();	
+	$idFiche = $resultObjectIdFiche->idFiche;
+	
+	$languesMat = $_POST["langueMaternelle"];
+	foreach($languesMat as $idLangue){
+		$result_inser_mat = SQL('insert into PARLE values('.$idFiche.', '.$idLangue.')');
+	}
+	$languesPerf = $_POST["languePerfectionnement"];
+	$niveauxLanguesPerf = $_POST["niveauLanguePerfectionnement"];
+	$niveauxSysteme = $_POST["niveauLangueSysteme"];
+
+	foreach($languesPerf as $idLangue){
+		$key = array_search($idLangue, $languesPerf);
+		$result_insert_perf = SQL('INSERT INTO PERFECTIONNE VALUES(
+											'.$idFiche.','.$idLangue.', "'.$niveauxLanguesPerf[$key].'", "'.$niveauxSysteme[$key].'");');
+	}
+
+		
 	if($result==true){
 		echo "<div class='msg_0'>Votre inscription au tandem linguistique a bien été prise en compte. Vous serez informés par email lorsqu'un partenariat sera disponible.</div>";
 	}else{
@@ -71,14 +88,14 @@ $(document).ready(function(){
 	
 	function newListLanguePerf(){
 		var Html = "<div class='listLanguePerf'>";
-		Html += "<select name='languePerfectionnement"+idPerf+"' id='languePerfectionnement"+idPerf+"' required><?=$htmlSelectLangue?></select>";
-		Html += "<select name='niveauLanguePerfectionnement"+idPerf+"' id='niveauLanguePerfectionnement"+idPerf+"'>";
+		Html += "<select name='languePerfectionnement[]' id='languePerfectionnement"+idPerf+"' required><?=$htmlSelectLangue?></select>";
+		Html += "<select name='niveauLanguePerfectionnement[]"+idPerf+"' id='niveauLanguePerfectionnement"+idPerf+"'>";
 		Html += "	<option value='débutant'>débutant";
 		Html += "	<option value='intermédiaire'>intermédiaire";	
 		Html += "	<option value='avancé'>avancé";	
 		Html += "</select>";	
 		
-		Html += "<select name='niveauLangueSysteme"+idPerf+"' id='niveauLangueSysteme"+idPerf+"'>";
+		Html += "<select name='niveauLangueSysteme[]' id='niveauLangueSysteme"+idPerf+"'>";
 		Html += "	<option value='no'>je ne sais pas";
 		Html += "	<option value='A1'>A1";
 		Html += "	<option value='A2'>A2";	
@@ -114,7 +131,7 @@ $(document).ready(function(){
 			<tr>
 				<td>Quelle est votre langue maternelle ou <br/>la langue que vous parlez couramment ?</td>
 				<td id="TdLangueMaternelle">
-					<select name="langueMaternelle" required>
+					<select name="langueMaternelle[]" required>
 						<?=$htmlSelectLangue?>
 					</select>
 					
@@ -126,13 +143,13 @@ $(document).ready(function(){
 				<td>La langue que vous souhaitez perfectionner ? </td>
 				<td id="TdLanguePerfectionnement">
 					<div class="listLanguePerf">
-						<select name='languePerfectionnement' required><?=$htmlSelectLangue?></select>
-						<select name='niveauLanguePerfectionnement' id='niveauLanguePerfectionnement'>
+						<select name='languePerfectionnement[]' required><?=$htmlSelectLangue?></select>
+						<select name='niveauLanguePerfectionnement[]' id='niveauLanguePerfectionnement'>
 							<option value='débutant'>débutant
 							<option value='intermédiaire'>intermédiaire
 							<option value='avancé'>avancé
 						</select>
-						<select name='niveauLangueSysteme' id='niveauLangueSysteme'>
+						<select name='niveauLangueSysteme[]' id='niveauLangueSysteme'>
 							<p>niveau dans le système européen</p>
 							<option value='no'>je ne sais pas
 							<option value='A1'>A1
