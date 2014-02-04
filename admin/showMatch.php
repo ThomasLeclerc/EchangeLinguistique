@@ -2,7 +2,7 @@
     require_once("../include/engine.php");
 	$idFiche1 = $_GET["id"];
 
-	$queryLangue = SQL("select * from fiche where idFiche=".$idFiche1);
+	$queryLangue = SQL("select * from FICHE where idFiche=".$idFiche1);
 	$rowLangue=$queryLangue->fetch_object();
 	$queryNbMatch = SQL("	select * 
 							from FICHE 
