@@ -12,9 +12,7 @@ if(isset($_POST["valide"])){
 	$result = SQL('INSERT INTO FICHE values(
 						null, 
 						"'.$_POST["nom"].'",	
-						"'.$_POST["prenom"].'",	
-						'.$_POST["langueMaternelle"].', 
-						'.$_POST["languePerfectionnement"].', 
+						"'.$_POST["prenom"].'",	 
 						'.$_POST["age"].', 
 						"'.$_POST["sexe"].'", 
 						"'.$_POST["adresse"].'", 
@@ -23,10 +21,10 @@ if(isset($_POST["valide"])){
 						"'.$_POST["tel"].'", 
 						"'.$_POST["mail"].'", 
 						"'.$_POST["profession"].'", 
-						"'.$_POST["niveauLanguePerfectionnement"].'", 
-						"'.$_POST["niveauLangueSysteme"].'", 
 						"'.$complement.'")');
-				
+	echo 'haha';
+	$langues = $_POST["langueMaternelle"];
+	var_dump($langues);
 	if($result==true){
 		echo "<div class='msg_0'>Votre inscription au tandem linguistique a bien été prise en compte. Vous serez informés par email lorsqu'un partenariat sera disponible.</div>";
 	}else{
@@ -61,37 +59,37 @@ $(document).ready(function(){
 	var idMat = 1;
 	
 	function newListLangueMat(){
-		var prevHtml = "<div class='listLangueMat'>";
-		prevHtml += "<select name='langueMaternelle"+idMat+"' id='langueMaternelle"+idMat+"' required><?=$htmlSelectLangue?></select>";
-		prevHtml += "</select>";	
+		var Html = "<div class='listLangueMat'>";
+		Html += "<select name='langueMaternelle[]' id='langueMaternelle"+idMat+"' required><?=$htmlSelectLangue?></select>";
+		Html += "</select>";	
 	
-		prevHtml += "<input type='button' value='-' id='deleteLangueMat"+idMat+"' title='Supprimer cette langue' alt='Supprimer cette langue' onclick='deleteLangueMat("+idMat+");'/></div>";		
+		Html += "<input type='button' value='-' id='deleteLangueMat"+idMat+"' title='Supprimer cette langue' alt='Supprimer cette langue' onclick='deleteLangueMat("+idMat+");'/></div>";		
 			
 		idMat++;
-		$("#TdLangueMaternelle").append(prevHtml);
+		$("#TdLangueMaternelle").append(Html);
 	}
 	
 	function newListLanguePerf(){
-		var prevHtml = "<div class='listLanguePerf'>";
-		prevHtml += "<select name='languePerfectionnement"+idPerf+"' id='languePerfectionnement"+idPerf+"' required><?=$htmlSelectLangue?></select>";
-		prevHtml += "<select name='niveauLanguePerfectionnement"+idPerf+"' id='niveauLanguePerfectionnement"+idPerf+"'>";
-		prevHtml += "	<option value='débutant'>débutant";
-		prevHtml += "	<option value='intermédiaire'>intermédiaire";	
-		prevHtml += "	<option value='avancé'>avancé";	
-		prevHtml += "</select>";	
+		var Html = "<div class='listLanguePerf'>";
+		Html += "<select name='languePerfectionnement"+idPerf+"' id='languePerfectionnement"+idPerf+"' required><?=$htmlSelectLangue?></select>";
+		Html += "<select name='niveauLanguePerfectionnement"+idPerf+"' id='niveauLanguePerfectionnement"+idPerf+"'>";
+		Html += "	<option value='débutant'>débutant";
+		Html += "	<option value='intermédiaire'>intermédiaire";	
+		Html += "	<option value='avancé'>avancé";	
+		Html += "</select>";	
 		
-		prevHtml += "<select name='niveauLangueSysteme"+idPerf+"' id='niveauLangueSysteme"+idPerf+"'>";
-		prevHtml += "	<option value='no'>je ne sais pas";
-		prevHtml += "	<option value='A1'>A1";
-		prevHtml += "	<option value='A2'>A2";	
-		prevHtml += "	<option value='B1'>B1";
-		prevHtml += "	<option value='B2'>B2";
-		prevHtml += "	<option value='C1'>C1";	
-		prevHtml += "	<option value='C2'>C2";		
-		prevHtml += "</select><input type='button' value='-' id='deleteLanguePerf"+idPerf+"' title='Supprimer cette langue' alt='Supprimer cette langue' onclick='deleteLanguePerf("+idPerf+");'/></div>";		
+		Html += "<select name='niveauLangueSysteme"+idPerf+"' id='niveauLangueSysteme"+idPerf+"'>";
+		Html += "	<option value='no'>je ne sais pas";
+		Html += "	<option value='A1'>A1";
+		Html += "	<option value='A2'>A2";	
+		Html += "	<option value='B1'>B1";
+		Html += "	<option value='B2'>B2";
+		Html += "	<option value='C1'>C1";	
+		Html += "	<option value='C2'>C2";		
+		Html += "</select><input type='button' value='-' id='deleteLanguePerf"+idPerf+"' title='Supprimer cette langue' alt='Supprimer cette langue' onclick='deleteLanguePerf("+idPerf+");'/></div>";		
 			
 		idPerf++;
-		$("#TdLanguePerfectionnement").append(prevHtml);
+		$("#TdLanguePerfectionnement").append(Html);
 	}
 	
 	$("#ajouterLanguePerf").live("click", function () {
