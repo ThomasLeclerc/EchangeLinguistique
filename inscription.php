@@ -44,15 +44,27 @@ if(isset($_POST["valide"])){
 
 ?>
 <script>	
-$("#form_inscription").validate();	
+
 $(document).ready(function(){
+	var idPerf = 1	;
+	var idMat = 1;
 	
+	$("#form_inscription").validate();	
 	
-	$("#ajouterLanguePerf").click(function () {
+	$("#ajouterLanguePerf").live("click", function () {
 		var prevHtml = $("#TdLanguePerfectionnement").html();
-		prevHtml =  prevHtml+"<select name='languePerfectionnement' required><?=$htmlSelectLangue?></select>";
+		prevHtml += "<select name='languePerfectionnement"+idPerf+"' required><?=$htmlSelectLangue?></select><br/>";
+		idPerf++;
 		$("#TdLanguePerfectionnement").html(prevHtml);
 	});
+	
+		$("#ajouterLangueMat").live("click", function () {
+		var prevHtml = $("#TdLangueMaternelle").html();
+		prevHtml += "<select name='langueMaternelle"+idMat+"' required><?=$htmlSelectLangue?></select><br/>";
+		idMat++;
+		$("#TdLangueMaternelle").html(prevHtml);
+	});
+	
 });
 </script>
 
@@ -65,23 +77,33 @@ $(document).ready(function(){
 	<legend>Langues</legend>
 		<table>
 			<tr>
+				<td>Quelle est votre langue maternelle ou <br/>la langue que vous parlez couramment ?</td>
+				<td id="TdLangueMaternelle">
+					<select name="langueMaternelle" required>
+						<?=$htmlSelectLangue?>
+					</select>
+					<input type="button" id="ajouterLangueMat" value="ajouter une langue"/><br/>
+				</td>
+			</tr>
+			<tr><td colspan="2"><hr></td></tr>
+			<tr>
 				<td>La langue que vous souhaitez perfectionner ? </td>
 				<td id="TdLanguePerfectionnement">
 					<select name="languePerfectionnement" required>
 						<?=$htmlSelectLangue?>
 					</select>
-					<input type="button" id="ajouterLanguePerf" value="ajouter une langue"/>
+					<input type="button" id="ajouterLanguePerf" value="ajouter une langue"/><br/>
 					
 				</td>
 			</tr><tr>
 				<td  >Votre niveau dans cette langue : </td>
 				<td>
-					<input type="radio" name="niveauLanguePerfectionnement" id="debutant" value="faible"required/><label for="debutant">débutant</label><br/>	
-					<input type="radio" name="niveauLanguePerfectionnement" id="inter" value="intermédiaire" required/><label for="inter">intermédiaire</label>  * <br/>
+					<input type="radio" name="niveauLanguePerfectionnement" id="debutant" value="faible"required/><label for="debutant">débutant</label>
+					<input type="radio" name="niveauLanguePerfectionnement" id="inter" value="intermédiaire" required/><label for="inter">intermédiaire</label>
 					<input type="radio" name="niveauLanguePerfectionnement" id="avance" value="avancé" required/><label for="avance">avancé</label>
 				</td>
 			</tr>	<tr>
-				<td  >Si vous le connaissez, votre niveau dans le système européen : <br/>
+				<td  >Si vous le connaissez,<br/> votre niveau dans le système européen : <br/>
 				<a href="Ressources/Descripteur.pdf" target="_blank">(Système européen)</a>
 				</td>
 				<td>
@@ -95,15 +117,8 @@ $(document).ready(function(){
 					<input type="radio" name="niveauLangueSysteme" id="no" value="" checked /><label for="no">je ne sais pas</label>
 				</td>
 			</tr>
-			<tr><td colspan="2"><hr></td></tr>
-			<tr>
-				<td>Quelle est votre langue maternelle ou <br/>la langue que vous parlez couramment ?</td>
-				<td id="TdLangueMaternelle">
-					<select name="langueMaternelle" required>
-						<?=$htmlSelectLangue?>
-					</select>*
-				</td>
-			</tr>
+			
+
 		</table>
 		</fieldset>
 		<fieldset>
