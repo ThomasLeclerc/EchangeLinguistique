@@ -44,18 +44,36 @@ if(isset($_POST["valide"])){
 
 ?>
 <script>	
-
+$("#form_inscription").validate();
 $(document).ready(function(){
 	var idPerf = 1	;
 	var idMat = 1;
 	
-	$("#form_inscription").validate();	
-	
-	$("#ajouterLanguePerf").live("click", function () {
+	function newListLanguePerf(){
 		var prevHtml = $("#TdLanguePerfectionnement").html();
-		prevHtml += "<select name='languePerfectionnement"+idPerf+"' required><?=$htmlSelectLangue?></select><br/>";
+		prevHtml += "<div class='listLanguePerf'>";
+		prevHtml += "<select name='languePerfectionnement"+idPerf+"' required><?=$htmlSelectLangue?></select>";
+		prevHtml += "<select name='niveauLanguePerfectionnement"+idPerf+"' id='niveauLanguePerfectionnement"+idPerf+"'>";
+		prevHtml += "	<option value='débutant'>débutant";
+		prevHtml += "	<option value='intermédiaire'>intermédiaire";	
+		prevHtml += "	<option value='avancé'>avancé";	
+		prevHtml += "</select>";	
+		
+		prevHtml += "<select name='niveauLangueSysteme"+idPerf+"' id='niveauLangueSysteme"+idPerf+"'>";
+		prevHtml += "	<option value='A1'>A1";
+		prevHtml += "	<option value='A2'>A2";	
+		prevHtml += "	<option value='B1'>B1";
+		prevHtml += "	<option value='B2'>B2";
+		prevHtml += "	<option value='C1'>C1";	
+		prevHtml += "	<option value='C2'>C2";		
+		prevHtml += "</select></div>";		
+			
 		idPerf++;
 		$("#TdLanguePerfectionnement").html(prevHtml);
+	}
+	
+	$("#ajouterLanguePerf").live("click", function () {
+		newListLanguePerf();
 	});
 	
 		$("#ajouterLangueMat").live("click", function () {
@@ -82,6 +100,7 @@ $(document).ready(function(){
 					<select name="langueMaternelle" required>
 						<?=$htmlSelectLangue?>
 					</select>
+					
 					<input type="button" id="ajouterLangueMat" value="ajouter une langue"/><br/>
 				</td>
 			</tr>
@@ -89,20 +108,25 @@ $(document).ready(function(){
 			<tr>
 				<td>La langue que vous souhaitez perfectionner ? </td>
 				<td id="TdLanguePerfectionnement">
-					<select name="languePerfectionnement" required>
-						<?=$htmlSelectLangue?>
-					</select>
-					<input type="button" id="ajouterLanguePerf" value="ajouter une langue"/><br/>
+					<div class="listLanguePerf">
+						<select name='languePerfectionnement' required><?=$htmlSelectLangue?></select>
+						<select name='niveauLanguePerfectionnement' id='niveauLanguePerfectionnement'>
+							<option value='débutant'>débutant
+							<option value='intermédiaire'>intermédiaire
+							<option value='avancé'>avancé
+						</select>
+						<select name='niveauLangueSysteme' id='niveauLangueSysteme'>
+							<option value='A1'>A1
+							<option value='A2'>A2
+							<option value='B1'>B1
+							<option value='B2'>B2
+							<option value='C1'>C1
+							<option value='C2'>C2
+						</select><input type="button" id="ajouterLanguePerf" value="+"/><br/>
+					</div>
 					
 				</td>
 			</tr><tr>
-				<td  >Votre niveau dans cette langue : </td>
-				<td>
-					<input type="radio" name="niveauLanguePerfectionnement" id="debutant" value="faible"required/><label for="debutant">débutant</label>
-					<input type="radio" name="niveauLanguePerfectionnement" id="inter" value="intermédiaire" required/><label for="inter">intermédiaire</label>
-					<input type="radio" name="niveauLanguePerfectionnement" id="avance" value="avancé" required/><label for="avance">avancé</label>
-				</td>
-			</tr>	<tr>
 				<td  >Si vous le connaissez,<br/> votre niveau dans le système européen : <br/>
 				<a href="Ressources/Descripteur.pdf" target="_blank">(Système européen)</a>
 				</td>
