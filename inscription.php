@@ -45,14 +45,35 @@ if(isset($_POST["valide"])){
 ?>
 <script>	
 $("#form_inscription").validate();
+
+	function deleteLanguePerf(id){
+		$('#languePerfectionnement'+id).remove();
+		$('#niveauLanguePerfectionnement'+id).remove();
+		$('#niveauLangueSysteme'+id).remove();
+		$('#deleteLanguePerf'+id).remove();
+	}	
+	function deleteLangueMat(id){
+		$('#langueMaternelle'+id).remove();
+		$('#deleteLangueMat'+id).remove();
+	}
 $(document).ready(function(){
 	var idPerf = 1	;
 	var idMat = 1;
 	
+	function newListLangueMat(){
+		var prevHtml = "<div class='listLangueMat'>";
+		prevHtml += "<select name='langueMaternelle"+idMat+"' id='langueMaternelle"+idMat+"' required><?=$htmlSelectLangue?></select>";
+		prevHtml += "</select>";	
+	
+		prevHtml += "<input type='button' value='-' id='deleteLangueMat"+idMat+"' title='Supprimer cette langue' alt='Supprimer cette langue' onclick='deleteLangueMat("+idMat+");'/></div>";		
+			
+		idMat++;
+		$("#TdLangueMaternelle").append(prevHtml);
+	}
+	
 	function newListLanguePerf(){
-		var prevHtml = $("#TdLanguePerfectionnement").html();
-		prevHtml += "<div class='listLanguePerf'>";
-		prevHtml += "<select name='languePerfectionnement"+idPerf+"' required><?=$htmlSelectLangue?></select>";
+		var prevHtml = "<div class='listLanguePerf'>";
+		prevHtml += "<select name='languePerfectionnement"+idPerf+"' id='languePerfectionnement"+idPerf+"' required><?=$htmlSelectLangue?></select>";
 		prevHtml += "<select name='niveauLanguePerfectionnement"+idPerf+"' id='niveauLanguePerfectionnement"+idPerf+"'>";
 		prevHtml += "	<option value='débutant'>débutant";
 		prevHtml += "	<option value='intermédiaire'>intermédiaire";	
@@ -60,27 +81,25 @@ $(document).ready(function(){
 		prevHtml += "</select>";	
 		
 		prevHtml += "<select name='niveauLangueSysteme"+idPerf+"' id='niveauLangueSysteme"+idPerf+"'>";
+		prevHtml += "	<option value='no'>je ne sais pas";
 		prevHtml += "	<option value='A1'>A1";
 		prevHtml += "	<option value='A2'>A2";	
 		prevHtml += "	<option value='B1'>B1";
 		prevHtml += "	<option value='B2'>B2";
 		prevHtml += "	<option value='C1'>C1";	
 		prevHtml += "	<option value='C2'>C2";		
-		prevHtml += "</select></div>";		
+		prevHtml += "</select><input type='button' value='-' id='deleteLanguePerf"+idPerf+"' title='Supprimer cette langue' alt='Supprimer cette langue' onclick='deleteLanguePerf("+idPerf+");'/></div>";		
 			
 		idPerf++;
-		$("#TdLanguePerfectionnement").html(prevHtml);
+		$("#TdLanguePerfectionnement").append(prevHtml);
 	}
 	
 	$("#ajouterLanguePerf").live("click", function () {
 		newListLanguePerf();
 	});
 	
-		$("#ajouterLangueMat").live("click", function () {
-		var prevHtml = $("#TdLangueMaternelle").html();
-		prevHtml += "<select name='langueMaternelle"+idMat+"' required><?=$htmlSelectLangue?></select><br/>";
-		idMat++;
-		$("#TdLangueMaternelle").html(prevHtml);
+	$("#ajouterLangueMat").live("click", function () {
+		newListLangueMat();
 	});
 	
 });
@@ -101,7 +120,7 @@ $(document).ready(function(){
 						<?=$htmlSelectLangue?>
 					</select>
 					
-					<input type="button" id="ajouterLangueMat" value="ajouter une langue"/><br/>
+					<input type="button" id="ajouterLangueMat" title="Autre langue" value="+"/><br/>
 				</td>
 			</tr>
 			<tr><td colspan="2"><hr></td></tr>
@@ -116,29 +135,21 @@ $(document).ready(function(){
 							<option value='avancé'>avancé
 						</select>
 						<select name='niveauLangueSysteme' id='niveauLangueSysteme'>
+							<p>niveau dans le système européen</p>
+							<option value='no'>je ne sais pas
 							<option value='A1'>A1
 							<option value='A2'>A2
 							<option value='B1'>B1
 							<option value='B2'>B2
 							<option value='C1'>C1
 							<option value='C2'>C2
-						</select><input type="button" id="ajouterLanguePerf" value="+"/><br/>
+						</select><input type="button" id="ajouterLanguePerf" title="Autre langue" alt="Autre langue" value="+"/><br/>
 					</div>
 					
 				</td>
 			</tr><tr>
-				<td  >Si vous le connaissez,<br/> votre niveau dans le système européen : <br/>
+				<td colspan="2">
 				<a href="Ressources/Descripteur.pdf" target="_blank">(Système européen)</a>
-				</td>
-				<td>
-					<input type="radio" name="niveauLangueSysteme" id="a1" value="A1" /><label for="a1">A1</label>
-					<input type="radio" name="niveauLangueSysteme" id="b1" value="B1" /><label for="b1">B1</label>
-					<input type="radio" name="niveauLangueSysteme" id="c1" value="C1" /><label for="c1">C1</label>
-					  * <br/>	
-					<input type="radio" name="niveauLangueSysteme" id="a2" value="A2" /><label for="a2">A2</label>
-					<input type="radio" name="niveauLangueSysteme" id="b2" value="B2" /><label for="b2">B2</label>
-					<input type="radio" name="niveauLangueSysteme" id="c2" value="C3" /><label for="c2">C2</label><br/>
-					<input type="radio" name="niveauLangueSysteme" id="no" value="" checked /><label for="no">je ne sais pas</label>
 				</td>
 			</tr>
 			
