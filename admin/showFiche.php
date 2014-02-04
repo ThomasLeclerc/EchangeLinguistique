@@ -5,31 +5,49 @@
 		
 	$query = SQL("Select * from FICHE where idFiche =".$idFiche);
 	$row=$query->fetch_object();
-	
-	$queryLangueMat = SQL("Select * from LANGUE where idLangue=".$row->idLangueMaternelle);
-	$rowLangueMat=$queryLangueMat->fetch_object();
-	
-	$queryLanguePerf = SQL("Select * from LANGUE where idLangue=".$row->idLanguePerfectionnement);
-	$rowLanguePerf=$queryLanguePerf->fetch_object();
 
 	echo '<fieldset>';
-	if(!($rowLangueMat->imageDrapeau == null))
-		echo '<img class="flag" src="'.SHORT_RACINE.'styles/flags/'.$rowLangueMat->imageDrapeau.'" /> '.$rowLangueMat->libelleLangue.'<br />';
-	else
-		echo $rowLangueMat->libelleLangue.'<br />';
+	$queryLangueMat=SQL("select * from PARLE where idFiche=".$row->idFiche);	
+	while($rowLangueMat=$queryLangueMat->fetch_object())
+	{
+		$queryLangue = SQL("Select * from LANGUE where idLangue=".$rowLangueMat->idLangue);
+		$rowLangue=$queryLangue->fetch_object();
+		if(!($rowLangue->imageDrapeau == null))
+			echo '<img class="flag" src="'.SHORT_RACINE.'styles/flags/'.$rowLangue->imageDrapeau.'" /> '.$rowLangue->libelleLangue.'<br />';
+		else
+			echo ' -- '.$rowLangue->libelleLangue.'<br />';
+	}
+
 	echo 'Sexe : '.$row->sexe.'<br />';
 	echo 'Nom : '.$row->nomFiche.'<br />';
 	echo 'Prénom : '.$row->prenomFiche.'<br />';
 	echo 'Age : '.$row->age.'<br />';
 	echo 'Profession : '.$row->profession.'<br />';
-	echo 'Souhaite perfectionner : ';
-	if(!($rowLanguePerf->imageDrapeau == null))
-		echo '<img class="flag" src="'.SHORT_RACINE.'styles/flags/'.$rowLanguePerf->imageDrapeau.'" /> '.$rowLanguePerf->libelleLangue.'<br />';
-	else
-		echo $rowLanguePerf->libelleLangue.'<br />';
-	echo 'Niveau : '.$row->niveauLanguePerfectionnement.'<br />';
-	if(!($row->niveauLangueSysteme==null))
-		echo 'Niveau européen : '.$row->niveauLangueSysteme.'<br />';
+	echo 'Souhaite perfectionner : <br />';
+
+	$queryLanguePerf=SQL("select * from PERFECTIONNE where idFiche=".$row->idFiche);
+	while($rowLanguePerf=$queryLanguePerf->fetch_object())
+	{
+		$queryLangue = SQL("Select * from LANGUE where idLangue=".$rowLanguePerf->idLangue);
+		$rowLangue=$queryLangue->fetch_object();	
+		if(!($rowLangue->imageDrapeau == null))
+		{
+			echo '<img class="flag" src="'.SHORT_RACINE.'styles/flags/'.$rowLangue->imageDrapeau.'" /> '.$rowLangue->libelleLangue;
+			echo ' - '.$rowLanguePerf->niveau;
+			if(!($rowLanguePerf->niveauUE==null))
+			{
+				echo ' - '.$rowLanguePerf->niveauUE;
+			}
+			echo '<br />';
+		}
+		else
+		{
+			echo ' -- '.$rowLangue->libelleLangue.' - '.$rowLanguePerf->niveau;
+			if(!($rowLanguePerf->niveauUE==null))
+				echo ' - '.$rowPerf->niveauUE;
+			echo '<br />';
+		}
+	}
 	echo 'Adresse : '.$row->adresse.'<br />';
 	echo 'Code postal : '.$row->codePostal.'<br />';
 	echo 'Ville : '.$row->ville.'<br />';
