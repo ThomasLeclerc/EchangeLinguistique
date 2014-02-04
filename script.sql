@@ -25,8 +25,6 @@ CREATE TABLE FICHE(
 	idFiche int not null auto_increment,
 	nomFiche varchar(50),
 	prenomFiche varchar(50),
-	idLangueMaternelle varchar(50),
-	idLanguePerfectionnement varchar(50),
 	age int,
 	sexe char(1),
 	adresse varchar(255),
@@ -71,13 +69,13 @@ INSERT INTO LANGUE values(null, "Breton", null);
 INSERT INTO LANGUE values(null, "Italien", "italie.png");
 
 
-INSERT INTO FICHE values(null, "Leclerc",	"Thomas",	1, 2, 22, "M", "14 rue de Beaupaquier",		"25240", "MOUTHE", 		"0600000000", "leclercthomas@yahoo.fr", "Etudiant", "Je fais du gros son avec mes amis");
-INSERT INTO FICHE values(null, "Petracca",	"Charlélie",1, 8, 25, "M", "Rue de l'ancien abreuvoir", "25870", "VALLEROY", 	"0600000000", "charlelie.petracca@gmail.com", "Etudiant", "J'aime la guitare, les jeux vidéos et Dieudo!");
-INSERT INTO FICHE values(null, "Petterson", "John",		2, 1, 87, "M", "Rue de la mairie", 			"25000", "BESANCON", 	"0600000000", "john.peterson@yahoo.com", "Chercheur d'or", "");
-INSERT INTO FICHE values(null, "Jefferson", "Doug", 	3, 2, 18, "M", "Rue de l'église", 			"25000", "BESANCON", 	"0600000000", "doug.jefferson@jesus-mail.com", "Inspecteur", "Je suis très religieux"); 
-INSERT INTO FICHE values(null, "Morisson",	"Phil", 	2, 4, 23, "M", "Avenue de Montrapon", 		"25000", "BESANCON", 	"0600000000",  "phil.morison@yahoo.com", "Culturiste", "");
-INSERT INTO FICHE values(null, "Erikson",	"Britany", 	7, 6, 19, "F", "Rue Bersot", 				"25000", "BESANCON", 	"0600000000",  "brit.erikson@hotmail.com", "Etudiant", "J'aime l'équitation, j'ai deux poneys");
-INSERT INTO FICHE values(null, "Garyson",	"Jennifer", 4, 1, 26, "F", "Rue Jouchoux", 				"25000", "BESANCON", 	"0600000000",  "jen.garyson@yahoo.com", "Coach sportif", "");
+INSERT INTO FICHE values(null, "Leclerc",	"Thomas", 22, "M", "14 rue de Beaupaquier",		"25240", "MOUTHE", 		"0600000000", "leclercthomas@yahoo.fr", "Etudiant", "Je fais du gros son avec mes amis");
+INSERT INTO FICHE values(null, "Petracca",	"Charlélie", 25, "M", "Rue de l'ancien abreuvoir", "25870", "VALLEROY", 	"0600000000", "charlelie.petracca@gmail.com", "Etudiant", "J'aime la guitare, les jeux vidéos et Dieudo!");
+INSERT INTO FICHE values(null, "Petterson", "John", 87, "M", "Rue de la mairie", 			"25000", "BESANCON", 	"0600000000", "john.peterson@yahoo.com", "Chercheur d'or", "");
+INSERT INTO FICHE values(null, "Jefferson", "Doug", 18, "M", "Rue de l'église", 			"25000", "BESANCON", 	"0600000000", "doug.jefferson@jesus-mail.com", "Inspecteur", "Je suis très religieux"); 
+INSERT INTO FICHE values(null, "Morisson",	"Phil", 23, "M", "Avenue de Montrapon", 		"25000", "BESANCON", 	"0600000000",  "phil.morison@yahoo.com", "Culturiste", "");
+INSERT INTO FICHE values(null, "Erikson",	"Britany", 19, "F", "Rue Bersot", 				"25000", "BESANCON", 	"0600000000",  "brit.erikson@hotmail.com", "Etudiant", "J'aime l'équitation, j'ai deux poneys");
+INSERT INTO FICHE values(null, "Garyson",	"Jennifer", 26, "F", "Rue Jouchoux", 				"25000", "BESANCON", 	"0600000000",  "jen.garyson@yahoo.com", "Coach sportif", "");
 
 INSERT INTO PARLE VALUES(1,1);
 INSERT INTO PARLE VALUES(2,1);
