@@ -3,56 +3,11 @@ require_once 'include/engine.php';
 
 HTML_HEADER('INSCRIPTION');
 
-if(isset($_POST["valide"])){
-	if(!isset($_POST["complement"])){
-		$complement = null;
-	}else{
-		$complement = $_POST["complement"];
-	}
-	$result = SQL('INSERT INTO FICHE values(
-						null, 
-						"'.$_POST["nom"].'",	
-						"'.$_POST["prenom"].'",	 
-						'.$_POST["age"].', 
-						"'.$_POST["sexe"].'", 
-						"'.$_POST["adresse"].'", 
-						"'.$_POST["codePostal"].'", 
-						"'.strtoupper($_POST["ville"]).'", 		
-						"'.$_POST["tel"].'", 
-						"'.$_POST["mail"].'", 
-						"'.$_POST["profession"].'", 
-						"'.$complement.'")');
-					
-	$result_id_fiche=SQL('select idFiche from FICHE where nomFiche="'.$_POST["nom"].'" and prenomFiche="'.$_POST["prenom"].'" and mail="'.$_POST["mail"].'" ');	
-	$resultObjectIdFiche = $result_id_fiche->fetch_object();	
-	$idFiche = $resultObjectIdFiche->idFiche;
-	
-	$languesMat = $_POST["langueMaternelle"];
-	foreach($languesMat as $idLangue){
-		$result_inser_mat = SQL('insert into PARLE values('.$idFiche.', '.$idLangue.')');
-	}
-	$languesPerf = $_POST["languePerfectionnement"];
-	$niveauxLanguesPerf = $_POST["niveauLanguePerfectionnement"];
-	$niveauxSysteme = $_POST["niveauLangueSysteme"];
-
-	foreach($languesPerf as $idLangue){
-		$key = array_search($idLangue, $languesPerf);
-		$result_insert_perf = SQL('INSERT INTO PERFECTIONNE VALUES(
-											'.$idFiche.','.$idLangue.', "'.$niveauxLanguesPerf[$key].'", "'.$niveauxSysteme[$key].'");');
-	}
-
-		
-	if($result==true){
-		echo "<div class='msg_0'>Votre inscription au tandem linguistique a bien été prise en compte. Vous serez informés par email lorsqu'un partenariat sera disponible.</div>";
-	}else{
-		echo "<div class='msg_1'>Un problème est survenu lors de votre inscritpion. veuillez réessayer.</div>";
-	}
-}else{
-	$result=SQL("SELECT * FROM LANGUE");
-	$htmlSelectLangue = '';
-	while($resultat=$result->fetch_object()){
-		$htmlSelectLangue .= "<option value='".$resultat->idLangue."'>".$resultat->libelleLangue;
-	}
+$result=SQL("SELECT * FROM LANGUE");
+$htmlSelectLangue = '';
+while($resultat=$result->fetch_object()){
+	$htmlSelectLangue .= "<option value='".$resultat->idLangue."'>".$resultat->libelleLangue;
+}
 
 
 
@@ -123,7 +78,7 @@ $(document).ready(function(){
 
 <div id="FormulaireInscr">
 	<h2>Demande pour un tandem linguistique</h2>
-	<form action="" method=post id="form_inscription">
+	<form action="include/doInscription.php" method=post id="form_inscription">
 	<small>* champs obligatoires</small>
 	<fieldset>
 	<legend>Langues</legend>
@@ -191,24 +146,18 @@ $(document).ready(function(){
 				</td>
 			</tr><tr>
 				<td><label for="adresse">Votre adresse : </label></td>
-				<td>
-					<input type="text" name="adresse" id="adresse" required >*
-				</td>
+				<td><input type="text" name="adresse" id="adresse" required >*</td>
 			</tr><tr>
 				<td><label for="codePostal">Code postale : </label></td>
-				<td>
-					<input type="text" name="codePostal" id="codePostal" size=1 maxlength=5 required>*
-				</td>
+				<td><input type="text" name="codePostal" id="codePostal" size=1 maxlength=5 required>*</td>
 			</tr><tr>
 				<td><label for="ville">Ville : </label></td>
-				<td>
-					<input type="text" name="ville" id="ville" size=10 required>*
-				</td>
+				<td><input type="text" name="ville" id="ville" size=10 required>*</td>
 			</tr><tr>
 				<td><label for="tel">Votre numéro de téléphone : </label></td>
 				<td><input type="text" name="tel" id="tel" maxlength="10" size=4 required/>*</td>
 			</tr><tr>
-				<td><label for="mail">Votre adresse mail (écrire lisiblement) : </label></td>
+				<td><label for="mail">Votre adresse mail : </label></td>
 				<td><input type="text" name="mail" id="mail"  size=30 required/>*</td>
 			</tr>
 		</table>
@@ -232,12 +181,11 @@ $(document).ready(function(){
 		</table>
 		</fieldset>
 		<input type="submit" value="Valider l'inscription" class="validate"/>
-		<input type="hidden" name="valide" value="ok"/>
 	</form>
 </div>
 
 
 <?php
-}
+
 HTML_FOOTER();
 ?>
