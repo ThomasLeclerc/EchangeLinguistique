@@ -61,6 +61,7 @@ function showFiche(id){
     xmlhttp.open("GET","showFiche.php?id="+id,true);
     xmlhttp.send();
 
+	document.getElementById("hintFiche").style.visibility="visible";
 	showMatch(id);
 }
 function showMatch(id){
@@ -74,6 +75,8 @@ function showMatch(id){
     }
     xmlhttp2.open("GET","showMatch.php?id="+id,true);
     xmlhttp2.send();
+
+	document.getElementById("hintMatch").style.visibility="visible";
 }
 </script>
 
@@ -84,9 +87,7 @@ function showMatch(id){
     <thead>
         <tr>
             <td>Langue maternelle</td>
-            <td>Langue de perfectionnement</td>
-            <td>Niveau</td>
-            <td><img id="logoUE" src="<?=SHORT_RACINE?>styles/flags/europe.png"/></td>
+            <td>Langue de perfectionnement - Niveau - <img id="logoUE" src="<?=SHORT_RACINE?>styles/flags/europe.png"/></td>
             <td>Age</td>
             <td>Sexe</td>
         </tr>
@@ -136,10 +137,10 @@ function showMatch(id){
 </table>
 </td>
 <td>
-<div id="hintFiche"></div>
+<fieldset id="hintFiche" style="visibility:hidden;"></fieldset>
 </td>
 <td>
-<div id="hintMatch"></div>
+<fieldset id="hintMatch" style="visibility:hidden;"></fieldset>
 </td>
 </tr>
 </table>

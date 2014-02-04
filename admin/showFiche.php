@@ -6,7 +6,6 @@
 	$query = SQL("Select * from FICHE where idFiche =".$idFiche);
 	$row=$query->fetch_object();
 
-	echo '<fieldset>';
 	$queryLangueMat=SQL("select * from PARLE where idFiche=".$row->idFiche);	
 	while($rowLangueMat=$queryLangueMat->fetch_object())
 	{
@@ -44,7 +43,7 @@
 		{
 			echo ' -- '.$rowLangue->libelleLangue.' - '.$rowLanguePerf->niveau;
 			if(!($rowLanguePerf->niveauUE==null))
-				echo ' - '.$rowPerf->niveauUE;
+				echo ' - '.$rowLanguePerf->niveauUE;
 			echo '<br />';
 		}
 	}
@@ -54,5 +53,5 @@
 	echo 'Téléphone : '.$row->numeroTelephone.'<br />';
 	echo 'Email : '.$row->mail.'<br />';
 	echo 'Complément : '.$row->complement.'<br />';
-	echo '</fieldeset>';
+
 ?>
