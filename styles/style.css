@@ -199,3 +199,20 @@ body{
 	background-color:lightblue;
 	cursor: pointer;
 }
+
+#fiches td {
+    width: 33%;
+}
+
+#FichesTable td:first-child(){
+	width: 30%;
+}
+#FichesTable td:nth-child(2){
+	width: 50%;
+}
+#FichesTable td:nth-child(3){
+	width: 10%;
+}
+#FichesTable td:nth-child(4){
+	width: 10%;
+}
