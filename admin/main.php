@@ -78,6 +78,57 @@ function showMatch(id){
 
 	document.getElementById("hintMatch").style.visibility="visible";
 }
+
+$(document).ready(function(){
+
+	$("#butAv").live("click", function () {
+		if($("#numMatch").html()=="1")
+		{
+			$selector=".match" + $("#numMatch").html();
+			$($selector).css("display", "none");
+			
+			$("#numMatch").html($("#nbMatch").html());
+			
+			$selector=".match" + $("#numMatch").html();
+			$($selector).css("display", "block");
+		}
+		else
+		{
+			$selector=".match" + $("#numMatch").html();
+			$($selector).css("display", "none");
+			
+			$("#numMatch").html($("#numMatch").html()-1);
+			
+			$selector=".match" + $("#numMatch").html();
+			$($selector).css("display", "block");
+		}
+	});
+
+	$("#butAp").live("click", function () {
+		if($("#numMatch").html()==$("#nbMatch").html())
+		{
+			$selector=".match" + $("#numMatch").html();
+			$($selector).css("display", "none");
+			
+			$("#numMatch").html("1");
+			
+			$selector=".match" + $("#numMatch").html();
+			$($selector).css("display", "block");
+		}
+		else
+		{
+			$selector=".match" + $("#numMatch").html();
+			$($selector).css("display", "none");
+			
+			var v= parseInt($("#numMatch").html())
+			v++
+			$("#numMatch").html(v);
+			
+			$selector=".match" + $("#numMatch").html();
+			$($selector).css("display", "block");
+		}
+	});
+});
 </script>
 
 <table id="fiches">
@@ -139,8 +190,7 @@ function showMatch(id){
 <td>
 <fieldset id="hintFiche" style="visibility:hidden;"></fieldset>
 </td>
-<td>
-<fieldset id="hintMatch" style="visibility:hidden;"></fieldset>
+<td id="hintMatch" >
 </td>
 </tr>
 </table>
