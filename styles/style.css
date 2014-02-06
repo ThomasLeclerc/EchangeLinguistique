@@ -237,15 +237,7 @@ body{
 #fiche{
 	width:100%
 }
-#fiches td :first-child(){
-    width: 50%;
-}
-#fiches td :nth-child(2){
-    width: 25%;
-}
-#fiches td :nth-child(3){
-    width: 25%;
-}
+
 
 #FichesTable td:first-child(){
 	width: 20%;
