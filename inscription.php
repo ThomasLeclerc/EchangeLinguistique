@@ -45,9 +45,9 @@ $(document).ready(function(){
 		var Html = "<div class='listLanguePerf'>";
 		Html += "<select name='languePerfectionnement[]' id='languePerfectionnement"+idPerf+"' required><?=$htmlSelectLangue?></select>";
 		Html += "<select name='niveauLanguePerfectionnement[]"+idPerf+"' id='niveauLanguePerfectionnement"+idPerf+"'>";
-		Html += "	<option value='débutant'>débutant";
-		Html += "	<option value='intermédiaire'>intermédiaire";	
-		Html += "	<option value='avancé'>avancé";	
+		Html += "	<option value='Debutant'>débutant";
+		Html += "	<option value='Intermediaire'>intermédiaire";	
+		Html += "	<option value='Avance'>avancé";	
 		Html += "</select>";	
 		
 		Html += "<select name='niveauLangueSysteme[]' id='niveauLangueSysteme"+idPerf+"'>";
@@ -78,7 +78,7 @@ $(document).ready(function(){
 
 <div id="FormulaireInscr">
 	<h2>Demande pour un tandem linguistique</h2>
-	<form action="include/doInscription.php" method=post id="form_inscription">
+	<form action="include/validation.php" method=post id="form_inscription">
 	<small>* champs obligatoires</small>
 	<fieldset>
 	<legend>Langues</legend>
@@ -137,12 +137,12 @@ $(document).ready(function(){
 				<td><input type="text" name="nom" id="nom" required/>*</td>
 			</tr><tr>
 				<td><label for="age">Votre âge : </label></td>
-				<td><input type="text" name="age" id="age" maxlength="3" size=1 required/>*</td>
+				<td><input type="number" name="age" id="age" maxlength="3" size=1 required/>*</td>
 			</tr><tr>
 				<td>Votre civilité : </td>
 				<td>
-					<input type="radio" name="sexe" id="M" value="M." required><label for="M">Homme</label>
-					<input type="radio" name="sexe" id="F" value="Mme" required><label for="Mme">Femme</label> *
+					<input type="radio" name="sexe" id="M" value="M" required><label for="M">Homme</label>
+					<input type="radio" name="sexe" id="F" value="F" required><label for="Mme">Femme</label> *
 				</td>
 			</tr><tr>
 				<td><label for="adresse">Votre adresse : </label></td>
@@ -155,10 +155,10 @@ $(document).ready(function(){
 				<td><input type="text" name="ville" id="ville" size=10 required>*</td>
 			</tr><tr>
 				<td><label for="tel">Votre numéro de téléphone : </label></td>
-				<td><input type="text" name="tel" id="tel" maxlength="10" size=4 required/>*</td>
+				<td><input type="tel" name="tel" id="tel" maxlength="10" size=4 required/>*</td>
 			</tr><tr>
 				<td><label for="mail">Votre adresse mail : </label></td>
-				<td><input type="text" name="mail" id="mail"  size=30 required/>*</td>
+				<td><input type="email" name="mail" id="mail"  size=30 required/>*</td>
 			</tr>
 		</table>
 		</fieldset><fieldset>
