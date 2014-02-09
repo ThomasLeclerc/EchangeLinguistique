@@ -159,7 +159,7 @@ $(document).ready(function(){
 				<td><input type="text" name="ville" id="ville" size=10 required></td>
 			</tr><tr>
 				<td><label for="tel">Votre numéro de téléphone <small>*</small> : </label></td>
-				<td><input type="tel" name="tel" id="tel" maxlength="10" title="10 chiffres" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" size=4 required/></td>
+				<td><input type="tel" name="tel" id="tel" maxlength="10" title="10 chiffres" pattern="^0[1-9][0-9]{8}$" size=4 required/></td>
 			</tr><tr>
 				<td><label for="mail">Votre adresse mail <small>*</small> : </label></td>
 				<td><input type="email" name="mail" id="mail" size=30 required/></td>
