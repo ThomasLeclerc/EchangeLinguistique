@@ -67,12 +67,13 @@
 		}
 
 		if($i>1)
-			echo '<div id="match"'.$idFiche.' class="match'.$i.'" style="display:none;">';
+			echo '<div id="match'.$idFiche.'" class="match'.$i.'" style="display:none;">';
 		else
 		{
-			echo '<div id="match"'.$idFiche.' class="match'.$i.'">';
+			echo '<div id="match'.$idFiche.'" class="match'.$i.'">';
 			$idFiche2=$idFiche;
-		}	
+		}
+		$m=0;
 		require("../admin/showFiche.php");
 		echo '<div class="dev" id="champID'.$i.'">'.$i.'</div>';
 		echo '</div>';
