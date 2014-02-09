@@ -53,5 +53,6 @@
 	echo 'Téléphone : '.$row->numeroTelephone.'<br />';
 	echo 'Email : '.$row->mail.'<br />';
 	echo 'Complément : '.$row->complement.'<br />';
+	echo '<div class="dev" id="idFiche">'.$row->idFiche.'</div>';
 
 ?>

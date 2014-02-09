@@ -40,13 +40,14 @@
 	// on affiche les fleches de navigations uniquement s'il y a plusieurs matchs trouves
 	if($nbMatch>1)
 	{
-		echo '<table id="navigationMatch"><tr>';
+/*		echo '<table id="navigationMatch"><tr>';
 		echo '<td><input id="butAv" type="button" value="<" style="width:25px;"/></td>';
 		echo '<td><div id="numMatch" style="width:25px;">1</div></td>';
 		echo '<td><input id="butAp" type="button" value=">" style="width:25px;"/></td>';
 		echo '</tr></table>';
+*/		echo '<div id="numMatch" class="dev" style="width:25px;">1</div>';
 	}
-	
+
 	//pour chaque match trouve
 	$i=0;
 	while($rowMatch=$queryMatch->fetch_object())
@@ -59,23 +60,28 @@
 		if($fs==0)
 		{
 			if($nbMatch==1)
-				echo '<fieldset><legend><h5>'.$nbMatch.' fiche correspond</h5></legend>';
+				echo '<fieldset><legend id="leg"><h5>1 fiche correspond</h5></legend>';
 			else
-				echo '<fieldset><legend><h5>'.$nbMatch.' fiches correspondent</h5></legend>';
+				echo '<fieldset><legend id="leg"><table id="navigationMatch"><tr><td><input type="button" id="butAv" value="<" /></td><td><h5>1 / '.$nbMatch.'</h5></td><td><input id="butAp" type="button" value=">" /></td></tr></table></legend>';
 			$fs=1;
 		}
 
 		if($i>1)
-			echo '<div id="match"'.$idFiche.' class=match'.$i.' style="display:none;">';
+			echo '<div id="match"'.$idFiche.' class="match'.$i.'" style="display:none;">';
 		else
-			echo '<div id="match"'.$idFiche.' class=match'.$i.'>';
-			
+		{
+			echo '<div id="match"'.$idFiche.' class="match'.$i.'">';
+			$idFiche2=$idFiche;
+		}	
 		require("../admin/showFiche.php");
+		echo '<div class="dev" id="champID'.$i.'">'.$i.'</div>';
 		echo '</div>';
 	}
 	//si un fieldset a ete ouvert, on le ferme
-	if($fs==1)
+	if($fs==1){
 		echo '</fieldset>';
+		echo '<input id="butMatch" type="button" value="Associer" />';
+	}
 	echo '<div id="nbMatch" style="visibility:hidden;">'.$nbMatch.'</div>';
 
 ?>

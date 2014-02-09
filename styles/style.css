@@ -238,7 +238,6 @@ body{
 	width:100%
 }
 
-
 #FichesTable td:first-child(){
 	width: 20%;
 }
@@ -250,4 +249,8 @@ body{
 }
 #FichesTable td:nth-child(4){
 	width: 5%;
+}
+
+.dev{
+	display:none;
 }

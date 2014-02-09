@@ -80,53 +80,100 @@ function showMatch(id){
 }
 
 $(document).ready(function(){
-
-	$("#butAv").live("click", function () {
+	//click sur la fleche de gauche
+	$("#butAv").live("click", function ()
+	{
+		//si c'est la 1ere fiche qui est affichee
 		if($("#numMatch").html()=="1")
 		{
-			$selector=".match" + $("#numMatch").html();
-			$($selector).css("display", "none");
+			//on cache la fiche 1
+			$(".match1").css("display", "none");
 			
+			//on remplace numMatch par la valeur de la derniere fiche (celle avant 1)
 			$("#numMatch").html($("#nbMatch").html());
 			
+			//on selectionne la nouvelle fiche
 			$selector=".match" + $("#numMatch").html();
+			//on l'affiche
 			$($selector).css("display", "block");
+			
+			//on affiche la legende
+			$numFiche = $("#numMatch").html();
+			$nbMatch = $("#nbMatch").html();
+			$("#leg").html("<table><tr><td><input type='button' id='butAv' value='<' /></td><td><h5>" + $("#numMatch").html() + " / " + $("#nbMatch").html() + "</h5></td><td><input id='butAp' value='>' type='button' /></td></tr></table>");
+
 		}
+		//sinon
 		else
 		{
+			//on selectionne la fiche qui est affichee
 			$selector=".match" + $("#numMatch").html();
+			//on la cache
 			$($selector).css("display", "none");
 			
+			//on remplace numMatch par la fiche d'avant
 			$("#numMatch").html($("#numMatch").html()-1);
 			
+			//on selectionne la nouvelle fiche
 			$selector=".match" + $("#numMatch").html();
+			//on l'affiche
 			$($selector).css("display", "block");
+
+			//on affiche la legende
+			$numFiche = $("#numMatch").html();
+			$nbMatch = $("#nbMatch").html();
+			$("#leg").html("<table><tr><td><input type='button' id='butAv' value='<' /></td><td><h5>" + $numFiche + " / " + $nbMatch + "</h5></td><td><input id='butAp' value='>' type='button' /></td></tr></table>");
+
+
 		}
 	});
-
-	$("#butAp").live("click", function () {
+	//click sur la fleche de droite
+	$("#butAp").live("click", function ()
+	{
+		//si c'est la derniere fiche qui est affichee
 		if($("#numMatch").html()==$("#nbMatch").html())
 		{
+			//on masque la fiche affichee
 			$selector=".match" + $("#numMatch").html();
 			$($selector).css("display", "none");
 			
+			//on remplace numMatch par la 1ere fiche
 			$("#numMatch").html("1");
-			
-			$selector=".match" + $("#numMatch").html();
-			$($selector).css("display", "block");
+
+			//on affiche la fiche 1
+			$(".match1").css("display", "block");
+
+			//on affiche la legende
+			$numFiche = $("#numMatch").html();
+			$nbMatch = $("#nbMatch").html();
+			$("#leg").html("<table><tr><td><input type='button' id='butAv' value='<' /></td><td><h5>" + $numFiche + " / " + $nbMatch + "</h5></td><td><input id='butAp' value='>' type='button' /></td></tr></table>");
 		}
+		//sinon
 		else
 		{
+			//on cache la fiche affichee
 			$selector=".match" + $("#numMatch").html();
 			$($selector).css("display", "none");
 			
-			var v= parseInt($("#numMatch").html())
-			v++
+			//on incremente le numero de la fiche affichee
+			var v= parseInt($("#numMatch").html());
+			v++;
 			$("#numMatch").html(v);
 			
+			//on affiche la nouvelle fiche
 			$selector=".match" + $("#numMatch").html();
 			$($selector).css("display", "block");
+			
+			//on met a jour la legende
+			$numFiche = $("#numMatch").html();
+			$nbMatch = $("#nbMatch").html();
+			$("#leg").html("<table><tr><td><input type='button' id='butAv' value='<' /></td><td><h5>" + $numFiche + " / " + $nbMatch + "</h5></td><td><input id='butAp' value='>' type='button' /></td></tr></table>");
 		}
+	});
+	//click sur le bouton association
+	$("#butMatch").live("click", function ()
+	{
+		alert($("hintFiche").html());
 	});
 });
 </script>
