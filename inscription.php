@@ -4,7 +4,7 @@ require_once 'include/engine.php';
 HTML_HEADER('INSCRIPTION');
 
 $result=SQL("SELECT * FROM LANGUE");
-$htmlSelectLangue = '';
+$htmlSelectLangue = "<option value=''>";
 while($resultat=$result->fetch_object()){
 	$htmlSelectLangue .= "<option value='".$resultat->idLangue."'>".$resultat->libelleLangue;
 }
@@ -14,6 +14,10 @@ while($resultat=$result->fetch_object()){
 
 ?>
 <script>	
+jQuery.validator.addClassRules({
+
+});
+
 $("#form_inscription").validate();
 
 	function deleteLanguePerf(id){
@@ -44,7 +48,7 @@ $(document).ready(function(){
 	function newListLanguePerf(){
 		var Html = "<div class='listLanguePerf'>";
 		Html += "<select name='languePerfectionnement[]' id='languePerfectionnement"+idPerf+"' required><?=$htmlSelectLangue?></select>";
-		Html += "<select name='niveauLanguePerfectionnement[]"+idPerf+"' id='niveauLanguePerfectionnement"+idPerf+"'>";
+		Html += "<select name='niveauLanguePerfectionnement[]"+idPerf+"' id='niveauLanguePerfectionnement"+idPerf+"' required>";
 		Html += "	<option value='Debutant'>débutant";
 		Html += "	<option value='Intermediaire'>intermédiaire";	
 		Html += "	<option value='Avance'>avancé";	
@@ -79,23 +83,23 @@ $(document).ready(function(){
 <div id="FormulaireInscr">
 	<h2>Demande pour un tandem linguistique</h2>
 	<form action="include/validation.php" method=post id="form_inscription">
-	<small>* champs obligatoires</small>
+	<small>* champs obligatoires  </small>
 	<fieldset>
-	<legend>Langues</legend>
+	<legend><h4>Langues</h4></legend>
 		<table>
 			<tr>
-				<td>Quelle est votre langue maternelle ou <br/>la langue que vous parlez couramment ?</td>
+				<td>Quelle est votre langue maternelle ou <br/>la langue que vous parlez couramment ? <small>*</small> </td>
 				<td id="TdLangueMaternelle">
 					<select name="langueMaternelle[]" required>
 						<?=$htmlSelectLangue?>
 					</select>
 					
-					<input type="button" id="ajouterLangueMat" title="Autre langue" value="+"/><br/>
+					<input type="button" id="ajouterLangueMat" title="Autre langue" value="+"/> <br/>
 				</td>
 			</tr>
 			<tr><td colspan="2"><hr></td></tr>
 			<tr>
-				<td>La langue que vous souhaitez perfectionner ? </td>
+				<td>La langue que vous souhaitez perfectionner ? <small>*</small></td>
 				<td id="TdLanguePerfectionnement">
 					<div class="listLanguePerf">
 						<select name='languePerfectionnement[]' required><?=$htmlSelectLangue?></select>
@@ -119,8 +123,8 @@ $(document).ready(function(){
 				</td>
 			</tr><tr>
 				<td colspan="2">
-				<a href="Ressources/Descripteur.pdf" target="_blank">(Système européen)</a>
-				</td>
+				<a href="Ressources/Descripteur.pdf" target="_blank">(Système européen)</a> 
+				</td> 
 			</tr>
 			
 
@@ -130,43 +134,43 @@ $(document).ready(function(){
 			<legend><h4>Faisons Connaissance</h4></legend>		
 		<table>
 			<tr>
-				<td><label for="prenom">Prénom : </label></td>
-				<td><input type="text" name="prenom" id="prenom" required>*</td>
+				<td><label for="prenom">Prénom <small>*</small> : </label></td>
+				<td><input type="text" name="prenom" id="prenom" required></td>
 			</tr><tr>
-				<td><label for="nom">Nom : </label></td>
-				<td><input type="text" name="nom" id="nom" required/>*</td>
+				<td><label for="nom">Nom <small>*</small> : </label></td>
+				<td><input type="text" name="nom" id="nom" required/></td>
 			</tr><tr>
-				<td><label for="age">Votre âge : </label></td>
-				<td><input type="number" name="age" id="age" maxlength="3" size=1 required/>*</td>
+				<td><label for="age">Votre âge <small>*</small> : </label></td>
+				<td><input type="number" name="age" id="age" title="Minimum 2 chiffres" maxlength="3" pattern="[0-9]{2,3}" size=1 required/></td>
 			</tr><tr>
-				<td>Votre civilité : </td>
+				<td>Votre civilité <small>*</small> : </td>
 				<td>
-					<input type="radio" name="sexe" id="M" value="M" required><label for="M">Homme</label>
-					<input type="radio" name="sexe" id="F" value="F" required><label for="Mme">Femme</label> *
+					<input type="radio" name="sexe" id="M" value="M" required ><label for="M">Homme</label>
+					<input type="radio" name="sexe" id="F" value="F" required ><label for="Mme">Femme</label> 
 				</td>
 			</tr><tr>
-				<td><label for="adresse">Votre adresse : </label></td>
-				<td><input type="text" name="adresse" id="adresse" required >*</td>
+				<td><label for="adresse">Votre adresse <small>*</small> : </label></td>
+				<td><input type="text" name="adresse" id="adresse"  ></td>
 			</tr><tr>
-				<td><label for="codePostal">Code postale : </label></td>
-				<td><input type="text" name="codePostal" id="codePostal" size=1 maxlength=5 required>*</td>
+				<td><label for="codePostal">Code postale <small>*</small> : </label></td>
+				<td><input type="number" name="codePostal" id="codePostal" size=1 maxlength=5 pattern="[0-9]{5}" title="5 chiffres" required/></td>
 			</tr><tr>
-				<td><label for="ville">Ville : </label></td>
-				<td><input type="text" name="ville" id="ville" size=10 required>*</td>
+				<td><label for="ville">Ville <small>*</small> : </label></td>
+				<td><input type="text" name="ville" id="ville" size=10 required></td>
 			</tr><tr>
-				<td><label for="tel">Votre numéro de téléphone : </label></td>
-				<td><input type="tel" name="tel" id="tel" maxlength="10" size=4 required/>*</td>
+				<td><label for="tel">Votre numéro de téléphone <small>*</small> : </label></td>
+				<td><input type="tel" name="tel" id="tel" maxlength="10" title="10 chiffres" pattern="^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$" size=4 required/></td>
 			</tr><tr>
-				<td><label for="mail">Votre adresse mail : </label></td>
-				<td><input type="email" name="mail" id="mail"  size=30 required/>*</td>
+				<td><label for="mail">Votre adresse mail <small>*</small> : </label></td>
+				<td><input type="email" name="mail" id="mail" size=30 required/></td>
 			</tr>
 		</table>
 		</fieldset><fieldset>
 		<legend><h4>Parlez-nous de vous</h4></legend>
 		<table>
 			<tr>
-				<td><label for="profession">Quelles études poursuivez-vous / <br/>quelle est votre profession ? : </label></td>
-				<td><input type="text" name="profession" id="profession"  maxsize=250 size=30 required/> * </td>
+				<td><label for="profession">Quelles études poursuivez-vous / <br/>quelle est votre profession ? <small>*</small> : </label></td>
+				<td><input type="text" name="profession" id="profession"  maxsize=250 size=30 required/></td>
 			</tr>
 		</table>
 		<br/><br/>

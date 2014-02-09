@@ -6,17 +6,13 @@
 	$languesPerf = $_POST["languePerfectionnement"];
 	$niveauxLanguesPerf = $_POST["niveauLanguePerfectionnement"];
 	$niveauxSysteme = $_POST["niveauLangueSysteme"];
-	/*						"'.$_POST["nom"].'",	
-						"'.$_POST["prenom"].'",	 
-						'.$_POST["age"].', 
-						"'.$_POST["sexe"].'", 
-						"'.$_POST["adresse"].'", 
-						"'.$_POST["codePostal"].'", 
-						"'.strtoupper($_POST["ville"]).'", 		
-						"'.$_POST["tel"].'", 
-						"'.$_POST["mail"].'", 
-						"'.$_POST["profession"].'", 
-						"'.$complement.'")');*/
+	
+	$result = SQL("SELECT * FROM FICHE WHERE mail='".$_POST['mail']."'");
+	$fiches = $result->fetch_array();
+	if(count($fiches)!=0){
+		echo "<div class='msg_1'>Cette adresse email est déja utilisée.<br/><a href='../inscription.php'><input type='button' value='retour'/></a></div>";
+	}else{
+
 ?>
 	<div id="FormulaireValidation">
 		<h2>Validation des informations saisies</h2>
@@ -33,7 +29,7 @@
 					<br/>
 					
 					<?php
-						if($_POST['sexe']=="M."){
+						if($_POST['sexe']=="M"){
 							echo 'Homme';						
 						}else{
 							echo 'Femme';
@@ -59,7 +55,8 @@
 			
 			<fieldset>
 				<legend>Langues</legend>
-				Langue(s) parlée(s) : 
+				<table>
+				<tr><td>Langue(s) parlée(s) : </td><td>
 				<?php
 					foreach($languesMat as $idLangue){
 						$result = SQL('SELECT libelleLangue FROM LANGUE WHERE idLangue='.$idLangue);
@@ -69,7 +66,8 @@
 					}
 					echo '<br/>';
 				?>
-				Langue(s) recherchée(s):
+				</td></tr>
+				<tr><td>Langue(s) recherchée(s):</td><td>
 				<?php
 					foreach($languesPerf as $idLangue){
 						$key = array_search($idLangue, $languesPerf);
@@ -77,39 +75,21 @@
 						$langue = $result->fetch_object();
 						echo '<input readonly type="text" style="width:'.strlen($langue->libelleLangue)*$ccSize.'px"  value="'.$langue->libelleLangue.'"/>'	;
 						echo '<input type="hidden" name="languePerfectionnement[]"  value="'.$idLangue.'"/> ';	
-						echo '<input readonly type="text" name="niveauLanguePerf[]" style="width:'.strlen($niveauxLanguesPerf[$key])*$ccSize.'px"  value="'.$niveauxLanguesPerf[$key].'"/>';	
-						echo '<input readonly type="text" name="niveauLangueSyseme[]" style="width:'.strlen($niveauxSysteme[$key])*$ccSize.'px"  value="'.$niveauxSysteme[$key].'"/>'	;				
+						echo '<input readonly type="text" name="niveauLanguePerfectionnement[]" style="width:'.strlen($niveauxLanguesPerf[$key])*$ccSize.'px"  value="'.$niveauxLanguesPerf[$key].'"/>';	
+						echo '<input readonly type="text" name="niveauLangueSysteme[]" style="width:'.strlen($niveauxSysteme[$key])*$ccSize.'px"  value="'.$niveauxSysteme[$key].'"/>'	;				
 					}				
 				
 				
 				?>
-				
+				</td></tr>
+				</table>
 			</fieldset>			
-			
-			
-			
-			
-			
-			
-			
-			
-			<br/><br/>
-			<table>
-				<tr>
-					<td>
-						Quels sont vos loisirs, vos centres d'intérêt,<br/> pourquoi voules-vous perfectionner une langue étrangère ?
-				</tr><tr>	</td><td>
-						
-					</td>
-				</tr>
-			</table>
 
 			<input type="submit" value="Valider l'inscription" class="validate"/>
 		</form>
 	</div>	
-	
-	
-	
-<?
+
+<?php
+	}
 	HTML_FOOTER();	
 ?>
