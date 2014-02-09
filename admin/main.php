@@ -58,7 +58,7 @@ function showFiche(id){
             document.getElementById("hintFiche").innerHTML=xmlhttp.responseText;
         }
     }
-    xmlhttp.open("GET","showFiche.php?id="+id,true);
+    xmlhttp.open("GET","showFiche.php?id="+id+"&m=1",true);
     xmlhttp.send();
 
 	document.getElementById("hintFiche").style.visibility="visible";
@@ -173,7 +173,7 @@ $(document).ready(function(){
 	//click sur le bouton association
 	$("#butMatch").live("click", function ()
 	{
-		alert($("hintFiche").html());
+		alert();
 	});
 });
 </script>
@@ -197,7 +197,7 @@ $(document).ready(function(){
 			$queryLangueMat=SQL("select * from PARLE where idFiche=".$row->idFiche);
 			$queryLanguePerf=SQL("select * from PERFECTIONNE where idFiche=".$row->idFiche);
 			$j = 0;
-			$k = 0;						
+			$k = 0;		
 			echo '<tr style="background-color: lightgreen;" onclick="showFiche('.$row->idFiche.')" onmouseover="overLine('.$row->idFiche.')" onmouseout="outLine('.$row->idFiche.')">';
 			echo '<td><table id="ligneLangue'.$row->idFiche.'" class="ligneF" style="width:100%;">';
 			while($rowLangueMat=$queryLangueMat->fetch_object())
