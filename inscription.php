@@ -14,11 +14,6 @@ while($resultat=$result->fetch_object()){
 
 ?>
 <script>	
-jQuery.validator.addClassRules({
-
-});
-
-$("#form_inscription").validate();
 
 	function deleteLanguePerf(id){
 		$('#languePerfectionnement'+id).remove();
@@ -74,6 +69,26 @@ $(document).ready(function(){
 	
 	$("#ajouterLangueMat").live("click", function () {
 		newListLangueMat();
+	});
+	
+	$("#validButton").live("click", function(){
+		$.ajax({
+			type:"POST",
+			url: "include/verifMail.php",
+			data:"email="+$("#mail").val())	,
+			success: function(msg){ 
+				if(msg==1) 
+				{
+					alert ("Cette adresse mail est déjà utilisée. veuillez en saisir une autre");
+					return false;
+				}
+				else 
+				{
+					return confirm("confirmez-vous l'enregistrement de ces données ? ");
+					
+				}
+	  		}
+		});
 	});
 	
 });
@@ -135,7 +150,7 @@ $(document).ready(function(){
 		<table>
 			<tr>
 				<td><label for="prenom">Prénom <small>*</small> : </label></td>
-				<td><input type="text" name="prenom" id="prenom" required></td>
+				<td><input type="text" name="prenom" id="prenom" required/></td>
 			</tr><tr>
 				<td><label for="nom">Nom <small>*</small> : </label></td>
 				<td><input type="text" name="nom" id="nom" required/></td>
@@ -146,17 +161,17 @@ $(document).ready(function(){
 				<td>Votre civilité <small>*</small> : </td>
 				<td>
 					<input type="radio" name="sexe" id="M" value="M" required ><label for="M">Homme</label>
-					<input type="radio" name="sexe" id="F" value="F" required ><label for="Mme">Femme</label> 
+					<input type="radio" name="sexe" id="F" value="F" required ><label for="F">Femme</label> 
 				</td>
 			</tr><tr>
-				<td><label for="adresse">Votre adresse <small>*</small> : </label></td>
-				<td><input type="text" name="adresse" id="adresse"  ></td>
+				<td><label for="adresse">Votre adresse<small>*</small> : </label></td>
+				<td><input type="text" name="adresse" id="adresse" required/></td>
 			</tr><tr>
 				<td><label for="codePostal">Code postale <small>*</small> : </label></td>
 				<td><input type="number" name="codePostal" id="codePostal" size=1 maxlength=5 pattern="[0-9]{5}" title="5 chiffres" required/></td>
 			</tr><tr>
 				<td><label for="ville">Ville <small>*</small> : </label></td>
-				<td><input type="text" name="ville" id="ville" size=10 required></td>
+				<td><input type="text" name="ville" id="ville" size=10 required/></td>
 			</tr><tr>
 				<td><label for="tel">Votre numéro de téléphone <small>*</small> : </label></td>
 				<td><input type="tel" name="tel" id="tel" maxlength="10" title="10 chiffres" pattern="^0[1-9][0-9]{8}$" size=4 required/></td>
@@ -184,7 +199,7 @@ $(document).ready(function(){
 			</tr>
 		</table>
 		</fieldset>
-		<input type="submit" value="Valider l'inscription" class="validate"/>
+		<input type="submit" value="Valider l'inscription" id="validButtons" class="validate"/>
 	</form>
 </div>
 
