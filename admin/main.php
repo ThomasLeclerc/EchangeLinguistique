@@ -58,7 +58,7 @@ function showFiche(id){
             document.getElementById("hintFiche").innerHTML=xmlhttp.responseText;
         }
     }
-    xmlhttp.open("GET","showFiche.php?id="+id+"&m=1",true);
+    xmlhttp.open("GET","showFiche.php?id="+id,true);
     xmlhttp.send();
 
 	document.getElementById("hintFiche").style.visibility="visible";

@@ -64,6 +64,7 @@
 			else
 				echo '<fieldset><legend id="leg"><table id="navigationMatch"><tr><td><input type="button" id="butAv" value="<" /></td><td><h5>1 / '.$nbMatch.'</h5></td><td><input id="butAp" type="button" value=">" /></td></tr></table></legend>';
 			$fs=1;
+			$m=1;
 		}
 
 		if($i>1)
@@ -73,7 +74,6 @@
 			echo '<div id="match'.$idFiche.'" class="match'.$i.'">';
 			$idFiche2=$idFiche;
 		}
-		$m=0;
 		require("../admin/showFiche.php");
 		echo '<div class="dev" id="champID'.$i.'">'.$i.'</div>';
 		echo '</div>';
