@@ -1,4 +1,4 @@
-<?php
+	<?php
 require_once 'include/engine.php';
 
 HTML_HEADER('INSCRIPTION');
@@ -9,16 +9,25 @@ while($resultat=$result->fetch_object()){
 	$htmlSelectLangue .= "<option value='".$resultat->idLangue."'>".$resultat->libelleLangue;
 }
 
-
+		/*$.ajax({
+				type:"POST",
+				url: "include/verifMail.php",
+				data:"email="+$("#mail").val()	,
+				success: function(msg){ 
+					if(msg==0) 
+					{
+						if(confirm('Confirmez vous l\' enregistrement de ces données ?')){
+							return;						
+						}
+					}
+					alert ("Cette adresse mail est déjà utilisée. veuillez en saisir une autre");
+					event.preventDefault();
+		  		}
+		});*/
 
 
 ?>
 <script>	
-jQuery.validator.addClassRules({
-
-});
-
-$("#form_inscription").validate();
 
 	function deleteLanguePerf(id){
 		$('#languePerfectionnement'+id).remove();
@@ -33,6 +42,49 @@ $("#form_inscription").validate();
 $(document).ready(function(){
 	var idPerf = 1	;
 	var idMat = 1;
+	
+	 var emailok = false;
+    var formInscription = $("#form_inscription"), email = $("#mail"), emailInfo = $("#emailInfo");
+  
+	 formInscription.submit(function(){
+        if(!emailok)
+        {
+				emailInfo.html("Ce mail est déjà utilisé");
+            email.focus();
+            return false;
+        }
+    });  
+  
+    //send ajax request to check email
+    email.blur(function(){
+			if($(this).attr("value")!=""){
+	      	$.ajax({
+					type: "POST",
+					data: "email="+$(this).attr("value"),
+					url: "include/verifMail.php",
+					success: function(data){
+					    if(data != "0")
+					    {
+					        	emailok = false;
+					        	$("#tdMail").css("background-color","rgba(255,150,150,0.8)");
+					      	emailInfo.html("Ce mail est déjà utilisé");
+								
+					    }
+					    else
+					    {
+					        emailok = true;
+					        emailInfo.html("");
+					        $("#tdMail").css("background-color","rgba(255,255,255,1)");
+					    }
+					}
+				});
+        }else{
+        		emailInfo.html("");
+        }
+    });	
+	
+	
+	
 	
 	function newListLangueMat(){
 		var Html = "<div class='listLangueMat'>";
@@ -76,13 +128,18 @@ $(document).ready(function(){
 		newListLangueMat();
 	});
 	
+
+
+
+	
 });
 </script>
 
 
 <div id="FormulaireInscr">
 	<h2>Demande pour un tandem linguistique</h2>
-	<form action="include/validation.php" method=post id="form_inscription">
+	<!--<form action="include/validation.php" method=post id="form_inscription">-->
+	<form action="include/verifMail.php" method="post" id="form_inscription">
 	<small>* champs obligatoires  </small>
 	<fieldset>
 	<legend><h4>Langues</h4></legend>
@@ -96,6 +153,10 @@ $(document).ready(function(){
 					
 					<input type="button" id="ajouterLangueMat" title="Autre langue" value="+"/> <br/>
 				</td>
+			</tr>
+			<tr>
+				<td>Vous ne trouvez pas une langue ? ajoutez la :</td>	
+				<td><input type="text" name="nouvelleLangueMat" id="nouvelleLangueMat" size=9/></td>		
 			</tr>
 			<tr><td colspan="2"><hr></td></tr>
 			<tr>
@@ -135,7 +196,7 @@ $(document).ready(function(){
 		<table>
 			<tr>
 				<td><label for="prenom">Prénom <small>*</small> : </label></td>
-				<td><input type="text" name="prenom" id="prenom" required></td>
+				<td><input type="text" name="prenom" id="prenom" required/></td>
 			</tr><tr>
 				<td><label for="nom">Nom <small>*</small> : </label></td>
 				<td><input type="text" name="nom" id="nom" required/></td>
@@ -146,23 +207,23 @@ $(document).ready(function(){
 				<td>Votre civilité <small>*</small> : </td>
 				<td>
 					<input type="radio" name="sexe" id="M" value="M" required ><label for="M">Homme</label>
-					<input type="radio" name="sexe" id="F" value="F" required ><label for="Mme">Femme</label> 
+					<input type="radio" name="sexe" id="F" value="F" required ><label for="F">Femme</label> 
 				</td>
 			</tr><tr>
-				<td><label for="adresse">Votre adresse <small>*</small> : </label></td>
-				<td><input type="text" name="adresse" id="adresse"  ></td>
+				<td><label for="adresse">Votre adresse<small>*</small> : </label></td>
+				<td><input type="text" name="adresse" id="adresse" required/></td>
 			</tr><tr>
 				<td><label for="codePostal">Code postale <small>*</small> : </label></td>
 				<td><input type="number" name="codePostal" id="codePostal" size=1 maxlength=5 pattern="[0-9]{5}" title="5 chiffres" required/></td>
 			</tr><tr>
 				<td><label for="ville">Ville <small>*</small> : </label></td>
-				<td><input type="text" name="ville" id="ville" size=10 required></td>
+				<td><input type="text" name="ville" id="ville" size=10 required/></td>
 			</tr><tr>
 				<td><label for="tel">Votre numéro de téléphone <small>*</small> : </label></td>
 				<td><input type="tel" name="tel" id="tel" maxlength="10" title="10 chiffres" pattern="^0[1-9][0-9]{8}$" size=4 required/></td>
 			</tr><tr>
 				<td><label for="mail">Votre adresse mail <small>*</small> : </label></td>
-				<td><input type="email" name="mail" id="mail" size=30 required/></td>
+				<td id="tdMail"><input type="email" name="mail" id="mail" size=30 required/><div id="emailInfo" class="invalid_field"></div></td>
 			</tr>
 		</table>
 		</fieldset><fieldset>
@@ -184,7 +245,7 @@ $(document).ready(function(){
 			</tr>
 		</table>
 		</fieldset>
-		<input type="submit" value="Valider l'inscription" class="validate"/>
+		<input type="submit" value="Valider l'inscription" id="validButtons" class="validate"/>
 	</form>
 </div>
 
