@@ -11,7 +11,7 @@
 		$m=0;
 		
 	if($m>0)
-		echo '<div id="langue2" class="match'.$i.'">';
+		echo '<div id="langue'.$i.'" class="match'.$i.'">';
 	else
 		echo '<div id="langue">';
 	$queryLangueMat=SQL("select * from PARLE where idFiche=".$row->idFiche);	
@@ -20,26 +20,26 @@
 		$queryLangue = SQL("Select * from LANGUE where idLangue=".$rowLangueMat->idLangue);
 		$rowLangue=$queryLangue->fetch_object();
 		if(!($rowLangue->imageDrapeau == null))
-			echo '<img class="flag" src="'.SHORT_RACINE.'styles/flags/'.$rowLangue->imageDrapeau.'" /> '.$rowLangue->libelleLangue.'<br /></div>';
+			echo '<img class="flag" src="'.SHORT_RACINE.'styles/flags/'.$rowLangue->imageDrapeau.'" /> '.$rowLangue->libelleLangue.'</div>';
 		else
-			echo ' -- '.$rowLangue->libelleLangue.'<br /></div>';
+			echo ' -- '.$rowLangue->libelleLangue.'</div>';
 	}
 	if($m>0)
 	{
-		echo '<div id="sexe2" class="match'.$i.'">Sexe : '.$row->sexe.'<br /></div>';
-		echo '<div id="nom2" class="match'.$i.'">Nom : '.$row->nomFiche.'<br /></div>';
-		echo '<div id="prenom2" class="match'.$i.'">Prénom : '.$row->prenomFiche.'<br /></div>';
-		echo '<div id="age2" class="match'.$i.'">Age : '.$row->age.'<br /></div>';
-		echo '<div id="prof2" class="match'.$i.'">Profession : '.$row->profession.'<br /></div>';
-		echo '<div id="2langue2" class="match'.$i.'">Souhaite perfectionner : <br />';
+		echo '<div id="sexe'.$i.'" class="match'.$i.'">Sexe : '.$row->sexe.'</div>';
+		echo '<div id="nom'.$i.'" class="match'.$i.'">Nom : '.$row->nomFiche.'</div>';
+		echo '<div id="prenom'.$i.'" class="match'.$i.'">Prénom : '.$row->prenomFiche.'</div>';
+		echo '<div id="age'.$i.'" class="match'.$i.'">Age : '.$row->age.'</div>';
+		echo '<div id="prof'.$i.'" class="match'.$i.'">Profession : '.$row->profession.'</div><hr />';
+		echo '<div id="2langue'.$i.'" class="match'.$i.'">Souhaite perfectionner : <br />';
 	}
 	else
 	{
-		echo '<div id="sexe">Sexe : '.$row->sexe.'<br /></div>';
-		echo '<div id="nom">Nom : '.$row->nomFiche.'<br /></div>';
-		echo '<div id="prenom">Prénom : '.$row->prenomFiche.'<br /></div>';
-		echo '<div id="age">Age : '.$row->age.'<br /></div>';
-		echo '<div id="prof">Profession : '.$row->profession.'<br /></div>';
+		echo '<div id="sexe">Sexe : '.$row->sexe.'</div>';
+		echo '<div id="nom">Nom : '.$row->nomFiche.'</div>';
+		echo '<div id="prenom">Prénom : '.$row->prenomFiche.'</div>';
+		echo '<div id="age">Age : '.$row->age.'</div>';
+		echo '<div id="prof">Profession : '.$row->profession.'</div><hr />';
 		echo '<div id="2langue">Souhaite perfectionner : <br />';
 	}
 	$queryLanguePerf=SQL("select * from PERFECTIONNE where idFiche=".$row->idFiche);
@@ -66,22 +66,23 @@
 	}
 	if($m>0)
 	{
-		echo '<div id="adresse2" class="match'.$i.'">Adresse : '.$row->adresse.'<br /></div>';
-		echo '<div id="cp2" class="match'.$i.'">Code postal : '.$row->codePostal.'<br /></div>';
-		echo '<div id="ville2" class="match'.$i.'">Ville : '.$row->ville.'<br /></div>';
-		echo '<div id="tel" class="match'.$i.'">Téléphone : '.$row->numeroTelephone.'<br /></div>';
-		echo '<div id="email2" class="match'.$i.'">Email : '.$row->mail.'<br /></div>';
-		echo '<div id="comp2" class="match'.$i.'">Complément : '.$row->complement.'<br /></div>';
+		echo '<hr /><div id="adresse'.$i.'" class="match'.$i.'">Adresse : '.$row->adresse.'<br /></div>';
+		echo '<div id="cp'.$i.'" class="match'.$i.'">Code postal : '.$row->codePostal.'<br /></div>';
+		echo '<div id="ville'.$i.'" class="match'.$i.'">Ville : '.$row->ville.'<br /></div>';
+		echo '<div id="tel'.$i.'" class="match'.$i.'">Téléphone : '.$row->numeroTelephone.'<br /></div>';
+		echo '<div id="email'.$i.'" class="match'.$i.'">Email : '.$row->mail.'<br /></div>';
+		echo '<div id="comp'.$i.'" class="match'.$i.'">Complément : '.$row->complement.'<br /></div>';
+		echo '<div class="dev" class="match'.$i.' id="idFicheMatch'.$i.'">'.$row->idFiche.'</div></div>';
 	}
 	else
 	{
-		echo '<div id="adresse">Adresse : '.$row->adresse.'<br /></div>';
+		echo '<hr /><div id="adresse">Adresse : '.$row->adresse.'<br /></div>';
 		echo '<div id="cp">Code postal : '.$row->codePostal.'<br /></div>';
 		echo '<div id="ville">Ville : '.$row->ville.'<br /></div>';
 		echo '<div id="tel">Téléphone : '.$row->numeroTelephone.'<br /></div>';
 		echo '<div id="email">Email : '.$row->mail.'<br /></div>';
 		echo '<div id="comp">Complément : '.$row->complement.'<br /></div>';
+		echo '<div class="dev" id="idFicheMatch'.$i.'">'.$row->idFiche.'</div></div>';
 	}
-	echo '<div class="dev" id="idFiche">'.$row->idFiche.'</div></div>';
 
 ?>

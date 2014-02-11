@@ -1,4 +1,4 @@
-<?php
+"<?php
 // Moteur + vérif des droits
 require_once '../include/engine.php';
 // Si non connecté
@@ -173,7 +173,33 @@ $(document).ready(function(){
 	//click sur le bouton association
 	$("#butMatch").live("click", function ()
 	{
-		alert();
+		//on recupere les id des fiches a lier
+		$idFiche1 = $("#hintFiche #idFiche").html();
+		$idFiche2 = $("#hintMatch #idFiche").html();
+		
+		//on recupere le numero de la fiche match affichee
+		$numMatch = $("#numMatch").html();
+		
+		//on prepare les selecteur pour l'affichage de la confirmation
+		$prenom2 = "#hintMatch #prenom"+$numMatch;
+		$nom2 = "#hintMatch #nom"+$numMatch;
+		
+		//on affiche la confirm box
+		if(confirm(	$("#hintFiche #prenom").html() + " " + $("#hintFiche #nom").html()
+				+	" et "
+				+ 	$($prenom2).html() + " " + $($nom2).html()
+				+	"vont être liés."))
+		{
+			xmlhttp=new XMLHttpRequest();
+			xmlhttp.onreadystatechange=function(){
+				if (xmlhttp.readyState==4 && xmlhttp.status==200)
+				{
+					alert("Information ajoutee a la base de donnees");
+				}
+			}
+			xmlhttp.open("GET","linkRequest.php?id1="+$idFiche1+"&id2="+$idFiche2,true);
+			xmlhttp.send();
+		}
 	});
 });
 </script>
