@@ -238,6 +238,16 @@ body{
 	background-color:lightblue;
 	cursor: pointer;
 }
+
+
+.tableLink{
+	border-style:solid;
+	border-collapse:collapse;
+}
+.tdLink{
+	border-style:solid;
+}
+
 #fiche{
 	width:100%
 }
@@ -258,3 +268,5 @@ body{
 .dev{
 	display:none;
 }
+
+

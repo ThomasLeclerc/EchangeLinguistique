@@ -38,7 +38,7 @@
 	$rowNbMatch=$queryNbMatch->fetch_object();
 	$nbMatch=$rowNbMatch->nb;
 	// on affiche les fleches de navigations uniquement s'il y a plusieurs matchs trouves
-	if($nbMatch>1)
+	if($nbMatch>0)
 	{
 /*		echo '<table id="navigationMatch"><tr>';
 		echo '<td><input id="butAv" type="button" value="<" style="width:25px;"/></td>';
