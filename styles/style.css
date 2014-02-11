@@ -89,8 +89,22 @@
 	font-family:Verdana,Tahoma,"DejaVu Sans",sans-serif;
 }
 
+#tdMail{
+	border-radius:10px;
+	vertical-align: middle;
+	padding:15px 15px;
+}
+
 small{
 	color:red;
+}
+
+.invalid_field{
+	color:#7D0F0F;
+	font-size:12px;
+	float:right;
+	padding:4px;
+	
 }
 
 /***************************************

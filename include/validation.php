@@ -7,12 +7,7 @@
 	$niveauxLanguesPerf = $_POST["niveauLanguePerfectionnement"];
 	$niveauxSysteme = $_POST["niveauLangueSysteme"];
 	
-	$result = SQL("SELECT * FROM FICHE WHERE mail='".$_POST['mail']."'");
-	$fiches = $result->fetch_array();
-	if(count($fiches)!=0){
-		echo "<div class='msg_1'>Cette adresse email est déja utilisée.<br/><a href='../inscription.php'><input type='button' value='retour'/></a></div>";
-	}else{
-
+	
 ?>
 	<div id="FormulaireValidation">
 		<h2>Validation des informations saisies</h2>
@@ -90,6 +85,5 @@
 	</div>	
 
 <?php
-	}
 	HTML_FOOTER();	
 ?>

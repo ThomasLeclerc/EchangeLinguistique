@@ -9,9 +9,8 @@
 		
 		<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 		<script src="http://code.jquery.com/jquery-migrate-1.1.0.js"></script>
-		<script type="text/javascript" src="js/jquery.validate.min.js"></script>
-    	<!--<script type="text/javascript" src="js/additional-methods.js"></script>-->
-		<!--<script type="text/javascript" src="js/messages_fr.js"></script>-->
+	<script src="http://malsup.github.io/min/jquery.form.min.js"></script>
+
 	</head>
 	<body>
 		<div id="header">
