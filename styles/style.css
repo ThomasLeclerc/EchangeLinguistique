@@ -1,4 +1,28 @@
 /***************************************
+***********	STYLE index.php ************
+****************************************/
+#presentation{
+	margin:auto;
+	padding:20px;
+	width:60%;
+	border:solid black 2px;
+	border-radius:10px;
+	background-color:#CED5D4;
+}
+
+#subscribe{
+
+	text-align:center;
+}
+
+#subscribe input{
+	font-size:20px;
+	padding:10px;
+	margin:0px 5px;
+	color:green;
+}
+
+/***************************************
 ***********	STYLE login.php ************
 ****************************************/
 #forms_login{
@@ -22,12 +46,7 @@
 	border-right:dotted 2px black;
 	padding-right:40px;
 }
-#subscribe input{
-	font-size:20px;
-	padding:10px;
-	margin:0px 5px;
-	color:green;
-}
+
 
 /***************************************
 ******** STYLES Inscription ********

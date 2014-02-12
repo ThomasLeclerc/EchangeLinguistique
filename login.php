@@ -41,12 +41,7 @@ if(isset($_POST['login'],$_POST['password']))
 				</table>
 				<input type="submit" name="submit" value="Valider" class="validate"/>
 			</form>
-		</div><div id="subscribe" class="bloc">
-			<form action="./inscription.php">
-				Vous ne possedez pas de profil ?<br/><br/>
-				<input type="submit" value="Inscrivez vous !"/>
-			</form>
-		</div>
+		
 	</div>
 </content>
 <?php 
