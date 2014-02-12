@@ -24,6 +24,8 @@
 			<div id="bandeNoire">
 				<div id="bande_gauche">
 					<a href="<?=SHORT_RACINE?>index.php"><input type="button" value="Accueil" class="accueil" /></a>
+					<a href="<?=SHORT_RACINE?>admin/main.php"><input type="button" value="Admin" class="accueil" /></a>
+					<a href="<?=SHORT_RACINE?>admin/link.php"><input type="button" value="Liens" class="accueilAdmin" /></a>
 				</div>
 				<div id="bande_milieu">
 					<h1><?=$titre?></h1>
