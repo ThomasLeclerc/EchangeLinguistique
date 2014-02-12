@@ -24,11 +24,11 @@ if(isset($_POST['login'],$_POST['password']))
 }
 
 ?>
-<div id="content">
-	<div id="forms_login">
-		<div id="login" class="bloc">
+
+		<div id="login">
 			<form action="" method="POST">
 				<legend><b>Connexion</b></legend>	
+				<br/>
 				<table>
 					<tr>
 						<td><label for="login">Login</label></td>
@@ -38,12 +38,12 @@ if(isset($_POST['login'],$_POST['password']))
 						<td><label for="password">Mot de passe</label></td>
 						<td><input type="password" name="password" value=""/></td>
 					</tr>
-				</table>
+				</table><br/>
 				<input type="submit" name="submit" value="Valider" class="validate"/>
 			</form>
 		
 	</div>
-</content>
+
 <?php 
 HTML_FOOTER();
 ?>

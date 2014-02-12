@@ -25,26 +25,18 @@
 /***************************************
 ***********	STYLE login.php ************
 ****************************************/
-#forms_login{
+#login{
 	margin:auto;
+	padding:15px;
 	text-align:center;
-	width:70%;
-	height:180px;
+	width:50%;
 	border:solid black 2px;
 	border-radius:10px;
 	background-color:#CED5D4;
 }
 
-
-#forms_login .bloc { 
-  margin:20px 2%; 
-  display:inline-block;
-  vertical-align:middle;
-}
-
-#login{
-	border-right:dotted 2px black;
-	padding-right:40px;
+#login table{
+	margin:auto;
 }
 
 

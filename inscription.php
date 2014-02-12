@@ -8,23 +8,7 @@ $htmlSelectLangue = "<option value=''>";
 while($resultat=$result->fetch_object()){
 	$htmlSelectLangue .= "<option value='".$resultat->idLangue."'>".$resultat->libelleLangue;
 }
-
-		/*$.ajax({
-				type:"POST",
-				url: "include/verifMail.php",
-				data:"email="+$("#mail").val()	,
-				success: function(msg){ 
-					if(msg==0) 
-					{
-						if(confirm('Confirmez vous l\' enregistrement de ces données ?')){
-							return;						
-						}
-					}
-					alert ("Cette adresse mail est déjà utilisée. veuillez en saisir une autre");
-					event.preventDefault();
-		  		}
-		});*/
-
+$htmlSelectLangue .= "<option value='new'>Autre ..."
 
 ?>
 <script>	
@@ -91,8 +75,8 @@ $(document).ready(function(){
 		Html += "<select name='langueMaternelle[]' id='langueMaternelle"+idMat+"' required><?=$htmlSelectLangue?></select>";
 		Html += "</select>";	
 	
-		Html += "<input type='button' value='-' id='deleteLangueMat"+idMat+"' title='Supprimer cette langue' alt='Supprimer cette langue' onclick='deleteLangueMat("+idMat+");'/></div>";		
-			
+		Html += "<input type='button' value='-' id='deleteLangueMat"+idMat+"' title='Supprimer cette langue' alt='Supprimer cette langue' onclick='deleteLangueMat("+idMat+");'/>";		
+		Html += "<div id='langueMaternelleNew"+idMat+"'></div></div>";	
 		idMat++;
 		$("#TdLangueMaternelle").append(Html);
 	}
@@ -129,7 +113,17 @@ $(document).ready(function(){
 	});
 	
 
-
+	$( "select" )
+	.change(function() {
+		var option = $( "select option:selected" ).val();
+		var idOption = $(this).attr("id");
+		alert(idOption);
+		if(option=="new"){
+			$("#"+idOption+"New").html("<input type='text' name='"+idOption+"NewInput' id='"+idOption+"NewInput' placeholder='autre langue'/>");
+		}else{
+			$("#"+idOption+"New").html("");
+		}
+	});
 
 	
 });
@@ -147,16 +141,13 @@ $(document).ready(function(){
 			<tr>
 				<td>Quelle est votre langue maternelle ou <br/>la langue que vous parlez couramment ? <small>*</small> </td>
 				<td id="TdLangueMaternelle">
-					<select name="langueMaternelle[]" required>
+					<select name="langueMaternelle[]" id="langueMaternelle" required>
 						<?=$htmlSelectLangue?>
 					</select>
 					
-					<input type="button" id="ajouterLangueMat" title="Autre langue" value="+"/> <br/>
+					<input type="button" id="ajouterLangueMat" title="Langue supplémentaire" value="+"/> <br/>
+					<div id="langueMaternelleNew"></div>
 				</td>
-			</tr>
-			<tr>
-				<td>Vous ne trouvez pas une langue ? ajoutez la :</td>	
-				<td><input type="text" name="nouvelleLangueMat" id="nouvelleLangueMat" size=9/></td>		
 			</tr>
 			<tr><td colspan="2"><hr></td></tr>
 			<tr>
