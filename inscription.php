@@ -21,6 +21,7 @@ $htmlSelectLangue .= "<option value='new'>Autre ..."
 	}	
 	function deleteLangueMat(id){
 		$('#langueMaternelle'+id).remove();
+		$('#langueMaternelle'+id+'New').remove();
 		$('#deleteLangueMat'+id).remove();
 	}
 $(document).ready(function(){
@@ -72,19 +73,19 @@ $(document).ready(function(){
 	
 	function newListLangueMat(){
 		var Html = "<div class='listLangueMat'>";
-		Html += "<select name='langueMaternelle[]' id='langueMaternelle"+idMat+"' required><?=$htmlSelectLangue?></select>";
+		Html += "<select name='langueMaternelle[]' id='langueMaternelle"+idMat+"' class='listeLangues'><?=$htmlSelectLangue?></select>";
 		Html += "</select>";	
 	
 		Html += "<input type='button' value='-' id='deleteLangueMat"+idMat+"' title='Supprimer cette langue' alt='Supprimer cette langue' onclick='deleteLangueMat("+idMat+");'/>";		
-		Html += "<div id='langueMaternelleNew"+idMat+"'></div></div>";	
+		Html += "<div id='langueMaternelle"+idMat+"New'></div></div>";	
 		idMat++;
 		$("#TdLangueMaternelle").append(Html);
 	}
 	
 	function newListLanguePerf(){
 		var Html = "<div class='listLanguePerf'>";
-		Html += "<select name='languePerfectionnement[]' id='languePerfectionnement"+idPerf+"' required><?=$htmlSelectLangue?></select>";
-		Html += "<select name='niveauLanguePerfectionnement[]"+idPerf+"' id='niveauLanguePerfectionnement"+idPerf+"' required>";
+		Html += "<select name='languePerfectionnement[]' id='languePerfectionnement"+idPerf+"' class='listeLangues' ><?=$htmlSelectLangue?></select>";
+		Html += "<select name='niveauLanguePerfectionnement[]"+idPerf+"' id='niveauLanguePerfectionnement"+idPerf+"' >";
 		Html += "	<option value='Debutant'>débutant";
 		Html += "	<option value='Intermediaire'>intermédiaire";	
 		Html += "	<option value='Avance'>avancé";	
@@ -98,8 +99,8 @@ $(document).ready(function(){
 		Html += "	<option value='B2'>B2";
 		Html += "	<option value='C1'>C1";	
 		Html += "	<option value='C2'>C2";		
-		Html += "</select><input type='button' value='-' id='deleteLanguePerf"+idPerf+"' title='Supprimer cette langue' alt='Supprimer cette langue' onclick='deleteLanguePerf("+idPerf+");'/></div>";		
-			
+		Html += "</select><input type='button' value='-' id='deleteLanguePerf"+idPerf+"' title='Supprimer cette langue' alt='Supprimer cette langue' onclick='deleteLanguePerf("+idPerf+");'/>";		
+		Html += "<div id='languePerfectionnement"+idPerf+"New'></div></div>"	
 		idPerf++;
 		$("#TdLanguePerfectionnement").append(Html);
 	}
@@ -113,20 +114,24 @@ $(document).ready(function(){
 	});
 	
 
-	$( "select" )
-	.change(function() {
-		var option = $( "select option:selected" ).val();
+
+	
+});
+
+$("#content").on("click", ".listeLangues", function() {
+   $( ".listeLangues" ).change(function() {		
 		var idOption = $(this).attr("id");
-		alert(idOption);
+		var option = $( "#"+idOption+" option:selected" ).val();	
 		if(option=="new"){
-			$("#"+idOption+"New").html("<input type='text' name='"+idOption+"NewInput' id='"+idOption+"NewInput' placeholder='autre langue'/>");
+			$("#"+idOption+"New").html("<input type='text' name='"+idOption+"NewInput' id='"+idOption+"NewInput' placeholder='autre langue' size=10/>");
 		}else{
 			$("#"+idOption+"New").html("");
 		}
 	});
-
-	
 });
+
+
+
 </script>
 
 
@@ -141,7 +146,7 @@ $(document).ready(function(){
 			<tr>
 				<td>Quelle est votre langue maternelle ou <br/>la langue que vous parlez couramment ? <small>*</small> </td>
 				<td id="TdLangueMaternelle">
-					<select name="langueMaternelle[]" id="langueMaternelle" required>
+					<select name="langueMaternelle[]" id="langueMaternelle" class="listeLangues" required>
 						<?=$htmlSelectLangue?>
 					</select>
 					
@@ -154,7 +159,7 @@ $(document).ready(function(){
 				<td>La langue que vous souhaitez perfectionner ? <small>*</small></td>
 				<td id="TdLanguePerfectionnement">
 					<div class="listLanguePerf">
-						<select name='languePerfectionnement[]' required><?=$htmlSelectLangue?></select>
+						<select name='languePerfectionnement[]' class="listeLangues" id="languePerfectionnement" required><?=$htmlSelectLangue?></select>
 						<select name='niveauLanguePerfectionnement[]' id='niveauLanguePerfectionnement'>
 							<option value='débutant'>débutant
 							<option value='intermédiaire'>intermédiaire
@@ -170,8 +175,9 @@ $(document).ready(function(){
 							<option value='C1'>C1
 							<option value='C2'>C2
 						</select><input type="button" id="ajouterLanguePerf" title="Autre langue" alt="Autre langue" value="+"/><br/>
-					</div>
 					
+						<div id="languePerfectionnementNew"></div>
+					</div>
 				</td>
 			</tr><tr>
 				<td colspan="2">
