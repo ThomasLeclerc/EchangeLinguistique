@@ -17,26 +17,11 @@
 							select idLangue from PERFECTIONNE
 							where idFiche=".$idFiche1."
 							)
-						and f.idFiche=pa.idFiche						
+						and f.idFiche=pa.idFiche
+						and idLink is null
+						group by idFiche
 					");
-	/* ****
-		Requete pour le nombre de correspondances trouvees
-													****** */
-	$queryNbMatch=SQL("	select count(*) as nb
-						from FICHE f, PARLE pa, PERFECTIONNE pe
-						where pe.idLangue in (
-							select idLangue
-							from PARLE where idFiche=".$idFiche1."
-							)
-						and f.idFiche=pe.idFiche
-						and pa.idLangue in (
-							select idLangue from PERFECTIONNE
-							where idFiche=".$idFiche1."
-							)
-						and f.idFiche=pa.idFiche						
-					");
-	$rowNbMatch=$queryNbMatch->fetch_object();
-	$nbMatch=$rowNbMatch->nb;
+	$nbMatch=$queryMatch->num_rows;
 	// on affiche les fleches de navigations uniquement s'il y a plusieurs matchs trouves
 	if($nbMatch>0)
 	{

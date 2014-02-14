@@ -189,7 +189,9 @@ $(document).ready(function(){
         </tr>
     </thead>
     <tbody><?php
-        $query=SQL("select * from FICHE group by idFiche order by idFiche asc");
+
+        $query=SQL("select * from FICHE where idLink is null group by idFiche order by idFiche asc");
+
 		while($row=$query->fetch_object())
 		{
 			$queryLangueMat=SQL("select * from PARLE where idFiche=".$row->idFiche);
