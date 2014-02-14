@@ -236,7 +236,7 @@ $(document).ready(function(){
 </div>
 </td>
 <td>
-<fieldset id="hintFiche" style="visibility:hidden;"></fieldset>
+<div id="hintFiche" style="visibility:hidden;"></div>
 </td>
 <td id="hintMatch" >
 </td>
