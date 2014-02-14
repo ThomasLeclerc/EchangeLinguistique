@@ -14,13 +14,13 @@
 	<body>
 		<div id="header">
 		
-			<div id="headerCLA">
+			<!--<div id="headerCLA">
 			<div id="h_left">
 				<a href="http://cla.univ-fcomte.fr/index.php" target="_blank"><img src="<?=SHORT_RACINE?>styles/logo-cla.jpg" /></a>
 				<a id="hrefuniv" href="http://www.univ-fcomte.fr"></a></div>			
 			</div>
 			<div id="h_mid"></div>
-			<div id="h_right"></div>
+			<div id="h_right"></div>-->
 			<div id="bandeNoire">
 				<div id="bande_gauche">
 					<a href="<?=SHORT_RACINE?>index.php"><input type="button" value="Accueil" class="accueil" /></a>
@@ -37,7 +37,7 @@
 				</div>
 			<?php } ?>
 			</div>
-			<div id="bandeVerte"></div>
+			<div id="bandeau"><img id="img_bandeau" src="<?=SHORT_RACINE?>Ressources/Images/bandeau.png"/></div>
 		</div>
 		<?//MessagesService::afficher();?>
 		<div id="content">
