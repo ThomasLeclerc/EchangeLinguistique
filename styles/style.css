@@ -118,50 +118,63 @@ small{
 	
 }
 
-/***************************************
+/****************************************
 ***********	STYLES GENERAUX *************
-****************************************/
+*****************************************/
 body{
 	margin:5px;
 	padding:0;
-	font-family:Verdana,Tahoma,"DejaVu Sans",sans-serif;
+	font-family:'Yanone KaffeesatzVerdana',Tahoma,"DejaVu Sans",sans-serif;
 }
 
 #content{
 	margin:50px;
 }
 
-#header{
-	position:relative;
-	
-	top:0px;
-	left:0px;
-	right:0px;
-	margin:0px;
-	padding:5px;
-	padding-left:20px;
-	height:180px;
-	
-	color:#333333;
-	font-size:13px;
-	line-height:1.5em;
-	
+
+/**************************************
+*********** STYLE HEADER **************
+***************************************/
+
+
+#bandeNoire{
+	-moz-box-sizing: border-box;
+    background-color: #000000;
+    border-bottom: 3px solid #AFCB51;
+    color: #333333;
+    font-family: Verdana,Tahoma,"DejaVu Sans",sans-serif;
+    font-size: 13px;
+    height: 40px;
+    line-height: 1.5em;
+    overflow: visible;
+    position: relative;
+    z-index: 1000;
 }
 
-#header h1, #header h6{
+#bande_gauche{
 	display:inline;
+}
+#bande_milieu{
+	display:inline;
+	margin-left:20%;
+}
+#bande_droite{
+	display:inline;
+}
+
+#bandeau{
 	text-align:center;
-
 }
 
-#header h3{
-	display:inline;
+#img_bandeau {
+	width:995px;
+	height:108px;
+	margin:auto;
 }
 
-#header a{
-	display:inline;
-	text-align:left;
-}
+
+
+
 
 #footer{
 	text-align:center;
@@ -226,44 +239,75 @@ body{
     width: 100px;
     z-index: 200;
 }
-#bandeNoire{
-	height : 30px;
-	background-color:black;
-}
-#bandeVerte{
-	height : 4px;
-	background-color:#5F7513;
-}
-#bande_gauche{
-	display:inline;
-}
-#bande_milieu{
-	display:inline;
-	margin-left:20%;
-}
-#bande_droite{
-	display:inline;
-}
+
 	
+	
+	
+/*********************************************
+***************** STYLE ADMIN ****************
+**********************************************/	
+#divFichesTable{
+	border:solid 2px rgba(0,0,0,0.8);
+	border-radius:20px;
+	padding:10px;
+}
+
+#FichesTable{
+	border-collapse: collapse;
+}
+
+#FichesTable>thead>tr>td{
+	border-bottom:solid 2px black;
+	padding-bottom: 5px;
+ 	
+}
+#FichesTable thead tr td{
+	vertical-align: middle;
+}
+
+#FichesTable > tbody > tr:nth-child(even)		{ background-color:white; }
+#FichesTable > tbody > tr:nth-child(odd)		{ background-color:rgba(150,255,150,0.6) }
+
+#FichesTable tbody tr{    
+		border-bottom: 3px solid rgba(50,50,50,0.5);
+    -webkit-transition: color .6s ease-in;
+    -moz-transition: color .6s ease-in;
+    -o-transition: color .6s ease-in;
+}
+
+#FichesTable > tbody > tr:hover{
+	background-color:lightblue;
+	cursor: pointer;
+}
+
+
+
+#FichesTable tbody tr td{
+	padding:5px;
+}
+
+#FichesTable tbody tr td img{
+	width:19px;
+	height:16px;
+}
+
+.ligneFicheSelected{
+	background-color:rgba(120,150,120,0.7);
+}
+.ligneF{
+	cursor: pointer;
+}
+
+
+
+
+
 .flag{
 	height : 20px;
 }
 #logoUE{
 	height : 40px;
 }
-
-.ligneFicheSelected{
-	border-style: inset;
-}
-.ligneF{
-    border-style: none;
-	cursor: pointer;
-}
-.ligneMouseOver{
-	background-color:lightblue;
-	cursor: pointer;
-}
-
 
 .tableLink{
 	border-style:solid;
@@ -278,10 +322,10 @@ body{
 }
 
 #FichesTable td:first-child(){
-	width: 25%;
+	width: 30%;
 }
 #FichesTable td:nth-child(2){
-	width: 65%;
+	width: 60%;
 }
 #FichesTable td:nth-child(3){
 	width: 5%;
