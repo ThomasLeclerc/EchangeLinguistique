@@ -50,7 +50,6 @@
 	width:820px;
 	margin:auto;
 	text-align:center;
-	font-size:16px;
 	background-color:#CED5D4;
 }
 
@@ -73,7 +72,6 @@
 	width:50%;
 	margin:auto;
 	text-align:center;
-	font-size:16px;
 	background-color:#C8FEC6;
 }
 
@@ -84,7 +82,6 @@
 
 #FormulaireValidation input{
 	background-color:#E3E8F7;
-	font-size: 16px;
 	color:#000000;
 	text-align:center;
 	border:0;
@@ -93,7 +90,6 @@
 
 #FormulaireValidation textarea{
 	background-color:#E3E8F7;
-	font-size: 16px;
 	color:#000000;
 	text-align:center;
 	border:0;
@@ -112,7 +108,6 @@ small{
 
 .invalid_field{
 	color:#7D0F0F;
-	font-size:12px;
 	float:right;
 	padding:4px;
 	
@@ -126,12 +121,15 @@ body{
 	padding:0;
 	font-family:'Yanone Kaffeesatz', 'Verdana',Tahoma,"DejaVu Sans",sans-serif;
 	background-image:url("../Ressources/Images/background.jpg");
+	background-size:100% 100%;
 	background-repeat:no-repeat;
 	width:100%;
 }
 
 #content{
-	margin:50px;
+	font-size: 12px;
+	width:995px;
+	margin:auto;
 }
 
 
