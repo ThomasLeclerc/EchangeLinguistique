@@ -82,7 +82,7 @@
 		echo '<table><tr><td>Téléphone : </td><td><div id="tel">'.$row->numeroTelephone.'</div></td></tr></table>';
 		echo '<table><tr><td>Email : </td><td><div id="email">'.$row->mail.'</div></td></tr></table>';
 		echo '<table><tr><td>Complément : </td></tr></table><div id="comp">'.$row->complement.'</div>';
-		echo '<div class="dev" id="idFicheMatch">'.$row->idFiche.'</div></div>';
+		echo '<div class="dev" id="idFicheMatch">'.$row->idFiche.'</div>';
 	}
 
 ?>
