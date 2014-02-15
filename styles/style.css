@@ -263,16 +263,16 @@ body{
 /*********************************************
 ***************** STYLE ADMIN ****************
 **********************************************/	
-#FichesTable td:first-child(){
+.FichesTable td:first-child(){
 	width: 30%;
 }
-#FichesTable td:nth-child(2){
+.FichesTable td:nth-child(2){
 	width: 60%;
 }
-#FichesTable td:nth-child(3){
+.FichesTable td:nth-child(3){
 	width: 5%;
 }
-#FichesTable td:nth-child(4){
+.FichesTable td:nth-child(4){
 	width: 5%;
 }
 
@@ -280,57 +280,57 @@ body{
 	vertical-align: top;
 }
 
-#divFichesTable{
+.divFichesTable{
 	border:solid 4px rgba(0,0,0,0.8);
 	border-radius:20px;
 	padding:20px;
 		background-color:rgba(190,240,162,0.5);
 }
 
-#FichesTable{
+.FichesTable{
 	border-collapse: collapse;
 
 }
 
-#FichesTable>thead>tr>td{
+.FichesTable>thead>tr>td{
 	border-bottom:solid 2px black;
 	padding-bottom: 5px;
 	font-weight:bold;
  	
 }
-#FichesTable thead tr td{
+.FichesTable thead tr td{
 	vertical-align: middle;
 }
 
 
-#FichesTable > tbody > tr:nth-child(even)		{ background-color:white; }
-#FichesTable > tbody > tr:nth-child(odd)		{ background-color:rgba(150,255,150,0.6) }
+.FichesTable > tbody > tr:nth-child(even)		{ background-color:white; }
+.FichesTable > tbody > tr:nth-child(odd)		{ background-color:rgba(150,255,150,0.6) }
 
 
-#FichesTable > tbody >.ligneFicheSelected{
+.FichesTable > tbody >.ligneFicheSelected{
 	background-color:rgba(50,200,50,0.8) !important;
 }
 .ligneF{
 	cursor: pointer;
 }
 
-#FichesTable tbody tr{    
+.FichesTable tbody tr{    
 		border-bottom: 3px solid rgba(50,50,50,0.5);
     -webkit-transition: color .6s ease-in;
     -moz-transition: color .6s ease-in;
     -o-transition: color .6s ease-in;
 }
 
-#FichesTable > tbody > tr:hover{
+.FichesTable > tbody > tr:hover{
 	background-color:lightblue;
 	cursor: pointer;
 }
 
-#FichesTable tbody tr td{
+.FichesTable tbody tr td{
 	padding:5px;
 }
 
-#FichesTable tbody tr td img{
+.FichesTable tbody tr td img{
 	width:19px;
 	height:16px;
 }
@@ -367,9 +367,12 @@ body{
 	border-radius:15px;
 	padding:10px;
 	display:block;
+	width:70%;
 }
 
-.ficheTandemLeft ,.ficheTandemRight {
+.ficheTandemSeparee {
+	padding:20px;
+	margin:5px;
 	width:30%;
 	border:dotted 1px black;
 	display:inline-block;
