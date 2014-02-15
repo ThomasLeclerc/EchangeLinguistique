@@ -6,7 +6,33 @@ if(!isset($_SESSION['id']))
     REDIRECT('../login.php');
 // Entete
 HTML_HEADER('Gestion des liens');
+?>
+<script>
 
+</script>
+
+<div class="divFichesTable">
+	<table class="FichesTable">
+	    <thead>
+	        <tr>
+	            <td>Binômes</td>
+	        </tr>
+	    </thead>
+	    <tbody>
+	    <?php
+	    	$resultListLiens = SQL('SELECT f1.nomFiche as nom1, f2.nomFiche as nom2 from FICHE f1, FICHE f2, LINK l where f1.idFiche=l.idFiche1 and f2.idFiche=l.idFiche2');
+			$count=0;	     
+	      while($ligneLien=$resultListLiens->fetch_object()){
+	      	$count++;
+	      	echo '<tr>
+	      				<td> '.$ligneLien->nom1.' - '.$ligneLien->nom2.' </td>
+	      			</tr>';
+	      }
+	    ?>	    
+	    </tbody>
+	</table>
+</div>
+<?php
 $queryLink = SQL("Select * from LINK");
 
 $count=0;
@@ -31,7 +57,7 @@ while($rowLink=$queryLink->fetch_object())
 	echo '</div><div class="ficheTandemSeparee">';
 				$idFiche=$rowLink->idFiche2;
 				require("../admin/showFiche.php");
-	echo '/div><div class="clear"></div>';
+	echo '</div><div class="clear"></div>';
 	echo'<br/>';
 }
 
