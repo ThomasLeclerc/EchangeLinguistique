@@ -122,14 +122,13 @@ small{
 ***********	STYLES GENERAUX *************
 *****************************************/
 body{
-	margin:5px;
+	margin:0;
 	padding:0;
-	font-family:'Yanone KaffeesatzVerdana',Tahoma,"DejaVu Sans",sans-serif;
+	font-family:'Yanone Kaffeesatz', 'Verdana',Tahoma,"DejaVu Sans",sans-serif;
 }
 
 #content{
 	margin:50px;
-	text-align:center;
 }
 
 
@@ -159,6 +158,27 @@ body{
 
 #bande_gauche{
 	display:inline;
+}
+
+#bande_gauche li{    
+	float: left;
+    list-style-type: none;
+    margin: 
+}
+
+#bande_gauche li a{
+	text-decoration: none;
+	color:white;
+	display: block;
+	font-family: 'Yanone Kaffeesatz',Arial Narrow,Arial,Helvetica,sans-serif;
+	font-size: 1.5em;
+	height: 27px;
+	line-height: 30px;
+	padding: 5px 10px;
+}
+
+#bande_gauche li a:hover{
+	background-color: #5d5649;
 }
 
 
@@ -243,63 +263,77 @@ body{
 /*********************************************
 ***************** STYLE ADMIN ****************
 **********************************************/	
+.FichesTable td:first-child(){
+	width: 30%;
+}
+.FichesTable td:nth-child(2){
+	width: 60%;
+}
+.FichesTable td:nth-child(3){
+	width: 5%;
+}
+.FichesTable td:nth-child(4){
+	width: 5%;
+}
+
 #fiches>tbody>tr>td {
 	vertical-align: top;
 }
 
-#divFichesTable{
+.divFichesTable{
 	border:solid 4px rgba(0,0,0,0.8);
 	border-radius:20px;
 	padding:20px;
+		background-color:rgba(190,240,162,0.5);
 }
 
-#FichesTable{
+.FichesTable{
 	border-collapse: collapse;
+
 }
 
-#FichesTable>thead>tr>td{
+.FichesTable>thead>tr>td{
 	border-bottom:solid 2px black;
 	padding-bottom: 5px;
 	font-weight:bold;
  	
 }
-#FichesTable thead tr td{
+.FichesTable thead tr td{
 	vertical-align: middle;
 }
 
 
-#FichesTable > tbody > tr:nth-child(even)		{ background-color:white; }
-#FichesTable > tbody > tr:nth-child(odd)		{ background-color:rgba(150,255,150,0.6) }
+.FichesTable > tbody > tr:nth-child(even)		{ background-color:white; }
+.FichesTable > tbody > tr:nth-child(odd)		{ background-color:rgba(150,255,150,0.6) }
 
 
-#FichesTable > tbody >.ligneFicheSelected{
+.FichesTable > tbody >.ligneFicheSelected{
 	background-color:rgba(50,200,50,0.8) !important;
 }
 .ligneF{
 	cursor: pointer;
 }
 
-#FichesTable tbody tr{    
+.FichesTable tbody tr{    
 		border-bottom: 3px solid rgba(50,50,50,0.5);
     -webkit-transition: color .6s ease-in;
     -moz-transition: color .6s ease-in;
     -o-transition: color .6s ease-in;
 }
 
-#FichesTable > tbody > tr:hover{
+.FichesTable > tbody > tr:hover{
 	background-color:lightblue;
 	cursor: pointer;
 }
 
-#FichesTable tbody tr td{
+.FichesTable tbody tr td{
 	padding:5px;
 }
 
-#FichesTable tbody tr td img{
+.FichesTable tbody tr td img{
 	width:19px;
 	height:16px;
 }
-
 
 
 .ficheParticipant {
@@ -324,30 +358,35 @@ body{
 	height : 40px;
 }
 
-.tableLink{
-	border-style:solid;
-	border-collapse:collapse;
-}
-.tdLink{
-	border-style:solid;
+
+/***************************************
+************* STYLE LINKS **************
+****************************************/
+.ficheTandem{
+	border:solid 3px black;
+	border-radius:15px;
+	padding:10px;
+	display:block;
+	width:70%;
 }
 
-#fiche{
-	width:100%
+.ficheTandemSeparee {
+	padding:20px;
+	margin:5px;
+	width:30%;
+	border:dotted 1px black;
+	display:inline-block;
+	float:left;
 }
 
-#FichesTable td:first-child(){
-	width: 30%;
+.clear{
+	clear:both;
+	float:none;
+	height:0;
 }
-#FichesTable td:nth-child(2){
-	width: 60%;
-}
-#FichesTable td:nth-child(3){
-	width: 5%;
-}
-#FichesTable td:nth-child(4){
-	width: 5%;
-}
+
+
+
 
 
 

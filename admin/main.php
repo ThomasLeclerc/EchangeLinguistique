@@ -1,4 +1,4 @@
-"<?php
+<?php
 // Moteur + vérif des droits
 require_once '../include/engine.php';
 // Si non connecté
@@ -178,8 +178,8 @@ $(document).ready(function(){
 <table id="fiches">
 <tr>
 <td>
-<div id="divFichesTable">
-<table id="FichesTable">
+<div class="divFichesTable">
+<table class="FichesTable">
     <thead>
         <tr>
             <td>Langue maternelle</td>
