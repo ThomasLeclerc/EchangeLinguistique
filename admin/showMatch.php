@@ -26,12 +26,7 @@
 
 	if($nbMatch>0)
 	{
-/*		echo '<table id="navigationMatch"><tr>';
-		echo '<td><input id="butAv" type="button" value="<" style="width:25px;"/></td>';
-		echo '<td><div id="numMatch" style="width:25px;">1</div></td>';
-		echo '<td><input id="butAp" type="button" value=">" style="width:25px;"/></td>';
-		echo '</tr></table>';
-*/		echo '<div id="numMatch" class="dev" style="width:25px;">1</div>';
+		echo '<div id="numMatch" class="dev" style="width:25px;">1</div>';
 	}
 
 	//pour chaque match trouve
@@ -48,7 +43,16 @@
 			if($nbMatch==1)
 				echo '<div class="ficheParticipant"><div id="leg"><h5>1 fiche correspond</h5></div>';
 			else
-				echo '<div class="ficheParticipant"><div id="leg"><table id="navigationMatch"><tr><td><input type="button" id="butAv" value="<" /></td><td><h5>1 / '.$nbMatch.'</h5></td><td><input id="butAp" type="button" value=">" /></td></tr></table></div>';
+				echo '<div class="ficheParticipant">
+							<div id="leg">
+								<table id="navigationMatch">
+									<tr>
+										<td><input type="button" id="butAv" value="<" /></td>
+										<td><h5>1 / '.$nbMatch.'</h5></td>
+										<td><input id="butAp" type="button" value=">" /></td>
+									</tr>
+								</table>
+							</div>';
 			$fs=1;
 			$m=1;
 		}
