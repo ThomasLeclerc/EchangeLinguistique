@@ -18,29 +18,20 @@ while($rowLink=$queryLink->fetch_object())
 	$rowFiche2=$queryFiche2->fetch_object();
 */	
 	$count++;
-	echo '<div id="link'.$count.'">';
-	echo '<table class="tableLink">';
-		echo '<thead><tr>';
-			echo '<td>Lien no '.$count.'</td>';
-			echo '<td>';
-				echo '<form method="POST" onsubmit="return confirm(\'Etes vous sur de vouloir supprimer ce lien?\');" action="linkRequest.php?del=1">';
-					echo '<input name="id1" type="hidden" value="'.$rowLink->idFiche1.'"/>';
-					echo '<input name="id2" type="hidden" value="'.$rowLink->idFiche2.'"/>';
-					echo '<input style="float:right;" type="submit" value="Supprimer le lien"/>';
-				echo '</form>';
-			echo '</td>';
-		echo '</tr></thead>';
-		echo '<tbody><tr>';
-			echo '<td class="tdLink">';
+	echo '<div id="link'.$count.'" class="ficheTandem">
+					Lien no '.$count.'
+					<form method="POST" onsubmit="return confirm(\'Etes vous sur de vouloir supprimer ce lien?\');" action="linkRequest.php?del=1">
+						<input name="id1" type="hidden" value="'.$rowLink->idFiche1.'"/>
+						<input name="id2" type="hidden" value="'.$rowLink->idFiche2.'"/>
+						<input style="float:right;" type="submit" value="Supprimer le lien"/>
+				</form><br/>';
+	echo '<div class="ficheTandemLeft">';
 				$idFiche=$rowLink->idFiche1;
 				require("../admin/showFiche.php");
-			echo '</td>';
-			echo '<td class="tdLink">';
+	echo '</div><div class="ficheTandemRight">';
 				$idFiche=$rowLink->idFiche2;
 				require("../admin/showFiche.php");
-			echo '</td>';
-		echo '</tr></tbody>';
-	echo '</table></div>';
+	echo '<div class="clear"></div></div>';
 	echo'<br/>';
 }
 

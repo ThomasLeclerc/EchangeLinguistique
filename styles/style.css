@@ -122,14 +122,13 @@ small{
 ***********	STYLES GENERAUX *************
 *****************************************/
 body{
-	margin:5px;
+	margin:0;
 	padding:0;
-	font-family:'Yanone KaffeesatzVerdana',Tahoma,"DejaVu Sans",sans-serif;
+	font-family:'Yanone Kaffeesatz', 'Verdana',Tahoma,"DejaVu Sans",sans-serif;
 }
 
 #content{
 	margin:50px;
-	text-align:center;
 }
 
 
@@ -159,6 +158,27 @@ body{
 
 #bande_gauche{
 	display:inline;
+}
+
+#bande_gauche li{    
+	float: left;
+    list-style-type: none;
+    margin: 
+}
+
+#bande_gauche li a{
+	text-decoration: none;
+	color:white;
+	display: block;
+	font-family: 'Yanone Kaffeesatz',Arial Narrow,Arial,Helvetica,sans-serif;
+	font-size: 1.5em;
+	height: 27px;
+	line-height: 30px;
+	padding: 5px 10px;
+}
+
+#bande_gauche li a:hover{
+	background-color: #5d5649;
 }
 
 
@@ -243,6 +263,19 @@ body{
 /*********************************************
 ***************** STYLE ADMIN ****************
 **********************************************/	
+#FichesTable td:first-child(){
+	width: 30%;
+}
+#FichesTable td:nth-child(2){
+	width: 60%;
+}
+#FichesTable td:nth-child(3){
+	width: 5%;
+}
+#FichesTable td:nth-child(4){
+	width: 5%;
+}
+
 #fiches>tbody>tr>td {
 	vertical-align: top;
 }
@@ -251,10 +284,12 @@ body{
 	border:solid 4px rgba(0,0,0,0.8);
 	border-radius:20px;
 	padding:20px;
+		background-color:rgba(190,240,162,0.5);
 }
 
 #FichesTable{
 	border-collapse: collapse;
+
 }
 
 #FichesTable>thead>tr>td{
@@ -301,7 +336,6 @@ body{
 }
 
 
-
 .ficheParticipant {
 	border:solid 2px black;
 	border-radius:10px;
@@ -324,30 +358,32 @@ body{
 	height : 40px;
 }
 
-.tableLink{
-	border-style:solid;
-	border-collapse:collapse;
-}
-.tdLink{
-	border-style:solid;
+
+/***************************************
+************* STYLE LINKS **************
+****************************************/
+.ficheTandem{
+	border:solid 3px black;
+	border-radius:15px;
+	padding:10px;
+	display:block;
 }
 
-#fiche{
-	width:100%
+.ficheTandemLeft ,.ficheTandemRight {
+	width:30%;
+	border:dotted 1px black;
+	display:inline-block;
+	float:left;
 }
 
-#FichesTable td:first-child(){
-	width: 30%;
+.clear{
+	clear:both;
+	float:none;
+	height:0;
 }
-#FichesTable td:nth-child(2){
-	width: 60%;
-}
-#FichesTable td:nth-child(3){
-	width: 5%;
-}
-#FichesTable td:nth-child(4){
-	width: 5%;
-}
+
+
+
 
 
 

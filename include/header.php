@@ -14,11 +14,11 @@
 	<body>
 		<div id="header">
 			<div id="bandeNoire">
-				<div id="bande_gauche">
-					<a href="<?=SHORT_RACINE?>index.php"><input type="button" value="Accueil" class="accueil" /></a>
-					<a href="<?=SHORT_RACINE?>admin/main.php"><input type="button" value="Admin" class="accueil" /></a>
-					<a href="<?=SHORT_RACINE?>admin/link.php"><input type="button" value="Liens" class="accueilAdmin" /></a>
-				</div>
+				<ul id="bande_gauche">
+					<li><a href="<?=SHORT_RACINE?>index.php">Accueil</a></li>
+					<li><a href="<?=SHORT_RACINE?>admin/main.php">Gestion des tandems</a></li>
+					<li><a href="<?=SHORT_RACINE?>admin/link.php">liens</a></li>
+				</ul>
 
 			</div>
 			<div id="bandeau"><img id="img_bandeau" src="<?=SHORT_RACINE?>Ressources/Images/bandeau.png"/>

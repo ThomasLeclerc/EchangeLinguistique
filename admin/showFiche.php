@@ -20,9 +20,9 @@
 		$queryLangue = SQL("Select * from LANGUE where idLangue=".$rowLangueMat->idLangue);
 		$rowLangue=$queryLangue->fetch_object();
 		if(!($rowLangue->imageDrapeau == null))
-			echo '<img class="flag" src="'.SHORT_RACINE.'styles/flags/'.$rowLangue->imageDrapeau.'" /> '.$rowLangue->libelleLangue;
+			echo '<img class="flag" src="'.SHORT_RACINE.'styles/flags/'.$rowLangue->imageDrapeau.'" /> '.$rowLangue->libelleLangue.'<br/>';
 		else
-			echo ' -- '.$rowLangue->libelleLangue;
+			echo ' -- '.$rowLangue->libelleLangue.'<br/>';
 	}
 	if($m>0)
 	{
