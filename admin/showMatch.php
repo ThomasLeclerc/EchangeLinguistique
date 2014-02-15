@@ -23,6 +23,7 @@
 					");
 	$nbMatch=$queryMatch->num_rows;
 	// on affiche les fleches de navigations uniquement s'il y a plusieurs matchs trouves
+
 	if($nbMatch>0)
 	{
 /*		echo '<table id="navigationMatch"><tr>';
@@ -41,13 +42,13 @@
 		$idFiche=$rowMatch->idFiche;
 		
 
-		//au 1er resultat on ouvre un fieldset
+		//au 1er resultat on ouvre une div
 		if($fs==0)
 		{
 			if($nbMatch==1)
-				echo '<fieldset><legend id="leg"><h5>1 fiche correspond</h5></legend>';
+				echo '<div class="ficheParticipant"><div id="leg"><h5>1 fiche correspond</h5></div>';
 			else
-				echo '<fieldset><legend id="leg"><table id="navigationMatch"><tr><td><input type="button" id="butAv" value="<" /></td><td><h5>1 / '.$nbMatch.'</h5></td><td><input id="butAp" type="button" value=">" /></td></tr></table></legend>';
+				echo '<div class="ficheParticipant"><div id="leg"><table id="navigationMatch"><tr><td><input type="button" id="butAv" value="<" /></td><td><h5>1 / '.$nbMatch.'</h5></td><td><input id="butAp" type="button" value=">" /></td></tr></table></div>';
 			$fs=1;
 			$m=1;
 		}
@@ -63,9 +64,9 @@
 		echo '<div class="dev" id="champID'.$i.'">'.$i.'</div>';
 		echo '</div>';
 	}
-	//si un fieldset a ete ouvert, on le ferme
+	//si une div a ete ouvert, on le ferme
 	if($fs==1){
-		echo '</fieldset>';
+		echo '</div>';
 		echo '<input id="butMatch" type="button" value="Associer" />';
 	}
 	echo '<div id="nbMatch" style="visibility:hidden;">'.$nbMatch.'</div>';

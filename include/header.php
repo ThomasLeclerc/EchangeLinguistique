@@ -13,32 +13,29 @@
 	</head>
 	<body>
 		<div id="header">
-		
-			<!--<div id="headerCLA">
-			<div id="h_left">
-				<a href="http://cla.univ-fcomte.fr/index.php" target="_blank"><img src="<?=SHORT_RACINE?>styles/logo-cla.jpg" /></a>
-				<a id="hrefuniv" href="http://www.univ-fcomte.fr"></a></div>			
-			</div>
-			<div id="h_mid"></div>
-			<div id="h_right"></div>-->
 			<div id="bandeNoire">
 				<div id="bande_gauche">
 					<a href="<?=SHORT_RACINE?>index.php"><input type="button" value="Accueil" class="accueil" /></a>
 					<a href="<?=SHORT_RACINE?>admin/main.php"><input type="button" value="Admin" class="accueil" /></a>
 					<a href="<?=SHORT_RACINE?>admin/link.php"><input type="button" value="Liens" class="accueilAdmin" /></a>
 				</div>
-				<div id="bande_milieu">
-					<h1><?=$titre?></h1>
-				</div>
+
+			</div>
+			<div id="bandeau"><img id="img_bandeau" src="<?=SHORT_RACINE?>Ressources/Images/bandeau.png"/>
+
+			</div>
+			<h1><?=$titre?></h1>
 			<?php if(isset($_SESSION['id'])) { ?>
-				<div id="bande_droite" class="droite">
+				<div id="deconnexion" class="droite">
 					<h3><?=$_SESSION['nom']?></h3>
 					<a href="<?=SHORT_RACINE?>logout.php" title="Se déconnecter">Se deconnecter</a>
 				</div>
-			<?php } ?>
-			</div>
-			<div id="bandeau"><img id="img_bandeau" src="<?=SHORT_RACINE?>Ressources/Images/bandeau.png"/></div>
+			
+			<?php } ?>	
+
+
 		</div>
-		<?//MessagesService::afficher();?>
+		
 		<div id="content">
+		
 		

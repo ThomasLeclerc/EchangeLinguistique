@@ -129,23 +129,29 @@ body{
 
 #content{
 	margin:50px;
+	text-align:center;
 }
 
 
 /**************************************
 *********** STYLE HEADER **************
 ***************************************/
+#header{
+    font-family: Verdana,Tahoma,"DejaVu Sans",sans-serif;
+    color: #333333;
+    font-size: 13px;
+    line-height: 1.5em;
+}
 
+#header>h1{
+	text-align:center;
+}
 
 #bandeNoire{
 	-moz-box-sizing: border-box;
     background-color: #000000;
     border-bottom: 3px solid #AFCB51;
-    color: #333333;
-    font-family: Verdana,Tahoma,"DejaVu Sans",sans-serif;
-    font-size: 13px;
     height: 40px;
-    line-height: 1.5em;
     overflow: visible;
     position: relative;
     z-index: 1000;
@@ -154,13 +160,7 @@ body{
 #bande_gauche{
 	display:inline;
 }
-#bande_milieu{
-	display:inline;
-	margin-left:20%;
-}
-#bande_droite{
-	display:inline;
-}
+
 
 #bandeau{
 	text-align:center;
@@ -171,9 +171,6 @@ body{
 	height:108px;
 	margin:auto;
 }
-
-
-
 
 
 #footer{
@@ -246,10 +243,14 @@ body{
 /*********************************************
 ***************** STYLE ADMIN ****************
 **********************************************/	
+#fiches>tbody>tr>td {
+	vertical-align: top;
+}
+
 #divFichesTable{
-	border:solid 2px rgba(0,0,0,0.8);
+	border:solid 4px rgba(0,0,0,0.8);
 	border-radius:20px;
-	padding:10px;
+	padding:20px;
 }
 
 #FichesTable{
@@ -259,14 +260,24 @@ body{
 #FichesTable>thead>tr>td{
 	border-bottom:solid 2px black;
 	padding-bottom: 5px;
+	font-weight:bold;
  	
 }
 #FichesTable thead tr td{
 	vertical-align: middle;
 }
 
+
 #FichesTable > tbody > tr:nth-child(even)		{ background-color:white; }
 #FichesTable > tbody > tr:nth-child(odd)		{ background-color:rgba(150,255,150,0.6) }
+
+
+#FichesTable > tbody >.ligneFicheSelected{
+	background-color:rgba(50,200,50,0.8) !important;
+}
+.ligneF{
+	cursor: pointer;
+}
 
 #FichesTable tbody tr{    
 		border-bottom: 3px solid rgba(50,50,50,0.5);
@@ -280,8 +291,6 @@ body{
 	cursor: pointer;
 }
 
-
-
 #FichesTable tbody tr td{
 	padding:5px;
 }
@@ -291,13 +300,19 @@ body{
 	height:16px;
 }
 
-.ligneFicheSelected{
-	background-color:rgba(120,150,120,0.7);
-}
-.ligneF{
-	cursor: pointer;
-}
 
+
+.ficheParticipant {
+	border:solid 2px black;
+	border-radius:10px;
+	padding:15px;
+	margin-left:20px;
+}
+.dev{
+	display:none;
+	width:
+	margin:auto;
+}
 
 
 
@@ -334,8 +349,6 @@ body{
 	width: 5%;
 }
 
-.dev{
-	display:none;
-}
+
 
 

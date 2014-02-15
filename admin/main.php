@@ -238,7 +238,7 @@ $(document).ready(function(){
 </div>
 </td>
 <td>
-<div id="hintFiche" style="visibility:hidden;"></div>
+<div id="hintFiche" class="ficheParticipant" style="visibility:hidden;"></div>
 </td>
 <td id="hintMatch" >
 </td>
