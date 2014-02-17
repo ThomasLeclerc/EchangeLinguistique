@@ -7,6 +7,17 @@
 	}else{
 		$complement = $_POST["complement"];
 	}
+
+	//vérification des champs vides
+	$verifResponse = '';
+	foreach($_POST as $cle=>$val)
+	{
+		if(empty($val)&&$cle!="complement")
+		{
+			echo 'Le champ ',$cle,' est obligatoire.<br />';
+		}
+	}
+
 	$result = SQL('INSERT INTO FICHE values(
 						null, 
 						"'.$_POST["nom"].'",	
