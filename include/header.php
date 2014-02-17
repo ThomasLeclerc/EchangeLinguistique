@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
-		HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1"> 
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 		<meta name="description" content=""/>
 		<title><?=$titre?> - Dynamic Web Project - </title>
 		<link rel="stylesheet" type="text/css" href="<?=SHORT_RACINE?>styles/style.css" />
@@ -28,7 +28,7 @@
 			<?php if(isset($_SESSION['id'])) { ?>
 				<div id="deconnexion" class="droite">
 					<h3><?=$_SESSION['nom']?></h3>
-					<a href="<?=SHORT_RACINE?>logout.php" title="Se déconnecter">Se deconnecter</a>
+					<a href="<?=SHORT_RACINE?>logout.php" title="Se dÃ©connecter">Se deconnecter</a>
 				</div>
 			
 			<?php } ?>	

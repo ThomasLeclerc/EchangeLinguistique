@@ -135,8 +135,8 @@ function Securisation_HTML(&$Groupe)
 }
 
 // On passe en revu POST et GET
-//Securisation_HTML($_POST);
-//Securisation_HTML($_GET);
+Securisation_HTML($_POST);
+Securisation_HTML($_GET);
 
 
 

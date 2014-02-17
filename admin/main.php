@@ -198,8 +198,8 @@ $(document).ready(function(){
 			$queryLanguePerf=SQL("select * from PERFECTIONNE where idFiche=".$row->idFiche);
 			$j = 0;
 			$k = 0;		
-			echo '<tr id="trLangue'.$row->idFiche.'" onclick="showFiche('.$row->idFiche.')" >';
-			echo '<td><table id="ligneLangue'.$row->idFiche.'" class="ligneF">';
+			echo '<tr id="trLangue'.$row->idFiche.'" class="ligneF" onclick="showFiche('.$row->idFiche.')" >';
+			echo '<td><table id="ligneLangue'.$row->idFiche.'">';
 			while($rowLangueMat=$queryLangueMat->fetch_object())
 			{
 				$j++;
@@ -211,7 +211,7 @@ $(document).ready(function(){
 				else
 					echo '<td>'.$rowFlag->libelleLangue.'</td></tr>';
 			}
-			echo '</tr></table></td><td><table id="ligne2Langue'.$row->idFiche.'" class="ligneF" >';
+			echo '</tr></table></td><td><table id="ligne2Langue'.$row->idFiche.'" >';
 			while($rowLanguePerf=$queryLanguePerf->fetch_object())
 			{
 				$k++;
@@ -229,8 +229,8 @@ $(document).ready(function(){
 				echo ')</td></tr>';
 			}
 			echo '</tr></table></td>';
-			echo '<td id="ligneAge'.$row->idFiche.'" class="ligneF">'.$row->age.'</td>';
-			echo '<td id="ligneSexe'.$row->idFiche.'" class="ligneF">'.$row->sexe.'</td>';
+			echo '<td id="ligneAge'.$row->idFiche.'" >'.$row->age.'</td>';
+			echo '<td id="ligneSexe'.$row->idFiche.'" >'.$row->sexe.'</td>';
 			echo '</tr>';
 		}
     ?></tbody>

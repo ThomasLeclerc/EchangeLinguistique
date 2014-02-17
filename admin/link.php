@@ -11,7 +11,7 @@ HTML_HEADER('Gestion des liens');
 
 </script>
 
-<div class="divFichesTable">
+<div class="divFichesTable" id="listeTandems">
 	<table class="FichesTable">
 	    <thead>
 	        <tr>
@@ -31,7 +31,7 @@ HTML_HEADER('Gestion des liens');
 	    ?>	    
 	    </tbody>
 	</table>
-</div>
+</div><BR/>
 <?php
 $queryLink = SQL("Select * from LINK");
 

@@ -144,7 +144,7 @@ $("#content").on("click", ".listeLangues", function() {
 	<legend><h4>Langues</h4></legend>
 		<table>
 			<tr>
-				<td>Quelle est votre langue maternelle ou <br/>la langue que vous parlez couramment ? <small>*</small> </td>
+				<td>Votre langue maternelle ou <br/>la langue que vous parlez couramment : <small>*</small> </td>
 				<td id="TdLangueMaternelle">
 					<select name="langueMaternelle[]" id="langueMaternelle" class="listeLangues" required>
 						<?=$htmlSelectLangue?>
@@ -156,7 +156,7 @@ $("#content").on("click", ".listeLangues", function() {
 			</tr>
 			<tr><td colspan="2"><hr></td></tr>
 			<tr>
-				<td>La langue que vous souhaitez perfectionner ? <small>*</small></td>
+				<td>La langue que vous souhaitez perfectionner, <br/>votre niveau et votre niveau dans le système européen : <small>*</small></td>
 				<td id="TdLanguePerfectionnement">
 					<div class="listLanguePerf">
 						<select name='languePerfectionnement[]' class="listeLangues" id="languePerfectionnement" required><?=$htmlSelectLangue?></select>
@@ -182,6 +182,11 @@ $("#content").on("click", ".listeLangues", function() {
 			</tr><tr>
 				<td colspan="2">
 				<a href="Ressources/Descripteur.pdf" target="_blank">(Système européen)</a> 
+				</td> 
+			</tr><tr>
+				<td colspan="2">
+				La langue qu vous parlez ou que vous voulez parler ne se trouve pas dans la liste ?<br/>
+				<a href="contact.php?subject=add" target="_blank">contactez nous</a> 
 				</td> 
 			</tr>
 			
