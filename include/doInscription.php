@@ -31,7 +31,7 @@
 						"'.$_POST["mail"].'", 
 						"'.$_POST["profession"].'", 
 						"'.$complement.'"),
-						null');
+						null, null');
 		
 	if($result==true){
 		echo "<div class='msg_0'>Votre inscription au tandem linguistique a bien été prise en compte. 
