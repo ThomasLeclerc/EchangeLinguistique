@@ -58,6 +58,7 @@ while($rowLink=$queryLink->fetch_object())
 				$idFiche=$rowLink->idFiche2;
 				require("../admin/showFiche.php");
 	echo '</div><div class="clear"></div>';
+	echo '<a href="tandems.php?a='.$rowLink->idFiche1.'&b='.$rowLink->idFiche2.'">Confirmer ce tandem</a>';
 	echo'<br/>';
 }
 

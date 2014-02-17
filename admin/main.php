@@ -190,7 +190,7 @@ $(document).ready(function(){
     </thead>
     <tbody><?php
 
-        $query=SQL("select * from FICHE where idLink is null group by idFiche order by idFiche asc");
+        $query=SQL("select * from FICHE where idLink is null and idTandem is null group by idFiche order by idFiche asc");
 
 		while($row=$query->fetch_object())
 		{

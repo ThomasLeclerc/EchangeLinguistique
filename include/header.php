@@ -16,8 +16,9 @@
 			<div id="bandeNoire">
 				<ul id="bande_gauche">
 					<li><a href="<?=SHORT_RACINE?>index.php">Accueil</a></li>
-					<li><a href="<?=SHORT_RACINE?>admin/main.php">Gestion des tandems</a></li>
-					<li><a href="<?=SHORT_RACINE?>admin/link.php">liens</a></li>
+					<li><a href="<?=SHORT_RACINE?>admin/main.php">Demandes</a></li>
+					<li><a href="<?=SHORT_RACINE?>admin/link.php">En attente</a></li>
+					<li><a href="<?=SHORT_RACINE?>admin/tandems.php">Tandems</a></li>
 				</ul>
 
 			</div>
