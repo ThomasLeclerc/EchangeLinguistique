@@ -13,7 +13,6 @@ body{
 
 body a{
 	color:rgba(0,20,0,1);
-	text-decoration: none;
 	font-weight:bold;
 }
 
@@ -405,6 +404,17 @@ margin-left: 20px;
 }
 
 
+/***************************************
+************* STYLE Contact ************
+****************************************/
+#divFormContact{
+	border:solid black 2px;
+	border-radius:15px;
+	padding : 20px;
+	width:40%;
+	margin:auto;
+	text-align:center;
+	background-color:#CED5D4;
 
-
+}
 
