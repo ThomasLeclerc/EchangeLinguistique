@@ -38,10 +38,7 @@ $queryTandems=SQL("select * from FICHE where idTandem is not null");
 while($rowTandems=$queryTandems->fetch_object())
 {
 	//si la fiche a deja ete affichee on passe a la suivante
-	if (in_array($rowTandems->idFiche, $fichesDejaAffichees))
-		break;
-	//sinon
-	else
+	if (!(in_array($rowTandems->idFiche, $fichesDejaAffichees)))
 	{
 		//on compte
 		$count++;
