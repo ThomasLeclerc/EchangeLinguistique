@@ -1,0 +1,16 @@
+Deny from all
+<Files main.php>
+	Allow from all
+</Files>
+
+<Files link.php>
+	Allow from all
+</Files>
+
+<Files tandems.php>
+	Allow from all
+</Files>
+
+<Files profile.php>
+	Allow from all
+</Files>

@@ -18,7 +18,7 @@
 					<li><a href="<?=SHORT_RACINE?>index.php">Accueil</a></li>
 					<?php 
 						if(isset($_SESSION['id'])) { 
-							$resultCountDemandes = SQL('Select count(*) as nbDemandes from FICHE where idLink is null');
+							$resultCountDemandes = SQL('Select count(*) as nbDemandes from FICHE where idLink is null and idTandem is null');
 							$resultCountLiens = SQL('Select count(*) as nbLiens from LINK');
 							$resultCountTandems = SQL('Select count(*) div 2 as nbTandems from FICHE where idTandem is not null');
 					?>
