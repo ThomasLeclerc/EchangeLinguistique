@@ -407,7 +407,11 @@ function sendEmail($expediteur, $destinataire, $sujet, $msg){
 
 	//=====Envoi de l'e-mail.
 	$check = mail($destinataire,$sujet,$message,$header);
-	var_dump($check);
+	if($check){
+		echo '<div class="msg_0">Votre message a bien été envoyé</div>'	;
+	}else{
+		echo '<div class="msg_1">Une erreur est survenue lors de l\'envoi de votre message</div>'	;
+	}
 	//==========
 
 }

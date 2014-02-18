@@ -16,21 +16,26 @@
 			<div id="bandeNoire">
 				<ul id="bande_gauche">
 					<li><a href="<?=SHORT_RACINE?>index.php">Accueil</a></li>
-					<li><a href="<?=SHORT_RACINE?>admin/main.php">Demandes</a></li>
-					<li><a href="<?=SHORT_RACINE?>admin/link.php">En attente</a></li>
-					<li><a href="<?=SHORT_RACINE?>admin/tandems.php">Tandems</a></li>
+					<?php if(isset($_SESSION['id'])) { ?>
+						<li><a href="<?=SHORT_RACINE?>admin/main.php">Demandes</a></li>
+						<li><a href="<?=SHORT_RACINE?>admin/link.php">En attente</a></li>
+						<li><a href="<?=SHORT_RACINE?>admin/tandems.php">Tandems</a></li>
+						<div id="deconnexion" class="droite">
+							<?=$_SESSION['nom']?>
+							<a href="<?=SHORT_RACINE?>logout.php" title="Se déconnecter">Se deconnecter</a>
+						</div>
+					<?php }else { ?>		
+						<li><a href="<?=SHORT_RACINE?>contact.php">Contact</a></li>
+					<?php } ?>	
 				</ul>
-
+				
 			</div>
 			<div id="bandeau"><img id="img_bandeau" src="<?=SHORT_RACINE?>Ressources/Images/bandeau.png"/>
 
 			</div>
 			<h1><?=$titre?></h1>
 			<?php if(isset($_SESSION['id'])) { ?>
-				<div id="deconnexion" class="droite">
-					<h3><?=$_SESSION['nom']?></h3>
-					<a href="<?=SHORT_RACINE?>logout.php" title="Se déconnecter">Se deconnecter</a>
-				</div>
+				
 			
 			<?php } ?>	
 

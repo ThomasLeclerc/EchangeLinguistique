@@ -5,11 +5,16 @@ require_once 'include/engine.php';
 HTML_HEADER('CONTACT');
 
 if(isset($_POST["subjectList"])&&isset($_POST["emailContact"])&&isset($_POST["emailContent"])&&isset($_POST["subjectList"])){
-	$msg = '<h2>'.$_POST["subjectList"].'</h2>';
-	$msg .= $_POST["emailContent"];
-	sendEmail($_POST["emailContact"], "leclercthomas@yahoo.fr", $_POST["subjectList"], $_POST["emailContent"]);
+	$subject = $_POST["subjectList"];
 	
-}else{
+	if($subject="propositionLangue"){
+		$msg = '<h2>Proposition de langue</h2>';
+		$msg .= 'Un utilisateur propose d\'ajouter la langue '.$_POST["langueProp"].'<br/>';
+		$msg .= $_POST["emailContent"];
+	}	
+	sendEmail($_POST["emailContact"], "leclercthomas@yahoo.fr", "Proposition de langue", $msg);
+	
+}
 ?>
 <script>
 $(document).ready(function(){
@@ -62,6 +67,6 @@ $(document).ready(function(){
 <br/>
 
 <?php
-}
+
 HTML_FOOTER();
 ?>

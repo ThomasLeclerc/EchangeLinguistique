@@ -25,6 +25,139 @@ body a:hover{
 	width:995px;
 	margin:auto;
 }
+#deconnexion{
+	padding-top: 5px;
+	padding-right:15px;
+}
+
+#deconnexion,#deconnexion a {
+	color:white;
+}
+.validate, .cancel {
+	padding:10px;
+	margin:0px 5px;
+}
+.validate {
+	color:green;
+}
+.cancel {
+	color:red;
+}
+
+.msg_0 {
+	/* Message OK */
+	background-color:#C7F2C6;
+	background-image:url(ok.gif);
+}
+.msg_1 {
+	/* Message ERREUR */
+	background-color:#F2C6CA;
+	background-image:url(error.gif);
+}
+.msg_2 {
+	/* Message INFORMATION */
+	background-color:#C6C7F2;
+	background-image:url(info.gif);
+}
+.msg_0, .msg_1, .msg_2 {
+	background-repeat:no-repeat;
+	background-position:10px 50%;
+	padding:10px 10px 10px 50px;
+	margin:10px 0px;
+	vertical-align:middle;
+}
+.largeInput input {
+	width:100%;
+}
+#h_left {
+    display: inline-block;
+    height: 150px;
+    vertical-align: top;
+    width: 320px;
+}
+#hrefuniv {
+    height: 70px;
+    left: 227px;
+    position: absolute;
+    top: 60px;
+    width: 100px;
+    z-index: 200;
+}
+
+
+/**************************************
+******* STYLE HEADER / FOOTER *********
+***************************************/
+#header{
+    font-family: Verdana,Tahoma,"DejaVu Sans",sans-serif;
+    color: #333333;
+    font-size: 13px;
+    line-height: 1.5em;
+}
+
+#header>h1{
+	text-align:center;
+}
+
+#bandeNoire{
+	-moz-box-sizing: border-box;
+    background-color: #000000;
+    border-bottom: 3px solid #AFCB51;
+    height: 40px;
+    overflow: visible;
+    position: relative;
+    z-index: 1000;
+}
+
+#bande_gauche{
+	display:inline;
+}
+
+#bande_gauche li{    
+	float: left;
+    list-style-type: none;
+    margin: 
+}
+
+#bande_gauche li a{
+	text-decoration: none;
+	color:white;
+	display: block;
+	font-family: 'Yanone Kaffeesatz',Arial Narrow,Arial,Helvetica,sans-serif;
+	font-size: 1.5em;
+	height: 27px;
+	line-height: 30px;
+	padding: 5px 10px;
+}
+
+#bande_gauche li a:hover{
+	background-color: #5d5649;
+}
+
+
+#bandeau{
+	text-align:center;
+}
+
+#img_bandeau {
+	width:995px;
+	height:108px;
+	margin:auto;
+}
+
+
+#footer{
+	text-align:center;
+}
+
+.droite{
+	float:right;
+}
+
+#footer{
+	position:relative;
+	font-style:italic;
+}
 
 /***************************************
 ***********	STYLE index.php ************
@@ -141,136 +274,6 @@ small{
 	
 }
 
-
-
-
-/**************************************
-*********** STYLE HEADER **************
-***************************************/
-#header{
-    font-family: Verdana,Tahoma,"DejaVu Sans",sans-serif;
-    color: #333333;
-    font-size: 13px;
-    line-height: 1.5em;
-}
-
-#header>h1{
-	text-align:center;
-}
-
-#bandeNoire{
-	-moz-box-sizing: border-box;
-    background-color: #000000;
-    border-bottom: 3px solid #AFCB51;
-    height: 40px;
-    overflow: visible;
-    position: relative;
-    z-index: 1000;
-}
-
-#bande_gauche{
-	display:inline;
-}
-
-#bande_gauche li{    
-	float: left;
-    list-style-type: none;
-    margin: 
-}
-
-#bande_gauche li a{
-	text-decoration: none;
-	color:white;
-	display: block;
-	font-family: 'Yanone Kaffeesatz',Arial Narrow,Arial,Helvetica,sans-serif;
-	font-size: 1.5em;
-	height: 27px;
-	line-height: 30px;
-	padding: 5px 10px;
-}
-
-#bande_gauche li a:hover{
-	background-color: #5d5649;
-}
-
-
-#bandeau{
-	text-align:center;
-}
-
-#img_bandeau {
-	width:995px;
-	height:108px;
-	margin:auto;
-}
-
-
-#footer{
-	text-align:center;
-}
-
-.droite{
-	float:right;
-}
-
-#footer{
-	position:relative;
-	font-style:italic;
-}
-
-.validate, .cancel {
-	padding:10px;
-	margin:0px 5px;
-}
-.validate {
-	color:green;
-}
-.cancel {
-	color:red;
-}
-
-.msg_0 {
-	/* Message OK */
-	background-color:#C7F2C6;
-	background-image:url(ok.gif);
-}
-.msg_1 {
-	/* Message ERREUR */
-	background-color:#F2C6CA;
-	background-image:url(error.gif);
-}
-.msg_2 {
-	/* Message INFORMATION */
-	background-color:#C6C7F2;
-	background-image:url(info.gif);
-}
-.msg_0, .msg_1, .msg_2 {
-	background-repeat:no-repeat;
-	background-position:10px 50%;
-	padding:10px 10px 10px 50px;
-	margin:10px 0px;
-	vertical-align:middle;
-}
-.largeInput input {
-	width:100%;
-}
-#h_left {
-    display: inline-block;
-    height: 150px;
-    vertical-align: top;
-    width: 320px;
-}
-#hrefuniv {
-    height: 70px;
-    left: 227px;
-    position: absolute;
-    top: 60px;
-    width: 100px;
-    z-index: 200;
-}
-
-	
-	
 	
 /*********************************************
 ***************** STYLE ADMIN ****************
