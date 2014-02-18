@@ -169,6 +169,7 @@ $(document).ready(function(){
 				{ id1: $idFiche1, id2 : $idFiche2}, 
 				function(returnedData){
 					console.log(returnedData);
+					location.reload();
 				}	);
 		}
 	});
