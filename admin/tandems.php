@@ -64,6 +64,7 @@ while($rowTandems=$queryTandems->fetch_object())
 		echo '<td>'.$rowT2->profession.'</td>';
 		echo '<td>'.$rowT2->numeroTelephone.'</td>';
 		echo '<td>'.$rowT2->mail.'</td>';
+		echo '<td><a href=""><input type="button" id="ButSuppTandem" /></a></td>';
 		echo '</tr>';
 		echo '</table>';
 		echo '<br />';

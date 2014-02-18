@@ -34,12 +34,6 @@
 
 			</div>
 			<h1><?=$titre?></h1>
-			<?php if(isset($_SESSION['id'])) { ?>
-				
-			
-			<?php } ?>	
-
-
 		</div>
 		
 		<div id="content">
