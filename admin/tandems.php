@@ -7,6 +7,45 @@ if(!isset($_SESSION['id']))
 // Entete
 HTML_HEADER('Tandems');
 
+?>
+<script>
+//click sur le bouton suppression
+function deleteTandem()
+{	
+
+	//on recupere les id des fiches a lier
+	$idFiche1 = $("#idFiche1").html();
+	$idFiche2 = $("#idFiche2").html();
+
+	//on affiche la confirm box
+	if(confirm("Ce tandem sera supprimé définitivement"))
+	{
+		$.post(	'tandemRequest.php',
+			{ id1: $idFiche1, id2 : $idFiche2, del : "false"}, 
+			function(returnedData){
+				console.log(returnedData);
+				//on affiche une 2e checkbox pour supprimer les fiches
+				if(confirm("Voulez-vous supprimer les fiches"))
+				{
+					$.post(	'tandemRequest.php',
+						{ id1: $idFiche1, id2 : $idFiche2, del : "true"}, 
+						function(returnedData){
+							console.log(returnedData);
+							location.reload();
+						}	);
+				}
+				else
+					location.reload();
+			}	);
+	}
+	
+
+
+
+}
+</script>
+<?php
+
 //si un paramètre est donné à la page
 //on traite la confirmation d'un tandem
 if(isset($_GET['a']))
@@ -64,9 +103,11 @@ while($rowTandems=$queryTandems->fetch_object())
 		echo '<td>'.$rowT2->profession.'</td>';
 		echo '<td>'.$rowT2->numeroTelephone.'</td>';
 		echo '<td>'.$rowT2->mail.'</td>';
-		echo '<td><a href=""><input type="button" id="ButSuppTandem" /></a></td>';
+		echo '<td><button type="button" onClick="deleteTandem();"><img src="../styles/delete.png" style="width:20px"></button></td>';
 		echo '</tr>';
 		echo '</table>';
+		echo '<div id="idFiche1" style="visibility:hidden">'.$rowTandems->idFiche.'</div>';
+		echo '<div id="idFiche2" style="visibility:hidden">'.$rowT2->idFiche.'</div>';
 		echo '<br />';
 		//on indique que ces fiches sont affichees
 		$fichesDejaAffichees[] = $rowTandems->idFiche;

@@ -19,6 +19,7 @@
 							)
 						and f.idFiche=pa.idFiche
 						and idLink is null
+						and idTandem is null
 						group by idFiche
 					");
 	$nbMatch=$queryMatch->num_rows;
