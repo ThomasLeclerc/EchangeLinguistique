@@ -383,8 +383,8 @@ function sendEmail($expediteur, $destinataire, $sujet, $msg){
 	 
 	 
 	//Création du header de l'e-mail.
-	$header = "From: \" \"".$expediteur.$passage_ligne;
-	$header.= "Reply-to: \" \" ".$expediteur.$passage_ligne;
+	$header = "From: ".$expediteur.$passage_ligne;
+	$header.= "Reply-to: ".$expediteur.$passage_ligne;
 	$header.= "MIME-Version: 1.0".$passage_ligne;
 	$header.= "Content-Type: multipart/alternative;".$passage_ligne." boundary=\"$boundary\"".$passage_ligne;
 	 
@@ -406,7 +406,7 @@ function sendEmail($expediteur, $destinataire, $sujet, $msg){
 	//==========
 
 	//=====Envoi de l'e-mail.
-	$check = mail($destinataire,$sujet,$message,$header);
+	$check = mail($destinataire,'Tandems Linguistiques : '.$sujet,$message,$header);
 	if($check){
 		echo '<div class="msg_0">Votre message a bien été envoyé</div>'	;
 	}else{

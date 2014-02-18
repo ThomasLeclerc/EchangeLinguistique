@@ -6,13 +6,33 @@ HTML_HEADER('CONTACT');
 
 if(isset($_POST["subjectList"])&&isset($_POST["emailContact"])&&isset($_POST["emailContent"])&&isset($_POST["subjectList"])){
 	$subject = $_POST["subjectList"];
-	
+	$resultMails = SQL('select emailUtilisateur from UTILISATEUR where recoitEmail=true');
 	if($subject="propositionLangue"){
 		$msg = '<h2>Proposition de langue</h2>';
-		$msg .= 'Un utilisateur propose d\'ajouter la langue '.$_POST["langueProp"].'<br/>';
+		$msg .= 'Un utilisateur propose d\'ajouter la langue <b>'.$_POST["langueProp"].'</b><br/><br/>';
+		$msg .= 'Commentaire : '.$_POST["emailContent"];
+		while($mails = $resultMails->fetch_object()){
+			sendEmail($_POST["emailContact"], $mails->emailUtilisateur, "Proposition de langue", $msg);
+		}
+	}else if($subject="retraitInscription"){
+		$msg = '<h2>Demande de retrait d\'inscription</h2>';
+		$msg .= $_POST["prenom"].' '.$_POST["nom"].' demande la suppression de sa candidature.<br/><br/>';
+		$msg .= 'Raisons : '.$_POST["emailContent"];
+		while($mails = $resultMails->fetch_object()){
+			sendEmail($_POST["emailContact"], $mails->emailUtilisateur, "Retrait de Candidature", $msg);
+		}
+	}else if($subject="autre"){
+		$msg = '<h2>Contact du gestionnaire</h2>';
 		$msg .= $_POST["emailContent"];
-	}	
-	sendEmail($_POST["emailContact"], "leclercthomas@yahoo.fr", "Proposition de langue", $msg);
+		while($mails = $resultMails->fetch_object()){
+			sendEmail($_POST["emailContact"], $mails->emailUtilisateur, "Message pour le gestionnaire", $msg);
+		}
+	}
+
+	
+
+		
+	
 	
 }
 ?>
@@ -24,9 +44,7 @@ $(document).ready(function(){
 		if($('#subjectList option:selected').val()=="propositionLangue"){
 			html = '<tr><td><Label for="langueProp">Langue à proposer : </label></td><td><input type="text" name="langueProp" id="langueProp"/></td></tr>	';		
 			html += ' <tr><td><Label for="emailContent">Commentaire : </label></td><td></td></tr><tr><td colspan=2><textarea name="emailContent" id="emailContent" style="width:100%;height:130px;"></textarea></td></tr>';
-		}else if($('#subjectList option:selected').val()=="retraitInscription"){
-			html = '<tr><td><Label for="nom">Votre nom : </label></td><td><input type="text" name="nom" id="nom"/></td></tr>';
-			html += 	' <tr><td><Label for="prenom">Votre prenom : </label></td><td><input type="text" name="prenom" id="prenom"/></td></tr>';		
+		}else if($('#subjectList option:selected').val()=="retraitInscription"){		
 			html += ' <tr><td><Label for="emailContent">Pourquoi nous quittez vous ? : </label></td><td></td></tr><tr><td colspan=2><textarea name="emailContent" id="emailContent" style="width:100%;height:130px;"></textarea></td></tr>';
 		}else if($('#subjectList option:selected').val()=="autre"){
 			html = '<tr><td><Label for="sujetAutre">Sujet : </label></td><td><input type="text" name="sujetAutre" id="sujetAutre"/></td></tr>';
@@ -43,7 +61,11 @@ $(document).ready(function(){
 	<form id="formContact" action="" method="POST">
 		<table id="tableContact">
 			<tr>
-				<td><Label for="email">votre email : </label></td><td><input type="email" name="emailContact" required/> </td>
+				<td><Label for="email">votre email : </label></td><td><input type="email" name="emailContact" id="emailContact" required/> </td>
+			</tr><tr>
+				<td><Label for="nom">votre nom : </label></td><td><input type="text" name="nom" id="nom" required/> </td>
+			</tr><tr>
+				<td><Label for="prenom">votre prénom : </label></td><td><input type="text" name="prenom" id="prenom" required/> </td>
 			</tr><tr>
 				<td><Label for="subjectList">Sujet : </label></td>
 				<td>
