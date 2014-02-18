@@ -54,11 +54,11 @@ while($rowLink=$queryLink->fetch_object())
 	echo '<div class="ficheTandemSeparee">';
 				$idFiche=$rowLink->idFiche1;
 				require("../admin/showFiche.php");
-	echo '</div><div class="ficheTandemSeparee">';
+	echo '<div class="ficheTandemSeparee">';
 				$idFiche=$rowLink->idFiche2;
 				require("../admin/showFiche.php");
 	echo '</div><div class="clear"></div>';
-	echo '<a href="tandems.php?a='.$rowLink->idFiche1.'&b='.$rowLink->idFiche2.'">Confirmer ce tandem</a>';
+	echo '<a href="tandems.php?a='.$rowLink->idFiche1.'&b='.$rowLink->idFiche2.'">Confirmer ce tandem</a></div>';
 	echo'<br/>';
 }
 
