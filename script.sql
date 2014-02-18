@@ -12,6 +12,8 @@ CREATE TABLE UTILISATEUR(
 	prenomUtilisateur varchar(30),
 	loginUtilisateur varchar(30),
 	password varchar(255),
+	emailUtilisateur varchar(255),
+	recoitEmail boolean,
 	PRIMARY KEY(idUtilisateur)
 )engine=InnoDB;
 
@@ -68,8 +70,8 @@ CREATE TABLE PERFECTIONNE(
 )engine=InnoDB;
 
 
-INSERT INTO UTILISATEUR values(null, "Leclerc", "Thomas", "tleclerc", sha1("quenelle"));
-INSERT INTO UTILISATEUR values(null, "Petracca", "Charlélie", "cpetracc", sha1("quenelle"));
+INSERT INTO UTILISATEUR values(null, "Leclerc", "Thomas", "tleclerc", sha1("quenelle"), "leclercthomas@yahoo.fr", true);
+INSERT INTO UTILISATEUR values(null, "Petracca", "Charlélie", "cpetracc", sha1("quenelle"), "charlelie.petracca@gmail.com", true);
 
 INSERT INTO LANGUE values(null, "Francais", "france.png");
 INSERT INTO LANGUE values(null, "Anglais", "royaume-uni.png");
