@@ -29,6 +29,7 @@
 			<?php if(isset($_SESSION['id'])) { ?>
 				<div id="deconnexion" class="droite">
 					<h3><?=$_SESSION['nom']?></h3>
+					<a href="<?=SHORT_RACINE?>admin/profil.php" title="Mon Profil">Mon Profil</a><br />
 					<a href="<?=SHORT_RACINE?>logout.php" title="Se déconnecter">Se deconnecter</a>
 				</div>
 			
