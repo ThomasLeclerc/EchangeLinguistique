@@ -3,6 +3,13 @@
 require_once 'include/engine.php';
 
 HTML_HEADER('CONTACT');
+
+if(isset($_POST["subjectList"])&&isset($_POST["emailContact"])&&isset($_POST["emailContent"])&&isset($_POST["subjectList"])){
+	$msg = '<h2>'.$_POST["subjectList"].'</h2>';
+	$msg .= $_POST["emailContent"];
+	sendEmail($_POST["emailContact"], "leclercthomas@yahoo.fr", $_POST["subjectList"], $_POST["emailContent"]);
+	
+}else{
 ?>
 <script>
 $(document).ready(function(){
@@ -28,12 +35,12 @@ $(document).ready(function(){
 
 <div id="divFormContact">
 	<h3>Des question ou des remarques ? Contactez nous.</h3>
-	<form id="formContact" action="">
+	<form id="formContact" action="" method="POST">
 		<table id="tableContact">
 			<tr>
 				<td><Label for="email">votre email : </label></td><td><input type="email" name="emailContact" required/> </td>
 			</tr><tr>
-				<td><Label for="sujet">Sujet : </label></td>
+				<td><Label for="subjectList">Sujet : </label></td>
 				<td>
 					<select name="subjectList" id="subjectList" required>
 						<option value="">
@@ -55,5 +62,6 @@ $(document).ready(function(){
 <br/>
 
 <?php
+}
 HTML_FOOTER();
 ?>
