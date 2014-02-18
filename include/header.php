@@ -16,10 +16,15 @@
 			<div id="bandeNoire">
 				<ul id="bande_gauche">
 					<li><a href="<?=SHORT_RACINE?>index.php">Accueil</a></li>
-					<?php if(isset($_SESSION['id'])) { ?>
-						<li><a href="<?=SHORT_RACINE?>admin/main.php">Demandes</a></li>
-						<li><a href="<?=SHORT_RACINE?>admin/link.php">En attente</a></li>
-						<li><a href="<?=SHORT_RACINE?>admin/tandems.php">Tandems</a></li>
+					<?php 
+						if(isset($_SESSION['id'])) { 
+							$resultCountDemandes = SQL('Select count(*) as nbDemandes from FICHE where idLink is null');
+							$resultCountLiens = SQL('Select count(*) as nbLiens from LINK');
+							$resultCountTandems = SQL('Select count(*) div 2 as nbTandems from FICHE where idTandem is not null');
+					?>
+						<li><a href="<?=SHORT_RACINE?>admin/main.php">Demandes (<?=$resultCountDemandes->fetch_object()->nbDemandes?>)</a></li>
+						<li><a href="<?=SHORT_RACINE?>admin/link.php">En attente (<?=$resultCountLiens->fetch_object()->nbLiens?>)</a></li>
+						<li><a href="<?=SHORT_RACINE?>admin/tandems.php">Tandems (<?=$resultCountTandems->fetch_object()->nbTandems?>)</a></li>
 						<div id="deconnexion" class="droite">
 							<?=$_SESSION['nom']?>
 							<a href="<?=SHORT_RACINE?>logout.php" title="Se déconnecter">Se deconnecter</a>

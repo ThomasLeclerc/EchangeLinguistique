@@ -16,11 +16,10 @@ if(isset($_POST['login'],$_POST['password']))
 		$_SESSION['id']=$compte->idUtilisateur;
 		$_SESSION['nom']=$compte->nomUtilisateur." ".$compte->prenomUtilisateur;
                 
-		//MessagesService::ajouter(MessagesService::OK, "Bienvenue ".$compte->prenomUtilisateur." ".$compte->nomUtilisateur);
 		REDIRECT('admin/main.php');
 	}
 	else
-		MessagesService::ajouter(MessagesService::ERREUR, "Les identifiants et le mot de passe ne se correspondent pas");
+		echo '<div class="msg_1">Login ou mot de passe incorrect</div>';
 }
 
 ?>
