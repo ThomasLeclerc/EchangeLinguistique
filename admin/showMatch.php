@@ -1,7 +1,7 @@
 <?php
     require_once("../include/engine.php");
 
-	$idFiche1 = $_GET["id"];
+	$idFiche1 = $_POST["id"];
 
 	$nbMatch=0;
 	$fs=0;

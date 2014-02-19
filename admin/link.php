@@ -8,6 +8,51 @@ if(!isset($_SESSION['id']))
 HTML_HEADER('Gestion des liens');
 ?>
 <script>
+function showFiche(id){
+
+
+	//selectLine(id);
+	 var resp;
+    xmlhttp=new XMLHttpRequest();
+    xmlhttp.onreadystatechange=function(){
+    	if (xmlhttp.readyState==4 && xmlhttp.status==200)
+        {
+           resp = xmlhttp.responseText;
+        }
+    }
+    xmlhttp.open("GET","showFiche.php?id="+id,true);
+    xmlhttp.send();
+    return resp;
+
+}
+	function showLink(id1, id2, idDivLink){
+		var html = '<div id="link'+idDivLink+'" class="ficheTandem">'+
+						'Lien n° +idDivLink+'+
+						'<form method="POST" onsubmit="return confirm(\'Etes vous sur de vouloir supprimer ce lien?\');" action="linkRequest.php?del=1">'+
+						'	<input name="id1" type="hidden" value="'+id1+'"/>'+
+						'	<input name="id2" type="hidden" value="'+id2+'"/>'+
+						'	<input style="float:right;" type="submit" value="Supprimer le lien"/>'+
+					'</form><br/>';		
+		$.post(	'showFiche.php',
+			{ id: id1}, 
+			function(returnedData){
+					html += '<div class="ficheTandemSeparee">';
+					html += 			returnedData;
+					$.post(	'showFiche.php',
+						{ id: id2}, 
+						function(returnedData2){
+							html += '<div class="ficheTandemSeparee">';
+							html += 			returnedData2;
+							html += '</div><div class="clear"></div>';
+							html += '<a href="tandems.php?a='+id1+'&b='+id1+'">Confirmer ce tandem</a></div>';
+							html += '<br/>';
+							$('#link').html(html);
+					});
+		});
+		
+
+	}
+
 
 </script>
 
@@ -20,47 +65,21 @@ HTML_HEADER('Gestion des liens');
 	    </thead>
 	    <tbody>
 	    <?php
-	    	$resultListLiens = SQL('SELECT f1.nomFiche as nom1, f2.nomFiche as nom2 from FICHE f1, FICHE f2, LINK l where f1.idFiche=l.idFiche1 and f2.idFiche=l.idFiche2');
+	    	$resultListLiens = SQL('SELECT f1.nomFiche as nom1, f1.idFiche as idFiche1, f2.idFiche as idFiche2, f2.nomFiche as nom2 from FICHE f1, FICHE f2, LINK l where f1.idFiche=l.idFiche1 and f2.idFiche=l.idFiche2');
 			$count=0;	     
 	      while($ligneLien=$resultListLiens->fetch_object()){
 	      	$count++;
-	      	echo '<tr>
+	      	echo '<tr class="ligneLien" id="lien'.$count.'" onclick="showLink('.$ligneLien->idFiche1.', '.$ligneLien->idFiche2.', '.$count.');">
 	      				<td> '.$ligneLien->nom1.' - '.$ligneLien->nom2.' </td>
 	      			</tr>';
 	      }
 	    ?>	    
 	    </tbody>
 	</table>
-</div><BR/>
+</div>
+<div id="link">
 <?php
-$queryLink = SQL("Select * from LINK");
 
-$count=0;
-while($rowLink=$queryLink->fetch_object())
-{
-/*	$queryFiche1 = SQL("Select * from FICHE where idFiche=".$rowLink->idFiche1);
-	$queryFiche2 = SQL("Select * from FICHE where idFiche=".$rowLink->idFiche2);
-	$rowFiche1=$queryFiche1->fetch_object();
-	$rowFiche2=$queryFiche2->fetch_object();
-*/	
-	$count++;
-	echo '<div id="link'.$count.'" class="ficheTandem">
-					Lien no '.$count.'
-					<form method="POST" onsubmit="return confirm(\'Etes vous sur de vouloir supprimer ce lien?\');" action="linkRequest.php?del=1">
-						<input name="id1" type="hidden" value="'.$rowLink->idFiche1.'"/>
-						<input name="id2" type="hidden" value="'.$rowLink->idFiche2.'"/>
-						<input style="float:right;" type="submit" value="Supprimer le lien"/>
-				</form><br/>';
-	echo '<div class="ficheTandemSeparee">';
-				$idFiche=$rowLink->idFiche1;
-				require("../admin/showFiche.php");
-	echo '<div class="ficheTandemSeparee">';
-				$idFiche=$rowLink->idFiche2;
-				require("../admin/showFiche.php");
-	echo '</div><div class="clear"></div>';
-	echo '<a href="tandems.php?a='.$rowLink->idFiche1.'&b='.$rowLink->idFiche2.'">Confirmer ce tandem</a></div>';
-	echo'<br/>';
-}
 
 
 

@@ -25,33 +25,24 @@ function selectLine(id)
 function showFiche(id){
 
 	selectLine(id);
+	
+	$.post(	'showFiche.php',
+		{ id: id}, 
+		function(returnedData){
+			$('#hintFiche').html(returnedData);
+			document.getElementById("hintFiche").style.visibility="visible";
+			showMatch(id);
+	});
 
-    xmlhttp=new XMLHttpRequest();
-    xmlhttp.onreadystatechange=function(){
-    	if (xmlhttp.readyState==4 && xmlhttp.status==200)
-        {
-            document.getElementById("hintFiche").innerHTML=xmlhttp.responseText;
-        }
-    }
-    xmlhttp.open("GET","showFiche.php?id="+id,true);
-    xmlhttp.send();
-
-	document.getElementById("hintFiche").style.visibility="visible";
-	showMatch(id);
 }
 function showMatch(id){
 
-	xmlhttp2=new XMLHttpRequest();
-    xmlhttp2.onreadystatechange=function(){
-    	if (xmlhttp2.readyState==4 && xmlhttp2.status==200)
-        {
-            document.getElementById("hintMatch").innerHTML=xmlhttp2.responseText;
-        }
-    }
-    xmlhttp2.open("GET","showMatch.php?id="+id,true);
-    xmlhttp2.send();
-
-	document.getElementById("hintMatch").style.visibility="visible";
+	$.post(	'showMatch.php',
+		{ id: id}, 
+		function(returnedData){
+			$('#hintMatch').html(returnedData);
+			document.getElementById("hintMatch").style.visibility="visible";
+	});
 }
 
 $(document).ready(function(){

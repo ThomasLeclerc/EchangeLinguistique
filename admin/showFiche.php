@@ -2,7 +2,7 @@
     require_once("../include/engine.php");
 	if(!(isset($idFiche)))
 	{
-		$idFiche = $_GET["id"];
+		$idFiche = $_POST["id"];
 		$i=$idFiche;
 	}	
 	$query = SQL("Select * from FICHE where idFiche =".$idFiche);
