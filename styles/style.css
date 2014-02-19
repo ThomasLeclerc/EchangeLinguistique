@@ -404,7 +404,15 @@ margin-left: 20px;
 
 #listeTandems{
 	width:20%;
+	display:inline-block;
+	float:left;
 }
+
+#link{
+	display:inline-block;
+	width:70%;
+}
+
 
 
 /***************************************

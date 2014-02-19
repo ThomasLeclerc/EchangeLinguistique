@@ -27,12 +27,8 @@ function showFiche(id){
 }
 	function showLink(id1, id2, idDivLink){
 		var html = '<div id="link'+idDivLink+'" class="ficheTandem">'+
-						'Lien n° +idDivLink+'+
-						'<form method="POST" onsubmit="return confirm(\'Etes vous sur de vouloir supprimer ce lien?\');" action="linkRequest.php?del=1">'+
-						'	<input name="id1" type="hidden" value="'+id1+'"/>'+
-						'	<input name="id2" type="hidden" value="'+id2+'"/>'+
-						'	<input style="float:right;" type="submit" value="Supprimer le lien"/>'+
-					'</form><br/>';		
+						'Lien n° '+idDivLink;
+								
 		$.post(	'showFiche.php',
 			{ id: id1}, 
 			function(returnedData){
@@ -44,8 +40,12 @@ function showFiche(id){
 							html += '<div class="ficheTandemSeparee">';
 							html += 			returnedData2;
 							html += '</div><div class="clear"></div>';
-							html += '<a href="tandems.php?a='+id1+'&b='+id1+'">Confirmer ce tandem</a></div>';
-							html += '<br/>';
+							html += '<a href="tandems.php?a='+id1+'&b='+id1+'"><input type="button" class="validate" value="Valider ce tandem"</a>';
+							html += '<form method="POST" onsubmit="return confirm(\'Etes vous sur de vouloir supprimer ce lien?\');"  action="linkRequest.php?del=1">'+
+										'	<input name="id1" type="hidden" value="'+id1+'"/>'+
+										'	<input name="id2" type="hidden" value="'+id2+'"/>'+
+										'	<input style="float:right;" type="submit" value="Supprimer le lien" class="cancel"/>'+
+										'</form></div>';
 							$('#link').html(html);
 					});
 		});
@@ -77,7 +77,8 @@ function showFiche(id){
 	    </tbody>
 	</table>
 </div>
-<div id="link">
+<div id="link"></div>
+<div class="clear"></div>
 <?php
 
 
