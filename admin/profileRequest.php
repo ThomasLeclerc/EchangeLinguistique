@@ -10,6 +10,7 @@ $idUtilisateur=$_SESSION['id'];
 $nomUtilisateur=$_POST['nomProfil'];
 $prenomUtilisateur=$_POST['prenomProfil'];
 $loginUtilisateur=$_POST['loginProfil'];
+$emailUtilisateur=$_POST['emailProfil'];
 $mdpUtilisateur=$_POST['mdpProfil'];
 $mdpUtilisateur1=$_POST['newMdpProfil'];
 $mdpUtilisateur2=$_POST['newMdpProfil2'];
@@ -29,6 +30,7 @@ if($mdpUtilisateur1!="")
 			SET nomUtilisateur='".$nomUtilisateur."',
 				prenomUtilisateur='".$prenomUtilisateur."',
 				loginUtilisateur='".$loginUtilisateur."',
+				emailUtilisateur='".$emailUtilisateur."',
 				password='".hash("sha1",$mdpUtilisateur1)."'
 			WHERE idUtilisateur=".$idUtilisateur
 		);
@@ -49,6 +51,7 @@ else
 		SET nomUtilisateur='".$nomUtilisateur."',
 			prenomUtilisateur='".$prenomUtilisateur."',
 			loginUtilisateur='".$loginUtilisateur."'
+			emailUtilisateur='".$emailUtilisateur."'
 		WHERE idUtilisateur=".$idUtilisateur
 	);
 }
