@@ -40,7 +40,7 @@ function showFiche(id){
 							html += '<div class="ficheTandemSeparee">';
 							html += 			returnedData2;
 							html += '</div><div class="clear"></div>';
-							html += '<a href="tandems.php?a='+id1+'&b='+id1+'"><input type="button" class="validate" value="Valider ce tandem"</a>';
+							html += '<a href="tandems.php?a='+id1+'&b='+id2+'"><input type="button" class="validate" value="Valider ce tandem"</a>';
 							html += '<form method="POST" onsubmit="return confirm(\'Etes vous sur de vouloir supprimer ce lien?\');"  action="linkRequest.php?del=1">'+
 										'	<input name="id1" type="hidden" value="'+id1+'"/>'+
 										'	<input name="id2" type="hidden" value="'+id2+'"/>'+
