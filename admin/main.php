@@ -8,7 +8,22 @@ if(!isset($_SESSION['id']))
 HTML_HEADER('Administration');
 ?>
 <script>
-
+function deleteFiche(id)
+{
+	$idFiche=id;
+	//on affiche la confirm box
+	if(confirm("Ce tandem sera supprimé définitivement"))
+	{
+		$.post(	'delFiche.php',
+			{ num: $idFiche }, 
+			function(returnedData)
+			{
+				console.log(returnedData);
+				location.reload();
+			}
+		);
+	}
+}
 function selectLine(id)
 {
 	var id2 = $("#lastLineClicked").html();
@@ -223,6 +238,7 @@ $(document).ready(function(){
 			echo '</tr></table></td>';
 			echo '<td id="ligneAge'.$row->idFiche.'" >'.$row->age.'</td>';
 			echo '<td id="ligneSexe'.$row->idFiche.'" >'.$row->sexe.'</td>';
+			echo '<td><button type="button" onClick="deleteFiche('.$row->idFiche.');"><img src="../styles/delete.png" style="width:20px"></button></td>';
 			echo '</tr>';
 		}
     ?></tbody>

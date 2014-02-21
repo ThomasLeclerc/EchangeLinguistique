@@ -10,9 +10,14 @@ $idUtilisateur=$_SESSION['id'];
 $nomUtilisateur=$_POST['nomProfil'];
 $prenomUtilisateur=$_POST['prenomProfil'];
 $loginUtilisateur=$_POST['loginProfil'];
+$emailUtilisateur=$_POST['emailProfil'];
 $mdpUtilisateur=$_POST['mdpProfil'];
 $mdpUtilisateur1=$_POST['newMdpProfil'];
 $mdpUtilisateur2=$_POST['newMdpProfil2'];
+if(isset($_POST['recoitEmail']))
+	$mail="true";
+else
+	$mail="false";
 // Si changement de mdp
 if($mdpUtilisateur1!="")
 {
@@ -29,6 +34,8 @@ if($mdpUtilisateur1!="")
 			SET nomUtilisateur='".$nomUtilisateur."',
 				prenomUtilisateur='".$prenomUtilisateur."',
 				loginUtilisateur='".$loginUtilisateur."',
+				emailUtilisateur='".$emailUtilisateur."',
+				recoitEmail=".$mail.",
 				password='".hash("sha1",$mdpUtilisateur1)."'
 			WHERE idUtilisateur=".$idUtilisateur
 		);
@@ -48,7 +55,9 @@ else
 		UPDATE UTILISATEUR
 		SET nomUtilisateur='".$nomUtilisateur."',
 			prenomUtilisateur='".$prenomUtilisateur."',
-			loginUtilisateur='".$loginUtilisateur."'
+			loginUtilisateur='".$loginUtilisateur."',
+			recoitEmail=".$mail.",
+			emailUtilisateur='".$emailUtilisateur."'
 		WHERE idUtilisateur=".$idUtilisateur
 	);
 }

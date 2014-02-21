@@ -26,6 +26,8 @@
 						<li><a href="<?=SHORT_RACINE?>admin/main.php">Demandes (<?=$resultCountDemandes->fetch_object()->nbDemandes?>)</a></li>
 						<li><a href="<?=SHORT_RACINE?>admin/link.php">En attente (<?=$resultCountLiens->fetch_object()->nbLiens?>)</a></li>
 						<li><a href="<?=SHORT_RACINE?>admin/tandems.php">Tandems (<?=$resultCountTandems->fetch_object()->nbTandems?>)</a></li>
+						<li><a href="<?=SHORT_RACINE?>admin/langues.php">Langues</a></li>
+						<li><a href="<?=SHORT_RACINE?>admin/user.php">Utilisateurs</a></li>
 						<div id="deconnexion" class="droite">
 							<?=$_SESSION['nom']?>
 							<a href="<?=SHORT_RACINE?>logout.php" title="Se déconnecter">Se deconnecter</a>
