@@ -5,34 +5,34 @@ require_once 'include/engine.php';
 HTML_HEADER('CONTACT');
 
 if(isset($_POST["subjectList"])&&isset($_POST["emailContact"])&&isset($_POST["emailContent"])&&isset($_POST["subjectList"])){
-	$subject = $_POST["subjectList"];
-	$resultMails = SQL('select emailUtilisateur from UTILISATEUR where recoitEmail=true');
-	if($subject="propositionLangue"){
-		$msg = '<h2>Proposition de langue</h2>';
-		$msg .= 'Un utilisateur propose d\'ajouter la langue <b>'.$_POST["langueProp"].'</b><br/><br/>';
-		$msg .= 'Commentaire : '.$_POST["emailContent"];
-		while($mails = $resultMails->fetch_object()){
-			sendEmail($_POST["emailContact"], $mails->emailUtilisateur, "Proposition de langue", $msg);
+	//on test le champ invisible age pour contrer les robots	
+	if(empty($_POST['age'])) {
+		$subject = $_POST["subjectList"];
+		$resultMails = SQL('select emailUtilisateur from UTILISATEUR where recoitEmail=true');
+		if($subject="propositionLangue"){
+			$msg = '<h2>Proposition de langue</h2>';
+			$msg .= 'Un utilisateur propose d\'ajouter la langue <b>'.$_POST["langueProp"].'</b><br/><br/>';
+			$msg .= 'Commentaire : '.$_POST["emailContent"];
+			while($mails = $resultMails->fetch_object()){
+				sendEmail($_POST["emailContact"], $mails->emailUtilisateur, "Proposition de langue", $msg);
+			}
+		}else if($subject="retraitInscription"){
+			$msg = '<h2>Demande de retrait d\'inscription</h2>';
+			$msg .= $_POST["prenom"].' '.$_POST["nom"].' demande la suppression de sa candidature.<br/><br/>';
+			$msg .= 'Raisons : '.$_POST["emailContent"];
+			while($mails = $resultMails->fetch_object()){
+				sendEmail($_POST["emailContact"], $mails->emailUtilisateur, "Retrait de Candidature", $msg);
+			}
+		}else if($subject="autre"){
+			$msg = '<h2>Contact du gestionnaire</h2>';
+			$msg .= $_POST["emailContent"];
+			while($mails = $resultMails->fetch_object()){
+				sendEmail($_POST["emailContact"], $mails->emailUtilisateur, "Message pour le gestionnaire", $msg);
+			}
 		}
-	}else if($subject="retraitInscription"){
-		$msg = '<h2>Demande de retrait d\'inscription</h2>';
-		$msg .= $_POST["prenom"].' '.$_POST["nom"].' demande la suppression de sa candidature.<br/><br/>';
-		$msg .= 'Raisons : '.$_POST["emailContent"];
-		while($mails = $resultMails->fetch_object()){
-			sendEmail($_POST["emailContact"], $mails->emailUtilisateur, "Retrait de Candidature", $msg);
-		}
-	}else if($subject="autre"){
-		$msg = '<h2>Contact du gestionnaire</h2>';
-		$msg .= $_POST["emailContent"];
-		while($mails = $resultMails->fetch_object()){
-			sendEmail($_POST["emailContact"], $mails->emailUtilisateur, "Message pour le gestionnaire", $msg);
-		}
+	}else {
+		echo '<div class="msg_0">Votre message a bien été envoyé</div>'	;
 	}
-
-	
-
-		
-	
 	
 }
 ?>
@@ -80,8 +80,12 @@ $(document).ready(function(){
 		</table>	<br/><br/>
 		<table id="tableContact2">
 		
+
 		</table>
-			
+		<!-- Le champs age est la pour tester les bots de spam. -->
+		<!--Le champs age n'est pas visible. -->
+		<!--Si il est quand même rempli on n'evoie pas de mail  -->
+		<label for="age" class="monAge">votre age: <input type="text" name="age" id="age"></label>	
 		<input type="submit" value="Envoyer" class="validate"/>
 	</form>
 
