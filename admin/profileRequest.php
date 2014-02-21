@@ -50,7 +50,7 @@ else
 		UPDATE UTILISATEUR
 		SET nomUtilisateur='".$nomUtilisateur."',
 			prenomUtilisateur='".$prenomUtilisateur."',
-			loginUtilisateur='".$loginUtilisateur."'
+			loginUtilisateur='".$loginUtilisateur."',
 			emailUtilisateur='".$emailUtilisateur."'
 		WHERE idUtilisateur=".$idUtilisateur
 	);
