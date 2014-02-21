@@ -8,7 +8,7 @@ $htmlSelectLangue = "<option value=''>";
 while($resultat=$result->fetch_object()){
 	$htmlSelectLangue .= "<option value='".$resultat->idLangue."'>".$resultat->libelleLangue;
 }
-$htmlSelectLangue .= "<option value='new'>Autre ..."
+
 
 ?>
 <script>	
@@ -72,8 +72,8 @@ $(document).ready(function(){
 	
 	
 	function newListLangueMat(){
-		var Html = "<div class='listLangueMat'>";
-		Html += "<select name='langueMaternelle[]' id='langueMaternelle"+idMat+"' class='listeLangues'><?=$htmlSelectLangue?></select>";
+		var Html = "<div class='divListLangueMat'>";
+		Html += "<select name='langueMaternelle[]' id='langueMaternelle"+idMat+"' class='listeLangueMat'><?=$htmlSelectLangue?></select>";
 		Html += "</select>";	
 	
 		Html += "<input type='button' value='-' id='deleteLangueMat"+idMat+"' title='Supprimer cette langue' alt='Supprimer cette langue' onclick='deleteLangueMat("+idMat+");'/>";		
@@ -83,8 +83,8 @@ $(document).ready(function(){
 	}
 	
 	function newListLanguePerf(){
-		var Html = "<div class='listLanguePerf'>";
-		Html += "<select name='languePerfectionnement[]' id='languePerfectionnement"+idPerf+"' class='listeLangues' ><?=$htmlSelectLangue?></select>";
+		var Html = "<div class='divListLanguePerf'>";
+		Html += "<select name='languePerfectionnement[]' id='languePerfectionnement"+idPerf+"' class='listeLanguePerf' ><?=$htmlSelectLangue?></select>";
 		Html += "<select name='niveauLanguePerfectionnement[]"+idPerf+"' id='niveauLanguePerfectionnement"+idPerf+"' >";
 		Html += "	<option value='Debutant'>débutant";
 		Html += "	<option value='Intermediaire'>intermédiaire";	
@@ -118,16 +118,58 @@ $(document).ready(function(){
 	
 });
 
-$("#content").on("click", ".listeLangues", function() {
-   $( ".listeLangues" ).change(function() {		
-		var idOption = $(this).attr("id");
-		var option = $( "#"+idOption+" option:selected" ).val();	
-		if(option=="new"){
-			$("#"+idOption+"New").html("<input type='text' name='"+idOption+"NewInput' id='"+idOption+"NewInput' placeholder='autre langue' size=10/>");
-		}else{
-			$("#"+idOption+"New").html("");
-		}
+$("#content").on("click", ".listeLangueMat", function() {
+   $( ".listeLangueMat" ).change(function() {	
+		var idSelect = $(this).attr("id");
+		var option = $( "#"+idSelect+" option:selected" ).val();	
+		var optionOtherList;
+		
+		$('#msgLangueMat').html('');
+		$("#TdLangueMaternelle").css("background-color","rgba(255,255,255,1)");	
+		
+		$(".listeLangueMat").each(function(index, list){
+			optionOtherList = $( "#"+$(list).attr("id")+" option:selected" ).val();
+			if(optionOtherList==option&&$(list).attr("id")!=idSelect){
+				$('#msgLangueMat').html('Vous ne pouvez pas sélectionner<br/>deux fois la même langue');
+				$("#TdLangueMaternelle").css("background-color","rgba(255,150,150,0.8)");
+			}
+		});	
+		$(".listeLanguePerf").each(function(index, list){
+			optionOtherList = $( "#"+$(list).attr("id")+" option:selected" ).val();
+			if(optionOtherList==option&&$(list).attr("id")!=idSelect){
+				$('#msgLangueMat').html('Vous ne pouvez pas parler couramment une<br/> langue que vous souhaitez perfectionner');
+				$("#TdLangueMaternelle").css("background-color","rgba(255,150,150,0.8)");
+			}
+		});	 
 	});
+	
+});
+
+$("#content").on("click", ".listeLanguePerf", function() {
+   $( ".listeLanguePerf" ).change(function() {	
+		var idSelect = $(this).attr("id");
+		var option = $( "#"+idSelect+" option:selected" ).val();	
+		var optionOtherList;
+		
+		$('#msgLanguePerf').html('');
+		$("#TdLanguePerfectionnement").css("background-color","rgba(255,255,255,1)");	
+		
+		$(".listeLanguePerf").each(function(index, list){
+			optionOtherList = $( "#"+$(list).attr("id")+" option:selected" ).val();
+			if(optionOtherList==option&&$(list).attr("id")!=idSelect){
+				$('#msgLanguePerf').html('Vous ne pouvez pas sélectionner deux fois la même langue');
+				$("#TdLanguePerfectionnement").css("background-color","rgba(255,150,150,0.8)");
+			}
+		});	
+		$(".listeLangueMat").each(function(index, list){
+			optionOtherList = $( "#"+$(list).attr("id")+" option:selected" ).val();
+			if(optionOtherList==option&&$(list).attr("id")!=idSelect){
+				$('#msgLanguePerf').html('Vous ne pouvez pas perfectionner une langue parlée couramment');
+				$("#TdLanguePerfectionnement").css("background-color","rgba(255,150,150,0.8)");
+			}
+		});	  
+	});
+	
 });
 
 
@@ -138,7 +180,7 @@ $("#content").on("click", ".listeLangues", function() {
 <div id="FormulaireInscr">
 	<h2>Demande pour un tandem linguistique</h2>
 	<!--<form action="include/validation.php" method=post id="form_inscription">-->
-	<form action="include/verifMail.php" method="post" id="form_inscription">
+	<form action="include/doInscription.php" method="post" id="form_inscription">
 	<small>* champs obligatoires  </small>
 	<fieldset>
 	<legend><h4>Langues</h4></legend>
@@ -146,11 +188,11 @@ $("#content").on("click", ".listeLangues", function() {
 			<tr>
 				<td>Votre langue maternelle ou <br/>la langue que vous parlez couramment : <small>*</small> </td>
 				<td id="TdLangueMaternelle">
-					<select name="langueMaternelle[]" id="langueMaternelle" class="listeLangues" required>
+					<select name="langueMaternelle[]" id="langueMaternelle" class="listeLangueMat" required>
 						<?=$htmlSelectLangue?>
 					</select>
 					
-					<input type="button" id="ajouterLangueMat" title="Langue supplémentaire" value="+"/> <br/>
+					<input type="button" id="ajouterLangueMat" title="Langue supplémentaire" value="+"/> <div id="msgLangueMat" class="invalid_field"></div><br/>
 					<div id="langueMaternelleNew"></div>
 				</td>
 			</tr>
@@ -158,8 +200,9 @@ $("#content").on("click", ".listeLangues", function() {
 			<tr>
 				<td>La langue que vous souhaitez perfectionner, <br/>votre niveau et votre niveau dans le système européen : <small>*</small></td>
 				<td id="TdLanguePerfectionnement">
-					<div class="listLanguePerf">
-						<select name='languePerfectionnement[]' class="listeLangues" id="languePerfectionnement" required><?=$htmlSelectLangue?></select>
+					<div id="msgLanguePerf" class="invalid_field"></div> <br/>
+					<div class="divListLanguePerf">
+						<select name='languePerfectionnement[]' class="listeLanguePerf" id="languePerfectionnement" required><?=$htmlSelectLangue?></select>
 						<select name='niveauLanguePerfectionnement[]' id='niveauLanguePerfectionnement'>
 							<option value='débutant'>débutant
 							<option value='intermédiaire'>intermédiaire
@@ -175,8 +218,7 @@ $("#content").on("click", ".listeLangues", function() {
 							<option value='C1'>C1
 							<option value='C2'>C2
 						</select><input type="button" id="ajouterLanguePerf" title="Autre langue" alt="Autre langue" value="+"/><br/>
-					
-						<div id="languePerfectionnementNew"></div>
+						
 					</div>
 				</td>
 			</tr><tr>

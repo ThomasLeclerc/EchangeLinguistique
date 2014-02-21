@@ -24,6 +24,7 @@ body a:hover{
 	font-size: 12px;
 	width:995px;
 	margin:auto;
+	min-height:90%;
 }
 #deconnexion{
 	padding-top: 5px;
@@ -257,7 +258,7 @@ body a:hover{
 	font-family:Verdana,Tahoma,"DejaVu Sans",sans-serif;
 }
 
-#tdMail{
+#tdMail, #TdLangueMaternelle, #TdLanguePerfectionnement{
 	border-radius:10px;
 	vertical-align: middle;
 	padding:15px 15px;
@@ -384,7 +385,7 @@ margin-left: 20px;
 	border-radius:15px;
 	padding:10px;
 	display:block;
-	width:70%;
+	width:100%;
 }
 
 .ficheTandemSeparee {
@@ -410,7 +411,7 @@ margin-left: 20px;
 
 #link{
 	display:inline-block;
-	width:70%;
+	width:75%;
 }
 
 

@@ -15,6 +15,7 @@ if(isset($_POST['login'],$_POST['password']))
 		$compte=$requete->fetch_object();
 		$_SESSION['id']=$compte->idUtilisateur;
 		$_SESSION['nom']=$compte->nomUtilisateur." ".$compte->prenomUtilisateur;
+		$_SESSION['email']=$compte->emailUtilisateur;
                 
 		REDIRECT('admin/main.php');
 	}

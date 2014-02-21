@@ -59,7 +59,7 @@ function Gestionnaire_Erreurs($errno="", $errstr="", $errfile="", $errline="",$e
 }
 
 // Associe le gestionnaire d'erreur
-set_error_handler("Gestionnaire_Erreurs", E_ALL);
+//set_error_handler("Gestionnaire_Erreurs", E_ALL);
 
 /*=======================================================================================================================================*/
 /* CHARGEUR DE CLASS */

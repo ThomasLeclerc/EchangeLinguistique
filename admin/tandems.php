@@ -39,9 +39,6 @@ function deleteTandem()
 			}	);
 	}
 	
-
-
-
 }
 </script>
 <?php
@@ -62,6 +59,22 @@ if(isset($_GET['a']))
 	//on supprime les idLink des fiches qui sont remplaces par les idTandem
 	$queryUp3=SQL("update FICHE set idLink=null where idFiche=".$idFiche1);
 	$queryUp4=SQL("update FICHE set idLink=null where idFiche=".$idFiche2);
+	
+	//envoi de mail aux participants
+	$sujet = 'Tandems Linguistique : Tandem trouvé';
+	$msg = 'Bonjour, <br/>
+				\t j\'ai le plaisir de vous informer que nous vous avons trouvé 
+				une personne pour échanger dans le cadre des 
+				Tandems linguistiques<br/>
+				Cordialement,<br/>
+				'.$_SESSION['nom'];
+	
+	$resultMailParticipants = SQL('SELECT f1.mail as mail1, f2.mail as mail2 
+											from FICHE f1, FICHE f2 
+											where f1.idFiche='.$idFiche1.' and f2.idFiche='.$idFiche2);
+	$mailParticipants = $resultMailParticipants ->fetch_object();
+	sendEmail($_SESSION['email'], $mailParticipants->mail1,$sujet,$msg);
+	sendEmail($_SESSION['email'], $mailParticipants->mail2,$sujet,$msg);
 }
 
 //on utilise un tableau dans lequel

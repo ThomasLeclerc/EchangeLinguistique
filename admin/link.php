@@ -27,7 +27,7 @@ function showFiche(id){
 }
 	function showLink(id1, id2, idDivLink){
 		var html = '<div id="link'+idDivLink+'" class="ficheTandem">'+
-						'Lien n° '+idDivLink;
+						'<p>Lien n° '+idDivLink+'</p>';
 								
 		$.post(	'showFiche.php',
 			{ id: id1}, 
@@ -37,10 +37,10 @@ function showFiche(id){
 					$.post(	'showFiche.php',
 						{ id: id2}, 
 						function(returnedData2){
-							html += '<div class="ficheTandemSeparee">';
+							html += '</div><div class="ficheTandemSeparee">';
 							html += 			returnedData2;
-							html += '</div><div class="clear"></div>';
-							html += '<a href="tandems.php?a='+id1+'&b='+id1+'"><input type="button" class="validate" value="Valider ce tandem"</a>';
+							html += '<div class="clear"></div>';
+							html += '<a href="tandems.php?a='+id1+'&b='+id1+'" onclick="return confirm(\'La validation du tandem va envoyer un mail de confirmation aux personnes concernées. \');"><input type="button" class="validate" value="Valider ce tandem"</a>';
 							html += '<form method="POST" onsubmit="return confirm(\'Etes vous sur de vouloir supprimer ce lien?\');"  action="linkRequest.php?del=1">'+
 										'	<input name="id1" type="hidden" value="'+id1+'"/>'+
 										'	<input name="id2" type="hidden" value="'+id2+'"/>'+
@@ -60,7 +60,7 @@ function showFiche(id){
 	<table class="FichesTable">
 	    <thead>
 	        <tr>
-	            <td>Binômes</td>
+	            <td>Binômes en attente</td>
 	        </tr>
 	    </thead>
 	    <tbody>
