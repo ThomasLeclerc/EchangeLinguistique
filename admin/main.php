@@ -12,7 +12,7 @@ function deleteFiche(id)
 {
 	$idFiche=id;
 	//on affiche la confirm box
-	if(confirm("Ce tandem sera supprimé définitivement"))
+	if(confirm("Cette fiche sera supprimée définitivement. Un mail sera envoyé à la personne concernée"))
 	{
 		$.post(	'delFiche.php',
 			{ num: $idFiche }, 
