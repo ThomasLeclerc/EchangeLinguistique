@@ -10,12 +10,12 @@ HTML_HEADER('Administration');
 <script>
 function deleteFiche(id)
 {
-	$idFiche=id;
+	
 	//on affiche la confirm box
-	if(confirm("Cette fiche sera supprimée définitivement. Un mail sera envoyé à la personne concernée"))
+	if(confirm("Cette fiche sera supprimée définitivement. Un mail sera envoyé à la personne concernée"+id))
 	{
 		$.post(	'delFiche.php',
-			{ num: $idFiche }, 
+			{ num: id }, 
 			function(returnedData)
 			{
 				console.log(returnedData);

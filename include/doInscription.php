@@ -2,7 +2,7 @@
 	require_once 'engine.php';
 	HTML_HEADER('Inscription Terminée');
 
-	$validfields = true;
+	$validFields = true;
 	if(!isset($_POST["complement"])){
 		$complement = null;
 	}else{
@@ -48,6 +48,7 @@
 			$languesMat = $_POST["langueMaternelle"];
 			foreach($languesMat as $idLangue){
 					$result_insert_mat = SQL('insert into PARLE values('.$idFiche.', '.$idLangue.')');	
+					if(!$result_insert_mat){}	
 			}
 		
 		
@@ -57,10 +58,10 @@
 			$niveauxLanguesPerf = $_POST["niveauLanguePerfectionnement"];
 			$niveauxSysteme = $_POST["niveauLangueSysteme"];
 			foreach($languesPerf as $idLangue){
-	
 				$key = array_search($idLangue, $languesPerf);
 				$result_insert_perf = SQL('INSERT INTO PERFECTIONNE VALUES(
-													'.$idFiche.','.$idLangue.', "'.$niveauxLanguesPerf[$key].'", "'.$niveauxSysteme[$key].'");');		
+													'.$idFiche.','.$idLangue.', "'.$niveauxLanguesPerf[$key].'", "'.$niveauxSysteme[$key].'");');	
+				if(!$result_insert_perf){}	
 			}
 		}else{
 			echo "<div class='msg_1'>Un problème est survenu lors de votre inscritpion. veuillez réessayer.</div>";

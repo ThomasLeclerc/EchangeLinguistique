@@ -41,17 +41,7 @@ function Gestionnaire_Erreurs($errno="", $errstr="", $errfile="", $errline="",$e
 	// Version ultra détailé
 	 //error_log(date('H\:i\:s d/m/y').'	'.($Died?'1':'0').'	['.$Type.']	'.$errstr.'	Ligne:'.$errline.'	Fichier:'.$errfile."\n".print_r($errcontext,1)."\n".print_r(debug_backtrace(),1)."\n\n", 3, RACINE.'log/Log_ultra_'.date('Y-m-d').'.txt');
 	
-	if(!DEVELOPPEMENT)	// Affichage du message d'erreur en mode administratif
-		echo "<br><b>Une Erreur s'est produite:</b><br>Elle a été enregistrée dans le journal: <br /><b><font color=".($Died?'red':'orange').">[".$Type."] le ".date('H:i:s d/m/Y')."</font><br>Merci de bien vouloir ressayer ultérieurement et alerter l'équipe de développement.";
-	else
-	{	// Affichage du message d'erreur
-		echo "<div class='erreur' style='color:".($Died?'red':'orange')."''>
-			<h3>[".$Type."] ".$errstr."</a></h3>
-			Ligne: ".$errline."<br>
-			Fichier: ".$errfile."<br />
-			<pre>".print_r(debug_backtrace(),1)."</pre>
-			</div>";
-	}
+
 
 	// Stop le script si cela est nécessaire par rapport au type d'erreur
 	if($Died)
@@ -217,9 +207,6 @@ if(!defined('NO_SQL'))
 		// Compteur de la durée à zéro
 		$BDD_Temps_Ini=microtime(1);
 
-		// Affiche la requête en mode débugage
-		if(DEVELOPPEMENT && SQL_AFFICHER_REQUETES)
-			//echo '<b>Requête:</b> '.$Requete.'<br/>';
 
 		// Envoi de la requête au serveur
 		$Resultat = $Mysql->query($Requete) or Gestionnaires_Erreurs_SQL($Requete);

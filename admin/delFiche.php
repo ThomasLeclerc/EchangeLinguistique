@@ -4,9 +4,10 @@
 	if(!isset($_SESSION['id'])) 
 		REDIRECT('../login.php');
 		
-	$idFiche = 13;//$_POST["num"];
-	$resultEmail = ('SELECT mail from FICHE where idFiche='.$idFiche);
-	$mail = ($resultEmail->fetch_object())->mail;
+	$idFiche = $_POST["num"];
+	$resultEmail = SQL('SELECT mail from FICHE where idFiche='.$idFiche);
+	$objResultEmail = $resultEmail->fetch_object();
+	$mail = $objResultEmail->mail;
 	
 	
 	$query=SQL("delete from FICHE where idFiche=".$idFiche);
