@@ -321,7 +321,7 @@ small{
 .FichesTable > tbody >.ligneFicheSelected{
 	background-color:rgba(50,200,50,0.8) !important;
 }
-.ligneF{
+.ligneF, .FichesTable{
 	cursor: pointer;
 }
 

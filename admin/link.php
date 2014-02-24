@@ -8,11 +8,22 @@ if(!isset($_SESSION['id']))
 HTML_HEADER('Gestion des liens');
 ?>
 <script>
+var lastLineClicked = 0;
+function selectLine(id)
+{   
+	if(lastLineClicked != 0)
+	{
+		$("#lien"+lastLineClicked).removeClass("ligneFicheSelected");
+		$("#lien"+lastLineClicked).addClass("ligneF");
+
+	}
+	lastLineClicked = id;
+	$("#lien"+id).removeClass("ligneF");
+	$("#lien"+id).addClass("ligneFicheSelected");
+}
+
 function showFiche(id){
-
-
-	//selectLine(id);
-	 var resp;
+	var resp;
     xmlhttp=new XMLHttpRequest();
     xmlhttp.onreadystatechange=function(){
     	if (xmlhttp.readyState==4 && xmlhttp.status==200)
@@ -41,13 +52,13 @@ function showFiche(id){
 							html += 			returnedData2;
 
 							html += '</div><div class="clear"></div>';
-							html += '<a href="tandems.php?a='+id1+'&b='+id2+'"><input type="button" class="validate" value="Valider ce tandem"</a>';
+							html += '<table style="text-align:center;width:100%"><tr><td><a href="tandems.php?a='+id1+'&b='+id2+'"><input type="button" class="validate" value="Valider ce tandem"</a></td>';
 
-							html += '<form method="POST" onsubmit="return confirm(\'Etes vous sur de vouloir supprimer ce lien?\');"  action="linkRequest.php?del=1">'+
+							html += '<td><form method="POST" onsubmit="return confirm(\'Etes vous sur de vouloir supprimer ce lien?\');"  action="linkRequest.php?del=1">'+
 										'	<input name="id1" type="hidden" value="'+id1+'"/>'+
 										'	<input name="id2" type="hidden" value="'+id2+'"/>'+
-										'	<input style="float:right;" type="submit" value="Supprimer le lien" class="cancel"/>'+
-										'</form></div>';
+										'	<input type="submit" value="Supprimer le lien" class="cancel"/>'+
+										'</form></td></tr></table></div>';
 							$('#link').html(html);
 					});
 		});
@@ -71,7 +82,7 @@ function showFiche(id){
 			$count=0;	     
 	      while($ligneLien=$resultListLiens->fetch_object()){
 	      	$count++;
-	      	echo '<tr class="ligneLien" id="lien'.$count.'" onclick="showLink('.$ligneLien->idFiche1.', '.$ligneLien->idFiche2.', '.$count.');">
+	      	echo '<tr class="ligneLien" id="lien'.$count.'" onclick="selectLine('.$count.');showLink('.$ligneLien->idFiche1.', '.$ligneLien->idFiche2.', '.$count.');">
 	      				<td> '.$ligneLien->nom1.' - '.$ligneLien->nom2.' </td>
 	      			</tr>';
 	      }
