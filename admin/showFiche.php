@@ -24,6 +24,7 @@
 		else
 			echo ' -- '.$rowLangue->libelleLangue.'<br/>';
 	}
+	echo '</div>';
 	if($m>0)
 	{
 		echo '<table><tr><td>Sexe : </td><td><div id="sexe'.$i.'" class="match'.$i.'">'.$row->sexe.'</div></td></tr></table>';
@@ -62,8 +63,9 @@
 		if(!($rowLanguePerf->niveauUE==null))
 			//on l'affiche
 			echo ' - '.$rowLanguePerf->niveauUE;
-		echo '</div>';
+		
 	}
+	echo '</div>';
 	if($m>0)
 	{
 		echo '<hr /><table><tr><td>Adresse : </td><td><div id="adresse'.$i.'" class="match'.$i.'">'.$row->adresse.'</div></td></tr></table>';
@@ -72,7 +74,7 @@
 		echo '<table><tr><td>Téléphone : </td><td><div id="tel'.$i.'" class="match'.$i.'">'.$row->numeroTelephone.'</div></td></tr></table>';
 		echo '<table><tr><td>Email : </td><td><div id="email'.$i.'" class="match'.$i.'">'.$row->mail.'</div></td></tr></table>';
 		echo '<table><tr><td>Complément : </td></tr></table><div id="comp'.$i.'" class="match'.$i.'">'.$row->complement.'</div>';
-		echo '<div class="dev" class="match'.$i.'" id="idFicheMatch'.$i.'">'.$row->idFiche.'</div></div>';
+		echo '<div class="dev" class="match'.$i.'" id="idFicheMatch'.$i.'">'.$row->idFiche.'</div>';
 	}
 	else
 	{
@@ -82,7 +84,7 @@
 		echo '<table><tr><td>Téléphone : </td><td><div id="tel">'.$row->numeroTelephone.'</div></td></tr></table>';
 		echo '<table><tr><td>Email : </td><td><div id="email">'.$row->mail.'</div></td></tr></table>';
 		echo '<table><tr><td>Complément : </td></tr></table><div id="comp">'.$row->complement.'</div>';
-		echo '<div class="dev" id="idFicheMatch">'.$row->idFiche.'</div></div>';
+		echo '<div class="dev" id="idFicheMatch">'.$row->idFiche.'</div>';
 	}
 
 ?>

@@ -73,6 +73,7 @@
 	if($fs==1){
 		echo '</div>';
 		echo '<input id="butMatch" type="button" value="Associer" />';
+		$fs=2;
 	}
 	echo '<div id="nbMatch" style="visibility:hidden;">'.$nbMatch.'</div>';
 

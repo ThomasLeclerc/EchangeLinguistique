@@ -185,65 +185,64 @@ $(document).ready(function(){
 <table id="fiches">
 <tr>
 <td>
-<div class="divFichesTable">
-<table class="FichesTable">
-    <thead>
-        <tr>
-            <td>Langue maternelle</td>
-            <td>Langue de <br/>perfectionnement (Niveau) </td>
-            <td>Age</td>
-            <td>Sexe</td>
-        </tr>
-    </thead>
-    <tbody><?php
+	<div class="divFichesTable"><table class="FichesTable">
+			<thead>
+				<tr>
+				    <td>Langue maternelle</td>
+				    <td>Langue de <br/>perfectionnement (Niveau) </td>
+				    <td>Age</td>
+				    <td>Sexe</td>
+				    <td></td>
+				</tr>
+			</thead>
+			<tbody><?php
 
-        $query=SQL("select * from FICHE where idLink is null and idTandem is null group by idFiche order by idFiche asc");
+				$query=SQL("select * from FICHE where idLink is null and idTandem is null group by idFiche order by idFiche asc");
 
-		while($row=$query->fetch_object())
-		{
-			$queryLangueMat=SQL("select * from PARLE where idFiche=".$row->idFiche);
-			$queryLanguePerf=SQL("select * from PERFECTIONNE where idFiche=".$row->idFiche);
-			$j = 0;
-			$k = 0;		
-			echo '<tr id="trLangue'.$row->idFiche.'" class="ligneF" onclick="showFiche('.$row->idFiche.')" >';
-			echo '<td><table id="ligneLangue'.$row->idFiche.'">';
-			while($rowLangueMat=$queryLangueMat->fetch_object())
-			{
-				$j++;
-				echo '<tr>';
-				$queryFlag=SQL("select * from LANGUE where idLangue=".$rowLangueMat->idLangue);
-				$rowFlag=$queryFlag->fetch_object();
-				if(!($rowFlag->imageDrapeau == null))
-					echo '<td><img class="flag" src="'.SHORT_RACINE.'styles/flags/'.$rowFlag->imageDrapeau.'"/> '.$rowFlag->libelleLangue.'</td></tr>';
-				else
-					echo '<td>'.$rowFlag->libelleLangue.'</td></tr>';
-			}
-			echo '</tr></table></td><td><table id="ligne2Langue'.$row->idFiche.'" >';
-			while($rowLanguePerf=$queryLanguePerf->fetch_object())
-			{
-				$k++;
-				echo '<tr>';
-				$queryFlag=SQL("select * from LANGUE where idLangue=".$rowLanguePerf->idLangue);
-				$rowFlag=$queryFlag->fetch_object();
-				if(!($rowFlag->imageDrapeau == null))
-					echo '<td><img class="flag" src="'.SHORT_RACINE.'styles/flags/'.$rowFlag->imageDrapeau.'"/> '.$rowFlag->libelleLangue;
-				else
-					echo '<td>'.$rowFlag->libelleLangue;
-				echo ' ('.$rowLanguePerf->niveau;
-				if($rowLanguePerf->niveauUE!="no")
-					echo ' - '.$rowLanguePerf->niveauUE.')</td></tr>';
-				else
-				echo ')</td></tr>';
-			}
-			echo '</tr></table></td>';
-			echo '<td id="ligneAge'.$row->idFiche.'" >'.$row->age.'</td>';
-			echo '<td id="ligneSexe'.$row->idFiche.'" >'.$row->sexe.'</td>';
-			echo '<td><button type="button" onClick="deleteFiche('.$row->idFiche.');"><img src="../styles/delete.png" style="width:20px"></button></td>';
-			echo '</tr>';
-		}
-    ?></tbody>
-</table>
-</div>
+				while($row=$query->fetch_object())
+				{
+					$queryLangueMat=SQL("select * from PARLE where idFiche=".$row->idFiche);
+					$queryLanguePerf=SQL("select * from PERFECTIONNE where idFiche=".$row->idFiche);
+					$j = 0;
+					$k = 0;		
+					echo '<tr id="trLangue'.$row->idFiche.'" class="ligneF" onclick="showFiche('.$row->idFiche.')" >';
+					echo '<td><table id="ligneLangue'.$row->idFiche.'">';
+					while($rowLangueMat=$queryLangueMat->fetch_object())
+					{
+						$j++;
+						echo '<tr>';
+						$queryFlag=SQL("select * from LANGUE where idLangue=".$rowLangueMat->idLangue);
+						$rowFlag=$queryFlag->fetch_object();
+						if(!($rowFlag->imageDrapeau == null))
+							echo '<td><img class="flag" src="'.SHORT_RACINE.'styles/flags/'.$rowFlag->imageDrapeau.'"/> '.$rowFlag->libelleLangue.'</td></tr>';
+						else
+							echo '<td>'.$rowFlag->libelleLangue.'</td></tr>';
+					}
+					echo '</tr></table></td><td><table id="ligne2Langue'.$row->idFiche.'" >';
+					while($rowLanguePerf=$queryLanguePerf->fetch_object())
+					{
+						$k++;
+						echo '<tr>';
+						$queryFlag=SQL("select * from LANGUE where idLangue=".$rowLanguePerf->idLangue);
+						$rowFlag=$queryFlag->fetch_object();
+						if(!($rowFlag->imageDrapeau == null))
+							echo '<td><img class="flag" src="'.SHORT_RACINE.'styles/flags/'.$rowFlag->imageDrapeau.'"/> '.$rowFlag->libelleLangue;
+						else
+							echo '<td>'.$rowFlag->libelleLangue;
+						echo ' ('.$rowLanguePerf->niveau;
+						if($rowLanguePerf->niveauUE!="no")
+							echo ' - '.$rowLanguePerf->niveauUE.')</td></tr>';
+						else
+						echo ')</td></tr>';
+					}
+					echo '</tr></table></td>';
+					echo '<td id="ligneAge'.$row->idFiche.'" >'.$row->age.'</td>';
+					echo '<td id="ligneSexe'.$row->idFiche.'" >'.$row->sexe.'</td>';
+					echo '<td><button type="button" onClick="deleteFiche('.$row->idFiche.');"><img src="../styles/delete.png" style="width:20px"></button></td>';
+					echo '</tr>';
+				}
+			?></tbody>
+		</table></div>
 </td>
 <td>
 <div id="hintFiche" class="ficheParticipant" style="visibility:hidden;"></div>
