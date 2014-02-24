@@ -414,6 +414,32 @@ margin-left: 20px;
 	width:75%;
 }
 
+/***************************************
+************* STYLE TANDEMS ************
+****************************************/
+#divListTandems{
+	border:solid 4px rgba(0,0,0,0.8);
+	border-radius:20px;
+	padding:20px;
+	background-color:rgba(190,240,162,0.5);
+}
+
+#tandemsTable{
+	width:100%;
+	border-collapse: collapse;
+}
+
+#tandemsTable tr{    
+	border-bottom: 3px solid rgba(50,50,50,0.5);
+    -webkit-transition: color .6s ease-in;
+    -moz-transition: color .6s ease-in;
+    -o-transition: color .6s ease-in;
+}
+
+#tandemsTable tr td{
+	padding:5px;
+}
+
 
 
 /***************************************

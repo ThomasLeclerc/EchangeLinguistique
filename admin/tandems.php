@@ -84,7 +84,11 @@ $fichesDejaAffichees = array();
 
 //un compteur
 $count = 0;
+?>
+<div id="divListTandems">
+	<table id="tandemsTable">
 
+<?php
 //on selectionne toutes les fiches qui ont un tandem
 $queryTandems=SQL("select * from FICHE where idTandem is not null");
 while($rowTandems=$queryTandems->fetch_object())
@@ -95,6 +99,7 @@ while($rowTandems=$queryTandems->fetch_object())
 		//on compte
 		$count++;
 		//on affiche un tableau a 2 lignes
+		echo '<tr><td>';
 		echo '<table id="tendemsTab'.$count.'">';
 		echo '<tr>';
 		echo '<td>'.$rowTandems->nomFiche.'</td>';
@@ -119,15 +124,17 @@ while($rowTandems=$queryTandems->fetch_object())
 		echo '<td><button type="button" onClick="deleteTandem();"><img src="../styles/delete.png" style="width:20px"></button></td>';
 		echo '</tr>';
 		echo '</table>';
-		echo '<div id="idFiche1" style="visibility:hidden">'.$rowTandems->idFiche.'</div>';
-		echo '<div id="idFiche2" style="visibility:hidden">'.$rowT2->idFiche.'</div>';
+		echo '<span id="idFiche1" style="visibility:hidden">'.$rowTandems->idFiche.'</span>';
+		echo '<span id="idFiche2" style="visibility:hidden">'.$rowT2->idFiche.'</span>';
 		echo '<br />';
 		//on indique que ces fiches sont affichees
 		$fichesDejaAffichees[] = $rowTandems->idFiche;
 		$fichesDejaAffichees[] = $rowT2->idFiche;
-		
+		echo '</tr></td>';
 	}
 }
-
+?>
+</table></div>
+<?php
 HTML_FOOTER();
 ?>
