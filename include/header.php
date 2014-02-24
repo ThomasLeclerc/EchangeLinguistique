@@ -6,7 +6,7 @@
 		<title><?=$titre?> - Dynamic Web Project - </title>
 		<link rel="stylesheet" type="text/css" href="<?=SHORT_RACINE?>styles/style.css" />
 		
-		<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+		<script src="<?=SHORT_RACINE?>js/jquery-1.9.0.js"></script>
 		<script src="http://code.jquery.com/jquery-migrate-1.1.0.js"></script>
 		<script src="http://malsup.github.io/min/jquery.form.min.js"></script>
 
