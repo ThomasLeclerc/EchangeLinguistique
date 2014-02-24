@@ -1,6 +1,6 @@
 <?php
 require_once 'include/engine.php';
-HTML_HEADER('Connexion');
+
 
 // Vérification de la connexion
 if(isset($_POST['login'],$_POST['password']))
@@ -14,15 +14,16 @@ if(isset($_POST['login'],$_POST['password']))
 		// Compte autorisé
 		$compte=$requete->fetch_object();
 		$_SESSION['id']=$compte->idUtilisateur;
-		$_SESSION['nom']=$compte->nomUtilisateur." ".$compte->prenomUtilisateur;
+		$_SESSION['nom']=$compte->prenomUtilisateur." ".$compte->nomUtilisateur;
 		$_SESSION['email']=$compte->emailUtilisateur;
                 
 		REDIRECT('admin/main.php');
 	}
 	else
+		HTML_HEADER('Connexion');
 		echo '<div class="msg_1">Login ou mot de passe incorrect</div>';
-}
-
+}else {
+	HTML_HEADER('Connexion');
 ?>
 
 		<div id="login">
@@ -45,5 +46,6 @@ if(isset($_POST['login'],$_POST['password']))
 	</div>
 
 <?php 
+}
 HTML_FOOTER();
 ?>

@@ -35,7 +35,7 @@ function deleteTandem()
 						}	);
 				}
 				else
-					location.reload();
+					location.reload(true);
 			}	);
 	}
 	
@@ -61,20 +61,41 @@ if(isset($_GET['a']))
 	$queryUp4=SQL("update FICHE set idLink=null where idFiche=".$idFiche2);
 	
 	//envoi de mail aux participants
-	$sujet = 'Tandems Linguistique : Tandem trouvé';
-	$msg = 'Bonjour, <br/>
-				\t j\'ai le plaisir de vous informer que nous vous avons trouvé 
-				une personne pour échanger dans le cadre des 
-				Tandems linguistiques<br/>
-				Cordialement,<br/>
-				'.$_SESSION['nom'];
 	
-	$resultMailParticipants = SQL('SELECT f1.mail as mail1, f2.mail as mail2 
+	$sujet = 'Tandems Linguistique : Tandem trouvé';
+
+	$resultInfosParticipants = SQL('SELECT 
+											f1.mail as mail1, 
+											f1.prenomFiche as prenom1,
+											f1.nomFiche as nom1,
+											f2.mail as mail2,
+											f2.prenomFiche as prenom2, 
+											f2.nomFiche as nom2
 											from FICHE f1, FICHE f2 
 											where f1.idFiche='.$idFiche1.' and f2.idFiche='.$idFiche2);
-	$mailParticipants = $resultMailParticipants ->fetch_object();
-	sendEmail($_SESSION['email'], $mailParticipants->mail1,$sujet,$msg);
-	sendEmail($_SESSION['email'], $mailParticipants->mail2,$sujet,$msg);
+	
+	$infosParticipants = $resultInfosParticipants ->fetch_object();
+	$msg1 = 'Bonjour, <br/>
+				j\'ai le plaisir de vous informer que nous vous avons trouvé 
+				une personne pour échanger dans le cadre des 
+				Tandems linguistiques : <br/>
+				 - '.$infosParticipants->prenom2.' '.$infosParticipants->nom2.'<br/>
+				 - '.$infosParticipants->mail2.'<br/>
+				Cordialement,<br/>
+				'.$_SESSION['nom'];
+				
+	$msg2 = 'Bonjour, <br/>
+			j\'ai le plaisir de vous informer que nous vous avons trouvé 
+			une personne pour échanger dans le cadre des 
+			Tandems linguistiques :  <br/>
+				 - '.$infosParticipants->prenom1.' '.$infosParticipants->nom1.'<br/>
+				 - '.$infosParticipants->mail1.'<br/>
+			Cordialement,<br/>
+				'.$_SESSION['nom'];	
+	
+	
+	sendEmail($_SESSION['email'], $infosParticipants->mail1,$sujet,$msg1);
+	sendEmail($_SESSION['email'], $infosParticipants->mail2,$sujet,$msg2);
 }
 
 //on utilise un tableau dans lequel
