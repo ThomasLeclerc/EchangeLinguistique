@@ -24,7 +24,7 @@ if($mdpUtilisateur1==$mdpUtilisateur2)
 											'".$nomUtilisateur."',
 											'".$prenomUtilisateur."',
 											'".$loginUtilisateur."',
-											'".hash("sha1",$mdpUtilisateur1)."',
+											'".hash("sha512",$mdpUtilisateur1)."',
 											'".$emailUtilisateur."',
 											".$mail.")");
 REDIRECT('user.php');
