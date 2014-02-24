@@ -4,10 +4,10 @@ HTML_HEADER('Accueil');
 ?>	
 	<div id="presentation">
 		<h3>Bienvenue sur le site d'inscription aux tandems linguistiques</h3>
-		Ce site est une plateforme d'inscription au programme de tandems linguistiques organisé
-		par le CeLab de l'Université de Franche-Comté.
+		Ce site est une plateforme d'inscription au programme de tandems linguistiques organisÃ©
+		par le CeLab de l'UniversitÃ© de Franche-ComtÃ©.
 		<br/>	<br/>
-		Les tandems linguistiques sont destinés aux personnes souhaitant se perfectionner dans une langue par la pratique.
+		Les tandems linguistiques sont destinÃ©s aux personnes souhaitant se perfectionner dans une langue par la pratique.
 		<br/><br/>
 		Pour s'inscrire, rien de plus simple. Il suffit de remplir le formulaire avec vos informations.
 		<br/><br/>
