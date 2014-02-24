@@ -62,8 +62,9 @@
 		//si le niveau europeen est renseigné
 		if(!($rowLanguePerf->niveauUE==null))
 			//on l'affiche
-			echo ' - '.$rowLanguePerf->niveauUE;
-		
+			echo ' - '.$rowLanguePerf->niveauUE.'<br/>';
+		else
+			echo '<br/>';
 	}
 	echo '</div>';
 	if($m>0)
