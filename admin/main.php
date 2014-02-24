@@ -238,7 +238,7 @@ $(document).ready(function(){
 					echo '</tr></table></td>';
 					echo '<td id="ligneAge'.$row->idFiche.'" >'.$row->age.'</td>';
 					echo '<td id="ligneSexe'.$row->idFiche.'" >'.$row->sexe.'</td>';
-					echo '<td><button type="button" onClick="deleteFiche('.$row->idFiche.');"><img src="../styles/delete.png" style="width:20px"></button></td>';
+					echo '<td><button type="button" onClick="deleteFiche('.$row->idFiche.');"><img src="../styles/delete.png" ></button></td>';
 					echo '</tr>';
 				}
 			?></tbody>
