@@ -15,12 +15,11 @@ HTML_HEADER('Ajouter un utilisateur');
 <tr><td><label>Login : </label></td><td><input type="text" name="loginUser" required/></td></tr>
 <tr><td><label>E-mail : </label></td><td><input type="text" name="emailUser" required/></td></tr>
 <tr><td><label>Recoit emails du site : </label></td><td><input type="checkbox" name="recoitEmail" /></td></tr>
-<tr><td><label>Mot de passe : </label></td><td><input type="password" name="pass1User" required/></td></tr>
-<tr><td><label>Confirmer mdp : </label></td><td><input type="password" name="pass2User" required/></td></tr>
+<tr><td><label>Mot de passe : </label></td><td><input type="password" id="pass1User" name="pass1User" required autocomplete="off" value=""/></td></tr>
+<tr><td><label>Confirmer mdp : </label></td><td><input type="password" id="pass2User" name="pass2User" required/></td></tr>
 </table>
 <input type="submit" value="Ajouter" />
 </form>
-
 <?php
 HTML_FOOTER();
 ?>

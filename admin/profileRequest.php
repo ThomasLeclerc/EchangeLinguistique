@@ -35,7 +35,7 @@ else
 		$mdpBase=$rowMdp->password;
 		// On vérifie que les deux mdp taper 
 		// sont les mêmes(au cas ou javascript desactivé)
-		if($mdpUtilisateur1==$mdpUtilisateur2 && hash("sha1",$mdpUtilisateur)==$mdpBase)
+		if($mdpUtilisateur1==$mdpUtilisateur2 && hash("sha512",$mdpUtilisateur)==$mdpBase)
 			// Requete de la mise à jour
 			$query_modif=SQL
 			("  
@@ -45,7 +45,7 @@ else
 					loginUtilisateur='".$loginUtilisateur."',
 					emailUtilisateur='".$emailUtilisateur."',
 					recoitEmail=".$mail.",
-					password='".hash("sha1",$mdpUtilisateur1)."'
+					password='".hash("sha512",$mdpUtilisateur1)."'
 				WHERE idUtilisateur=".$idUtilisateur
 			);
 		// Si les mdp sont differents

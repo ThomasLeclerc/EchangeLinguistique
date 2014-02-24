@@ -25,7 +25,7 @@ if($row->recoitEmail)
 	echo '<tr><td><label>Recevoir les emails du site : </label></td><td><input type="checkbox" name="recoitEmail" checked="checked"/></td></tr>';
 else
 	echo '<tr><td><label>Recevoir les emails du site : </label></td><td><input type="checkbox" name="recoitEmail"/></td></tr>';
-echo '<tr><td><label>Mot de passe : </label></td><td><input type="password" name="mdpProfil" required /></td></tr>';
+echo '<tr><td><label>Mot de passe : </label></td><td><input type="password" name="mdpProfil" required autocomplete="off" value=""/></td></tr>';
 echo '<tr><td><label>Nouveau mot de passe : </label></td><td><input type="password" name="newMdpProfil" /></td></tr>';
 echo '<tr><td><label>Confirmation nouveau mdp : </label></td><td><input type="password" name="newMdpProfil2" /></td></tr>';
 echo '<tr><td><input type="submit" value="Modifier"/></td></tr>';

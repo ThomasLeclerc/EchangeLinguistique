@@ -8,7 +8,7 @@ if(isset($_POST['login'],$_POST['password']))
 	$requete=SQL("  SELECT * 
                         FROM UTILISATEUR
                         WHERE UTILISATEUR.loginUtilisateur='".$_POST['login']."'
-                        AND password='".hash("sha1",$_POST['password'])."'   ");
+                        AND password='".hash("sha512",$_POST['password'])."'   ");
 	if($requete->num_rows == 1)
 	{
 		// Compte autorisé
