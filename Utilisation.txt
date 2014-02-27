@@ -1,0 +1,10 @@
+Pour la partie visiteur, la page d'accueil est index.php dans le dossier racine.
+Le formulaire d'inscription se trouve dans inscription.php.
+
+Les feuilles de style qui définissent le style se situent dans le dossier styles.
+
+Côté gestionnaire tout se passe dans le dossier admin.
+La page principale est admin/main.php.
+
+Au départ l'application est livrée avec un seul compte admin login:tAdmin password:lpro2014. 
+Il est très fortement conseillé de créer un autre compte et de supprimer celui ci.
