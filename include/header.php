@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="description" content=""/>
-		<title><?=$titre?> - Dynamic Web Project - </title>
+		<title><?=$titre?> - Echanges linguistiques</title>
 		<link rel="stylesheet" type="text/css" href="<?=SHORT_RACINE?>styles/style.css" />
 		
 		<script src="<?=SHORT_RACINE?>js/jquery-1.9.0.js"></script>
